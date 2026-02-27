@@ -9,3 +9,6 @@ gzuse data/analysis_data.dta.gz, clear
 * Display options
 di "Working with design covariates: ${covdesign}"
 di "Working with excluded covariates: ${covsadj}"
+
+* Vam function
+do code/vam.ado

@@ -390,7 +390,6 @@ program define fun_vam
 	}
 	else if "${vam_measure}" == "chetty"{
 		*Chetty's version of vam (he just uses something he calls "score")
-		*Note that class for us doesn't vary by subject (as of 8/5/20), so there is some sense of redundancy in these definitions
 		capture drop classChetty score_r
 		egen classChetty = group(teachid year)
 		global dtadir "temp/"

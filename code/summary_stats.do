@@ -103,9 +103,6 @@ esttab cols1 cols2 cols3 using tables/table1.tex, tex replace cells("mean(fmt(a2
 **********************************************
 * Heterogeneity summary statistics
 **********************************************
-* Define 4 primary heterogeneity sub-samples
-
-
 * Main sample
 eststo clear
 eststo cols1: estpost tabstat male black disadv lim_eng pared_hsorless pared_somecol pared_baormore readscal mathscal daysabs any_discp oss lead_grade_rep behavpca homework freeread watchtv studypca gpa_weighted class_rank_w grad college_bound aoc_any aoc_traff aoc_crim aoc_index aoc_crim_conv aoc_incar, statistics(mean) columns(statistics)
