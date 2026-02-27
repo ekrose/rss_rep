@@ -1,0 +1,45 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{9}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{Full sample}&\multicolumn{2}{c}{Race} &\multicolumn{2}{c}{Sex}  &\multicolumn{2}{c}{Econ. disadv.}&\multicolumn{2}{c}{Arrest risk}\\\cmidrule(lr){2-2}\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}\cmidrule(lr){9-10}
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}&\multicolumn{1}{c}{(8)}&\multicolumn{1}{c}{(9)}\\
+            &\multicolumn{1}{c}{ }&\multicolumn{1}{c}{White}&\multicolumn{1}{c}{Non-White}&\multicolumn{1}{c}{Boys}&\multicolumn{1}{c}{Girls}&\multicolumn{1}{c}{Yes}&\multicolumn{1}{c}{No}&\multicolumn{1}{c}{High}&\multicolumn{1}{c}{Low}\\
+            &        mean&        mean&        mean&        mean&        mean&        mean&        mean&        mean&        mean\\
+\hline
+\textbf{Demographics}\\ \ Male&        0.50&        0.51&        0.49&           1&           0&        0.50&        0.51&        0.72&        0.28\\
+\ Black     &        0.27&           0&        0.66&        0.26&        0.27&        0.38&       0.086&        0.43&       0.097\\
+\ Receives free / subsidized lunch&        0.61&        0.44&        0.86&        0.60&        0.61&           1&           0&        0.82&        0.39\\
+\ Limited English&       0.054&      0.0035&        0.13&       0.056&       0.052&       0.084&      0.0076&       0.023&       0.084\\
+\ Parents have HS education or less&        0.43&        0.34&        0.56&        0.42&        0.43&        0.60&        0.16&        0.59&        0.25\\
+\ Parents have some college&        0.48&        0.58&        0.32&        0.48&        0.47&        0.29&        0.77&        0.30&        0.65\\
+\ Parents have 4-year degree&        0.24&        0.32&        0.12&        0.24&        0.23&       0.069&        0.50&       0.089&        0.39\\
+\\ \textbf{Short-run outcomes}\\ \ Standardized reading scores&       0.057&        0.31&       -0.32&     -0.0072&        0.12&       -0.24&        0.51&       -0.36&        0.47\\
+\ Standardized math scores&       0.072&        0.32&       -0.29&       0.073&       0.070&       -0.23&        0.54&       -0.34&        0.48\\
+\ Days absent&        9.06&        9.39&        8.59&        9.24&        8.89&        10.2&        7.33&        10.7&        7.58\\
+\ Any discipline&        0.17&        0.13&        0.24&        0.23&        0.12&        0.23&       0.086&        0.28&       0.082\\
+\ Any out-of-school suspension&       0.097&       0.057&        0.15&        0.13&       0.060&        0.14&       0.034&        0.18&       0.032\\
+\ Repeat grade&      0.0087&      0.0058&       0.013&       0.011&      0.0059&       0.013&      0.0023&       0.015&      0.0020\\
+\ Behavioral index&    -8.7e-10&       0.078&       -0.11&       -0.11&        0.11&       -0.21&        0.33&       -0.34&        0.29\\
+\ Time spent on homework&       0.028&       0.096&      -0.078&      -0.012&       0.068&      -0.077&        0.18&       -0.11&        0.16\\
+\ Time spent reading&      0.0077&       0.049&      -0.056&       -0.13&        0.15&      -0.045&       0.086&       -0.15&        0.17\\
+\ Time spent watching TV&      -0.011&       -0.16&        0.24&       0.052&      -0.075&        0.12&       -0.20&        0.15&       -0.20\\
+\ Study skills index&    -5.5e-10&        0.11&       -0.18&       -0.13&        0.13&       -0.14&        0.20&       -0.22&        0.27\\
+\\ \textbf{Long-run outcomes}\\ \ 12th grade GPA (0-6 scale)&        3.12&        3.35&        2.77&        2.96&        3.28&        2.78&        3.55&        2.58&        3.55\\
+\ 12th grade class rank&        0.48&        0.44&        0.55&        0.53&        0.43&        0.56&        0.38&        0.62&        0.37\\
+Graduate high school&        0.92&        0.92&        0.91&        0.90&        0.93&        0.88&        0.98&        0.86&        0.97\\
+\ Plans to attend 4-year college&        0.46&        0.47&        0.45&        0.41&        0.50&        0.35&        0.60&        0.31&        0.57\\
+\ Any CJC 16-21&        0.44&        0.43&        0.47&        0.52&        0.37&        0.48&        0.39&        0.53&        0.36\\
+\ Traffic infraction&        0.33&        0.33&        0.34&        0.39&        0.28&        0.35&        0.31&        0.38&        0.28\\
+\ Criminal arrest&        0.24&        0.21&        0.28&        0.30&        0.17&        0.29&        0.16&        0.33&        0.14\\
+\ Index crime arrest&        0.11&       0.078&        0.15&        0.13&       0.083&        0.14&       0.047&        0.16&       0.050\\
+\ Criminal conviction&        0.10&       0.084&        0.13&        0.15&       0.055&        0.13&       0.052&        0.16&       0.041\\
+\ Incarcerated&       0.090&       0.074&        0.12&        0.13&       0.048&        0.12&       0.043&        0.15&       0.034\\
+\hline
+N student-subject-years&      386188&      231128&      155060&      193531&      192657&      234666&      151522&      193094&      193094\\
+N teachers  &       21199&       19979&       19466&       20952&       20948&       20807&       19143&       20768&       20340\\
+N students  &      295207&      175141&      120066&      148222&      146985&      179497&      115710&      152729&      150438\\
+N twin pairs&        7222&        4028&        3325&        3952&        3969&        4568&        2838&        4248&        3697\\
+\hline\hline
+\end{tabular}
+}
