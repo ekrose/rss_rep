@@ -49,8 +49,7 @@ hatch_college = ''
 means = {'Any CJC':0.44, 'Criminal arrest':0.24, 'Index crime':0.1, 'Incarceration': 0.089, '12th grade GPA':3.13, 'College attendance':0.46,  'Graduation':0.91}
 
 # Load data
-tresids = pd.read_stata("temp/teach_mean_resids.dta".format(
-        spec, droppval)).drop('teachid', axis=1)
+tresids = pd.read_stata("temp/teach_mean_resids.dta").drop('teachid', axis=1)
 cog = tresids.filter(regex='^testscores_', axis=1).values[:,:]
 math = tresids.filter(regex='^math_', axis=1).values[:,:]
 eng = tresids.filter(regex='^eng_', axis=1).values[:,:]
@@ -106,7 +105,7 @@ axes.legend()
 axes.set_facecolor('white')
 axes.grid(axis='y', color='grey')
 fig.tight_layout()
-fig.savefig('figures/figure1b.pdf'.format(spec,droppval))
+fig.savefig('figures/figure1b.pdf')
 
 
 # Only CJC long-run 

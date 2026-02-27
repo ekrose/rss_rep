@@ -5,7 +5,7 @@ global covsadj = "pared_nohs pared_hsorless pared_somecol pared_baormore lag2_ma
 
 * Load analysis data
 gzuse data/analysis_data.dta.gz, clear
-sample 20
+sample 10
 
 * Display options
 di "Working with design covariates: ${covdesign}"

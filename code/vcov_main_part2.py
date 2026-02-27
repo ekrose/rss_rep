@@ -38,8 +38,7 @@ col_aoc_incar = 'darkred'
 ################################################
 
 # Load the data
-tresids = pd.read_stata("temp/teach_mean_resids.dta".format(
-        spec, droppval)).drop('teachid', axis=1)
+tresids = pd.read_stata("temp/teach_mean_resids.dta").drop('teachid', axis=1)
 cog = tresids.filter(regex='^testscores_', axis=1).values[:,:]
 math = tresids.filter(regex='^math_', axis=1).values[:,:]
 eng = tresids.filter(regex='^eng_', axis=1).values[:,:]
@@ -84,7 +83,7 @@ for idx, row in enumerate(results.columns):
 ### Save to latex
 _ls = ['Any CJC', 'Criminal arrest', 'Index crime', 'Incarceration', '12th grade GPA','College attendance','Graduation']
 tmp = results.filter(items = _ls, axis=1).filter(items = _ls, axis=0)
-tmp.to_latex('tables/table2.tex' 
+tmp.to_latex('tables/table2.tex',
     na_rep='', escape=False, multicolumn_format = 'c', column_format = 'c' * int(tmp.shape[1] + 1)
     ) 
 

@@ -1,5 +1,6 @@
 *** 0) Load and prep data and set options
 clear all
+clear mata
 clear matrix
 set more off
 
@@ -15,6 +16,10 @@ foreach shortrun of varlist testscores behavpca {
     eststo clear
     preserve
     * Add VAM measures
+	capture program drop vam
+	clear mata
+	do code/vam.ado
+	capture log close
     global vam_measure = "chetty"
     fun_vam "`shortrun'" 0 
 

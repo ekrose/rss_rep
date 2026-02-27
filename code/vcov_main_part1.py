@@ -39,8 +39,7 @@ col_aoc_incar = 'darkred'
 #####################################
 
 # Load the data
-tresids = pd.read_stata("temp/teach_mean_resids.dta".format(
-        spec, droppval)).drop('teachid', axis=1)
+tresids = pd.read_stata("temp/teach_mean_resids.dta").drop('teachid', axis=1)
 cog = tresids.filter(regex='^testscores_', axis=1).values[:,:]
 math = tresids.filter(regex='^math_', axis=1).values[:,:]
 eng = tresids.filter(regex='^eng_', axis=1).values[:,:]
@@ -104,7 +103,7 @@ axes.set_xlim(0,0.35)
 axes.set_facecolor('white')
 axes.grid(axis='y', color='grey')
 fig.tight_layout()
-fig.savefig('figures/figureA1.pdf'.format(spec,droppval))
+fig.savefig('figures/figureA1.pdf')
 
 
 

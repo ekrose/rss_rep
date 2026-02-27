@@ -49,8 +49,7 @@ hatch_college = ''
 means = {'Any CJC':0.44, 'Criminal arrest':0.24, 'Index crime':0.1, 'Incarceration': 0.089, '12th grade GPA':3.13, 'College attendance':0.46,  'Graduation':0.91}
 
 # Load data
-tresids = pd.read_stata("temp/teach_mean_resids.dta".format(
-        spec, droppval)).drop('teachid', axis=1)
+tresids = pd.read_stata("temp/teach_mean_resids.dta").drop('teachid', axis=1)
 cog = tresids.filter(regex='^lead1_testscores_', axis=1).values[:,:]
 study = tresids.filter(regex='^lead1_studypca_', axis=1).values[:,:]
 behave = tresids.filter(regex='^behave_r', axis=1).values[:,:]

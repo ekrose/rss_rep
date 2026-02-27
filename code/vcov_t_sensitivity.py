@@ -22,10 +22,6 @@ plt.style.use('ggplot')
 #####################################
 ### 0) Options/globals
 ##################################### 
-# Options
-spec = 7
-droppval = 0
-
 # Color options
 col_grad = 'blue'
 col_gpa = 'royalblue'
@@ -49,8 +45,7 @@ def weighted_nanmean(values, weights):
 
 
 ### 1) Load the long data
-tresids = pd.read_stata("temp/teach_mean_resids_long.dta".format(
-        spec, droppval))
+tresids = pd.read_stata("temp/teach_mean_resids_long.dta")
 
 # Go wide, including year vars
 r_cols = ['year'] + [col for col in tresids.columns if col.endswith("_r")]

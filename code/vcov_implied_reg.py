@@ -97,8 +97,7 @@ def tabfunc(effects, outcome):
 
 ### Option 1: Using leave-one-out teacher-year pairs
 tresids = pd.read_stata(
-        "temp/teach_mean_resids.dta".format(
-        spec, droppval)).drop('teachid', axis=1)
+        "temp/teach_mean_resids.dta").drop('teachid', axis=1)
 
 cog = tresids.filter(regex='^testscores_', axis=1).values[:,:]
 math = tresids.filter(regex='^math_', axis=1).values[:,:]
@@ -121,15 +120,14 @@ outcome = {'Any CJC':crimeany, 'Criminal arrest':crime, 'Index crime':aoc_index,
 results = tabfunc(effects,outcome)
 
 results.to_latex(
-        'tables/table4.tex'.format(spec,droppval), 
+        'tables/table4.tex', 
     na_rep='', escape=False, multicolumn_format = 'c', column_format = 'c' * int(results.shape[1] + 1)
     ) 
 
 
 ### Option 2: Using leave-one-out teacher-school pairs
 tresids = pd.read_stata(
-    "temp/teachSchl_mean_resids.dta".format(
-            spec, droppval)).drop('teachid', axis=1)
+    "temp/teachSchl_mean_resids.dta").drop('teachid', axis=1)
 
 cog = tresids.filter(regex='^testscores_', axis=1).values[:,:]
 math = tresids.filter(regex='^math_', axis=1).values[:,:]
@@ -152,7 +150,7 @@ outcome = {'Any CJC':crimeany, 'Criminal arrest':crime, 'Index crime':aoc_index,
 results = tabfunc(effects,outcome)
 
 results.to_latex(
-        'tables/tableA8.tex'.format(spec,droppval), 
+        'tables/tableA8.tex', 
     na_rep='', escape=False, multicolumn_format = 'c', column_format = 'c' * int(results.shape[1] + 1)
     ) 
 
