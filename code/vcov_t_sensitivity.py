@@ -49,7 +49,7 @@ def weighted_nanmean(values, weights):
 
 
 ### 1) Load the long data
-tresids = pd.read_stata("../dump/teach_mean_resids_spec{}_droppval{}_long_samp100.dta".format(
+tresids = pd.read_stata("temp/teach_mean_resids_long.dta".format(
         spec, droppval))
 
 # Go wide, including year vars
@@ -123,7 +123,7 @@ for outset, name in [
               .unstack('maxt')
         )
         latex_str = grouped.to_latex(na_rep="", escape=False)  # escape=False allows commas, decimals
-        with open(f"../tables/{name}_{type}_t_sensit.tex", "w") as f:
+        with open(f"tables/tableA10.tex", "w") as f:
             f.write(latex_str)
 
 

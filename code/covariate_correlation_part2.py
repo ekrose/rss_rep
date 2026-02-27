@@ -23,10 +23,10 @@ plt.style.use('ggplot')
 ##################################### 
 
 # Load mean covariates 
-covs = pd.read_stata("../dump/teach_mean_covars_spec7_droppval0.dta")
+covs = pd.read_stata("temp/teach_mean_covars.dta")
 
 # Load sigma
-sigma = pd.read_stata("../dump/sigma_spec7_droppval0.dta").values
+sigma = pd.read_stata("temp/sigma.dta").values
 assert sigma.shape[0] == sigma.shape[1] == (covs.shape[1]-3)
 
 
@@ -60,7 +60,7 @@ for idx, j in tqdm(enumerate(covs.teachid.unique())):
 
 # Report result
 print("Resulting average bias for variance {}".format(np.mean(teach_means)))
-with open("../tables/covariate_bias_testscores.txt", "w") as f:
+with open("tables/in_text_citations.txt", "w") as f:
     f.write("Average bias for variance {}".format(np.mean(teach_means)))
 
 

@@ -94,7 +94,7 @@ axes.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),
 axes.set_facecolor('white')
 axes.grid(axis='y', color='grey')
 fig.tight_layout()
-fig.savefig('figures/figure2a.pdf')
+fig.savefig('figures/figure3a.pdf')
 
 
 # Long runs original
@@ -119,7 +119,7 @@ axes.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),
 axes.set_facecolor('white')
 axes.grid(axis='y', color='grey')
 fig.tight_layout()
-fig.savefig('figures/figure2b.pdf')
+fig.savefig('figures/figure3b.pdf')
 
 # Long runs original
 labels = ['Graduation','12th grade GPA','College attendance']
@@ -143,7 +143,7 @@ axes.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),
 axes.set_facecolor('white')
 axes.grid(axis='y', color='grey')
 fig.tight_layout()
-fig.savefig('figures/figure2c.pdf')
+fig.savefig('figures/figure3c.pdf')
 
 
 # Any criminal arrest: Graph of 1 SD effects

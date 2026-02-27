@@ -46,7 +46,7 @@ foreach outcome of varlist testscores behavpca studypca {
 	eststo desiv`mcount': ivreg2 ${outcome} (${lomvar} = vam_entry_school_grade) any_entry_school_grade ${covdesign}, cluster(mastid) ffirst 
 	estadd local design_controls = "\checkmark" : desiv`mcount'
 	estadd local sgfe = "" : desiv`mcount'
-	estadd local ffirst = round(e(first),-1) : desiv`mcount'
+	estadd local ffirst = round(el(e(first),4,1),-1) : desiv`mcount'
 	test ${lomvar} = 1
 	estadd local pvalone = round(r(p),.001) : desiv`mcount'
 	local mcount = `mcount' + 1
@@ -58,7 +58,7 @@ foreach outcome of varlist testscores behavpca studypca {
 	eststo desiv`mcount': ivreg2 ${outcome} (${lomvar} = vam_entry_school) any_entry_school ${covdesign}, cluster(mastid) ffirst
 	estadd local design_controls = "\checkmark" : desiv`mcount'
 	estadd local sgfe = "" : desiv`mcount'
-	estadd local ffirst = round(e(first),-1) : desiv`mcount'
+	estadd local ffirst = round(el(e(first),4,1),-1) : desiv`mcount'
 	test ${lomvar} = 1
 	estadd local pvalone = round(r(p),.001) : desiv`mcount'
 	local mcount = `mcount' + 1
@@ -110,7 +110,7 @@ foreach outcome of varlist aoc_crim aoc_incar college_bound {
 	eststo desiv`mcount': ivreg2 ${outcome} (${lomvar} = vam_entry_school_grade) any_entry_school_grade ${covdesign}, cluster(mastid) ffirst 
 	estadd local design_controls = "\checkmark" : desiv`mcount'
 	estadd local sgfe = "" : desiv`mcount'
-	estadd local ffirst = round(e(first),-1) : desiv`mcount'
+	estadd local ffirst = round(el(e(first),4,1),-1) : desiv`mcount'
 	test ${lomvar} = 1
 	estadd local pvalone = round(r(p),.001) : desiv`mcount'
 	local mcount = `mcount' + 1
@@ -122,7 +122,7 @@ foreach outcome of varlist aoc_crim aoc_incar college_bound {
 	eststo desiv`mcount': ivreg2 ${outcome} (${lomvar} = vam_entry_school) any_entry_school ${covdesign}, cluster(mastid) ffirst
 	estadd local design_controls = "\checkmark" : desiv`mcount'
 	estadd local sgfe = "" : desiv`mcount'
-	estadd local ffirst = round(e(first),-1) : desiv`mcount'
+	estadd local ffirst = round(el(e(first),4,1),-1) : desiv`mcount'
 	test ${lomvar} = 1
 	estadd local pvalone = round(r(p),.001) : desiv`mcount'
 	local mcount = `mcount' + 1

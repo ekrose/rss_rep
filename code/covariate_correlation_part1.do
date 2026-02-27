@@ -1,18 +1,10 @@
-*** Save design matrix for testing sensitivity to estimation error in x
-*** 0) Load and prep data and set options
 clear all
 clear matrix
 set more off
 
-* Outcome to study
-global outcome "`1'"
-
-* Load data and options (spec, drop pval are options)
-do set_options.do 7 0
-di "Working with spec ${spec} and dropping low pvalues ${droppval}"
-
-* Execute preamble
-do preamble.do
+* Load data and options 
+do code/set_options.do
+do code/preamble.do
 
 * Get the VCV for test scores
 areg testscores $covdesign, abs(teachid) robust
@@ -101,10 +93,10 @@ sort teachid year
 by teachid: gen obs = _n
 
 * Save for use in python
-save ../dump/teach_mean_covars_spec${spec}_droppval${droppval}.dta, replace
+save temp/teach_mean_covars.dta, replace
 
 * Save VCV for the gamma
 clear
 svmat sigma
-save ../dump/sigma_spec${spec}_droppval${droppval}.dta, replace
+save temp/sigma.dta, replace
 
