@@ -34,6 +34,7 @@ python code/vcov_main_part4.py
 
 # Figure A4
 stata code/estimate_variance_robustness.do
+python code/vcov_robustness.py
 
 # Tables A1 and A12 ✔️
 stata code/teacher_chars.do
@@ -41,7 +42,7 @@ stata code/teacher_chars.do
 # Table A2-A3 ✔️
 stata code/regression_version.do
 
-# Tables A6 and A7
+# Tables A6 and A7 ✔️
 stata code/entry_ivs_part2.do
 stata code/entry_ivs_part3.do
 
