@@ -44,7 +44,7 @@ results = {}
 for covariate, covname in covs:
     results[covname] = {}
     tresids = pd.read_stata("temp/teach_mean_resids_cov{}.dta".format(
-            spec, droppval, covariate)).drop('teachid', axis=1)
+            covariate)).drop('teachid', axis=1)
     cog0 = tresids.filter(regex='testscores_r0', axis=1).values[:,:]
     cog1 = tresids.filter(regex='testscores_r1', axis=1).values[:,:]
     behave0 = tresids.filter(regex='behavpca_r0', axis=1).values[:,:]
@@ -153,7 +153,7 @@ for covariate, cov0name, cov1name in covs:
     results[cov0name] = {}
     results[cov1name] = {}
     tresids = pd.read_stata("temp/teach_mean_resids_cov{}.dta".format(
-            spec, droppval, covariate)).drop('teachid', axis=1)
+            covariate)).drop('teachid', axis=1)
     cog0 = tresids.filter(regex='testscores_r0', axis=1).values[:,:]
     cog1 = tresids.filter(regex='testscores_r1', axis=1).values[:,:]
     crime0 = tresids.filter(regex='aoc_crim_r0', axis=1).values[:,:]
@@ -220,7 +220,7 @@ for covariate, cov0name, cov1name in covs:
     results[cov0name] = {}
     results[cov1name] = {}
     tresids = pd.read_stata("temp/teach_mean_resids_cov{}.dta".format(
-            spec, droppval, covariate)).drop('teachid', axis=1)
+            covariate)).drop('teachid', axis=1)
     cog0 = tresids.filter(regex='testscores_r0', axis=1).values[:,:]
     cog1 = tresids.filter(regex='testscores_r1', axis=1).values[:,:]
     incar0 = tresids.filter(regex='aoc_incar_r0', axis=1).values[:,:]

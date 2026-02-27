@@ -22,6 +22,7 @@ foreach cov in white male disadv atrisk {
     * Residuals
     foreach var of varlist aoc_any aoc_crim aoc_index aoc_incar aoc_traff testscores behavpca studypca gpa_weighted college_bound grad {
         reghdfe `var' ${covdesign}, abs(${w}#teachid) resid
+		capture drop `var'_r
         predict `var'_r, dresiduals
     }
 

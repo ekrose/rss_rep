@@ -48,7 +48,8 @@ covs = [('white','Race (white vs. non-white)'),('male','Gender'),('disadv','Econ
 results = {}
 for covariate, covname in covs:
     results[covname] = {}
-    tresids = pd.read_stata("temp/teach_mean_resids_cov{}.dta").drop('teachid', axis=1)
+    tresids = pd.read_stata("temp/teach_mean_resids_cov{}.dta".format(covariate)
+        ).drop('teachid', axis=1)
     cog0 = tresids.filter(regex='testscores_r0', axis=1).values[:,:]
     cog1 = tresids.filter(regex='testscores_r1', axis=1).values[:,:]
     behave0 = tresids.filter(regex='behavpca_r0', axis=1).values[:,:]

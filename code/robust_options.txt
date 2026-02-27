@@ -1,0 +1,1370 @@
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* grade_rep
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* pared_nohs
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp aigread
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* aigread lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* black white pared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* exc_educ pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* exc_aig aigread grade_rep
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_educ pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* aigmath aigread disadv lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_educ aigmath white
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp disadv lim_eng female white
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* exc_aig exc_behav pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_behav disadv black pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* exc_not exc_educ aigmath black grade_rep pared_nohs
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* exc_educ aigmath disadv pared_nohs pared_hsorless pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_educ black grade_rep pared_nohs lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_educ disadv grade_rep pared_nohs lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs aigmath aigread disadv pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_behav lim_eng black white lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_aig aigmath lim_eng female pared_nohs lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* exc_behav aigmath lim_eng female pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* exc_not exc_aig exc_behav aigmath aigread white pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig female grade_rep pared_hsorless pared_somecol l
+> ag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_not exc_educ aigmath female white pared_nohs pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* exc_behav aigmath aigread disadv black grade_rep pared_nohs lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav aigmath black white grade_rep pared_baormore lag2_re
+> adscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread disadv lim_eng female black
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig aigmath aigread female black grade_rep pared_somecol lag2_read
+> scal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not aigread lim_eng female white grade_rep pared_nohs pared
+> _hsorless lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* exc_not exc_aig exc_educ lim_eng female black white pared_hsorless pared_somecol pared_baor
+> more lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_behav exc_educ aigmath lim_eng black grade_rep pared_nohs pared_hsorless p
+> ared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ female black grade_rep pared_nohs pa
+> red_hsorless lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav aigmath female grade_rep pared_nohs pared_hso
+> rless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_not aigmath aigread disadv female grade_rep pared_nohs pared_hsorless pa
+> red_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_behav exc_educ disadv lim_eng female grade_rep pared_nohs pared_
+> hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_educ aigmath aigread disadv white grade_r
+> ep pared_nohs pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath female black white g
+> rade_rep pared_nohs lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav aigmath aigread female black grade_rep pared_
+> nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav aigmath disadv lim_eng female black g
+> rade_rep pared_nohs pared_hsorless lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread disadv lim_eng female white pared
+> _nohs pared_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread female grade_rep par
+> ed_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ disadv lim_eng female black 
+> grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ aigread lim_eng female black white gra
+> de_rep pared_nohs pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread lim_eng fema
+> le white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ aigmath aigread disadv female black wh
+> ite grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_aig exc_behav exc_educ aigmath aigread lim_eng female black white pared_no
+> hs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread lim_eng fema
+> le white grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_not exc_behav exc_educ aigmath aigread disadv lim_eng female black white
+>  grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disadv black
+>  white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath aigread disadv lim_eng femal
+> e black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_e
+> ng black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread disadv lim_eng femal
+> e black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread disadv lim_eng femal
+> e black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath aigread disadv lim_eng femal
+> e black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_e
+> ng female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_e
+> ng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* pared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* exc_educ
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* aigmath
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* exc_aig female
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* aigread lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp white pared_nohs
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* disadv lim_eng pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* aigmath aigread grade_rep
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* aigread disadv pared_hsorless lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp female white pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* exc_educ aigmath white lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs exc_aig exc_behav lim_eng pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp lim_eng female black lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* aigmath disadv female white grade_rep
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* exc_not exc_behav aigread disadv white grade_rep
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* female white pared_nohs pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_educ black pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* exc_not exc_behav exc_educ disadv black pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* exc_educ aigmath aigread black white pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* exc_behav exc_educ lim_eng female black grade_rep pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* exc_not exc_educ aigread lim_eng grade_rep pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* exc_not exc_aig exc_behav disadv lim_eng female pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_behav aigmath lim_eng white pared_hsorless pared_somecol lag2_readsc
+> al
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* exc_behav aigread disadv lim_eng grade_rep pared_nohs pared_hsorless pared_somecol pare
+> d_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* exc_aig aigmath aigread disadv female white grade_rep pared_nohs lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* aigmath aigread disadv female white pared_nohs pared_hsorless pared_somecol lag2_mathsc
+> al
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_aig exc_educ aigread female white grade_rep pared_nohs pared_hsorles
+> s lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* aigmath aigread disadv lim_eng female black grade_rep pared_nohs pared_somecol lag2_mat
+> hscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* exc_not exc_aig exc_behav exc_educ aigread lim_eng black white pared_somecol lag2_maths
+> cal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_educ aigmath disadv female black pare
+> d_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav aigmath lim_eng pared_nohs pared_
+> hsorless pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* exc_aig exc_educ disadv female black white grade_rep pared_hsorless pared_baormore lag2
+> _mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread disadv white par
+> ed_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath aigread lim_eng black pa
+> red_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav aigmath disadv lim_eng grade_rep 
+> pared_nohs pared_hsorless pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_behav exc_educ aigmath aigread lim_eng female grade_rep pare
+> d_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav aigread disadv lim_eng female white grade
+> _rep pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_aig aigread disadv lim_eng black grade_rep pared_hsorless pare
+> d_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_aig exc_educ aigmath aigread disadv female black white grade_r
+> ep pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_aig exc_educ aigmath lim_eng female black white pared_n
+> ohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_behav aigmath aigread disadv female white grade_rep pared_nohs
+>  pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath aigread female black whi
+> te pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disadv f
+> emale black pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigread disadv lim_eng female bl
+> ack white pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath aigread disadv female bl
+> ack grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ disadv female black whit
+> e grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav aigmath aigread disadv lim_eng fe
+> male black grade_rep pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav aigmath aigread disadv lim_eng fe
+> male white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread lim_eng female black 
+> white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ disadv lim_eng female bl
+> ack white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disadv l
+> im_eng female black grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread lim_eng female b
+> lack white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disadv l
+> im_eng female white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disadv l
+> im_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath aigread disadv lim_eng f
+> emale black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disadv l
+> im_eng female white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disadv l
+> im_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* exc_behav
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* pared_nohs
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* aigmath pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* white pared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* disadv black
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* exc_behav aigmath lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* exc_aig black lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* black grade_rep pared_nohs
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* disadv grade_rep lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp aigread white pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* disadv female pared_nohs pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* exc_educ white grade_rep lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_aig female white grade_rep
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* exc_behav aigmath female white pared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* aigread disadv lim_eng black white pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* exc_not exc_educ lim_eng pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_educ aigread lim_eng pared_nohs lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_aig female grade_rep pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp aigmath aigread disadv white pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* exc_not exc_aig exc_behav exc_educ aigread pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* exc_not exc_aig aigmath white grade_rep pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_behav exc_educ disadv black grade_rep pared_nohs pared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_aig aigmath aigread lim_eng pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs aigmath aigread disadv female white grade_rep pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* exc_not exc_educ aigmath disadv lim_eng black white grade_rep pared_nohs
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* exc_aig exc_behav aigread disadv grade_rep pared_nohs pared_hsorless pared_somecol lag2_r
+> eadscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_aig exc_educ aigmath aigread disadv black white pared_nohs lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_aig exc_behav exc_educ aigmath black white pared_nohs lag2_mathscal lag2
+> _readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_not aigread female black white grade_rep pared_nohs pared_hsorless pared
+> _baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread lim_eng black pare
+> d_nohs pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_behav aigmath lim_eng female black white pared_somecol pa
+> red_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* exc_not exc_aig exc_behav exc_educ disadv lim_eng female black white pared_hsorless pared
+> _baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_not exc_aig exc_behav aigread disadv lim_eng female pared_somecol pared_
+> baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_not exc_aig aigmath aigread disadv female black grade_rep pared_nohs par
+> ed_hsorless pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp exc_not exc_aig exc_behav aigmath aigread lim_eng black white pared_baormo
+> re lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp exc_not exc_aig exc_behav aigmath disadv lim_eng female black grade_rep pa
+> red_nohs pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* exc_aig aigmath disadv lim_eng female black white grade_rep pared_nohs pared_hsorless par
+> ed_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_aig exc_educ aigmath disadv white grade_rep pared_nohs pa
+> red_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_not exc_aig exc_educ aigread disadv lim_eng female black grade_rep pared
+> _nohs pared_hsorless pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread disadv lim_eng fem
+> ale white pared_nohs pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp exc_behav exc_educ aigmath disadv lim_eng black white grade_rep pared_nohs
+>  pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread lim_eng female bla
+> ck white grade_rep pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_educ aigmath aigread disadv lim_eng whi
+> te grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigread disadv lim_eng female black white
+>  grade_rep pared_hsorless pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ aigmath disadv lim_eng female grade_
+> rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav aigmath disadv lim_eng female black white g
+> rade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav aigmath disadv lim_eng female black
+>  white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread disadv lim_eng fem
+> ale white pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread lim_eng fe
+> male black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath disadv lim_eng fem
+> ale black white pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_eng female bla
+> ck white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ aigmath aigread lim_eng female black
+>  white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_educ aigmath aigread disadv lim_eng fem
+> ale white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread disadv lim_eng fem
+> ale black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim
+> _eng female black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim
+> _eng female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim
+> _eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* grade_rep
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* pared_nohs pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* exc_aig lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_behav white
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs black pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* grade_rep pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* aigmath lim_eng female lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* exc_not exc_educ disadv lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* exc_aig lim_eng female lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp aigmath aigread female pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* exc_educ aigread disadv female black
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* exc_aig exc_educ aigread grade_rep pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* exc_behav female white grade_rep pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* black white pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* exc_aig aigmath aigread disadv pared_nohs lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs female white grade_rep pared_nohs pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_educ aigmath white grade_rep pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_not aigread lim_eng black pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig aigread white grade_rep pared_baormore 
+> lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_aig exc_behav exc_educ female black grade_rep pared_hsorle
+> ss
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_not aigmath disadv lim_eng female pared_somecol lag2_mat
+> hscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_educ aigmath aigread female pared_baormore lag2_
+> mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_behav exc_educ female black white grade_rep
+>  pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* exc_not exc_aig exc_behav aigmath disadv pared_hsorless pared_somecol pared
+> _baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_educ disadv lim_eng white pared_nohs pared
+> _somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_educ aigmath aigread lim_eng black pared_no
+> hs pared_hsorless pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_educ aigmath lim_eng fema
+> le pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigmath aigread white pared
+> _nohs pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_not exc_behav exc_educ aigmath lim_eng female grade_rep 
+> pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath aigread disa
+> dv grade_rep pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav aigmath aigread lim_eng female black
+>  white grade_rep lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_educ aigmath disadv lim_e
+> ng female white pared_nohs lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_aig exc_behav exc_educ aigread lim_eng black white grade_r
+> ep pared_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_educ aigmath lim_eng female black white grade_re
+> p pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath lim_eng fema
+> le black white pared_nohs pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread lim_eng f
+> emale white grade_rep lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_educ aigmath aigread female grade_r
+> ep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_aig exc_behav aigmath disadv lim_eng female black white gr
+> ade_rep pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_educ aigmath disadv female black wh
+> ite pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav aigread disadv black 
+> white pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_educ aigmath disadv lim_eng female white g
+> rade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_not exc_behav aigmath aigread disadv lim_eng female blac
+> k white pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigr
+> ead disadv lim_eng black white pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread lim_eng female bl
+> ack white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav aigmath aigread lim_e
+> ng female black white grade_rep pared_nohs pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_
+> eng black white grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigr
+> ead disadv lim_eng female pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread disa
+> dv lim_eng black white pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_
+> eng female black white grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav aigread disadv lim_en
+> g female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_
+> eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigr
+> ead disadv lim_eng female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ aigmath aigread disadv
+>  lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigr
+> ead disadv lim_eng female black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigr
+> ead disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* pared_nohs
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* aigmath
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* exc_educ pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* exc_aig disadv
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp disadv
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* white pared_nohs lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* disadv lim_eng lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* exc_behav white pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp black white lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs exc_behav aigmath lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp aigread grade_rep pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs exc_behav aigmath pared_hsorless lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* aigread female black white lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs exc_behav pared_nohs pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_aig exc_educ lim_eng pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* exc_not exc_behav lim_eng black grade_rep pared_nohs
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_aig exc_educ lim_eng pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* exc_not exc_aig disadv female black white lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* exc_not exc_educ aigmath aigread female pared_nohs lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_aig aigmath disadv grade_rep lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* exc_aig exc_behav exc_educ aigread disadv lim_eng pared_somecol pared_b
+> aormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_not lim_eng female black white pared_nohs lag2_maths
+> cal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_educ lim_eng pared_hsorless pared_somecol pa
+> red_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_aig exc_educ disadv lim_eng female grade_rep p
+> ared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_educ aigmath aigread disadv grade_rep pared_
+> nohs pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* exc_not exc_aig aigread disadv female white grade_rep pared_nohs pared_
+> somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_educ aigmath aigread disadv lim_eng bla
+> ck pared_hsorless lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* exc_not exc_behav exc_educ aigmath aigread lim_eng black white grade_re
+> p pared_nohs
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav disadv female white pared
+> _somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_aig exc_educ aigread disadv female black par
+> ed_hsorless pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ grade_re
+> p pared_nohs pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath disadv l
+> im_eng female pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_educ aigread disadv female white grade_
+> rep pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* exc_aig exc_behav exc_educ aigread disadv female black pared_nohs pared
+> _somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_aig exc_educ aigread disadv lim_eng white gr
+> ade_rep pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_educ aigmath aigread disadv bla
+> ck grade_rep pared_nohs pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* exc_aig exc_behav aigmath aigread disadv lim_eng female white grade_rep
+>  pared_nohs pared_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_behav exc_educ aigread disadv lim_eng black 
+> pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_aig exc_educ disadv lim_eng female whit
+> e grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigread disadv f
+> emale black pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ aigmath aigread li
+> m_eng female white grade_rep pared_nohs pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath 
+> disadv female black grade_rep pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_behav exc_educ aigmath aigread disadv lim_eng 
+> black white grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_aig exc_behav aigread disadv female black wh
+> ite grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath 
+> aigread disadv lim_eng white pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath aigread 
+> disadv lim_eng white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath 
+> aigread disadv lim_eng black white grade_rep pared_nohs pared_hsorless lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigmath aigread disadv 
+> black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav aigmath aigread d
+> isadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disad
+> v lim_eng female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigread disadv l
+> im_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath 
+> aigread disadv lim_eng female white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath aigread 
+> disadv lim_eng female white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath 
+> aigread lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread disad
+> v lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread 
+> disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath 
+> aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* aigread
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* aigread
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* aigread grade_rep
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* aigread lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* exc_not exc_behav lim_eng
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp aigread lim_eng
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp exc_aig disadv
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs aigread white lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* disadv female black lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp exc_educ disadv female black
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* aigread disadv black pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* exc_aig aigmath aigread disadv pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* exc_educ disadv lim_eng black pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp exc_educ aigread black pared_hsorless lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_behav exc_educ disadv pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* exc_behav aigmath aigread lim_eng white pared_nohs pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* exc_not aigread disadv lim_eng black pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp aigread disadv lim_eng white pared_nohs pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_not exc_behav lim_eng black white pared_nohs pared_somec
+> ol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp exc_not exc_aig exc_educ female grade_rep pared_somecol la
+> g2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* exc_aig aigmath black grade_rep pared_nohs pared_somecol pared_baormore l
+> ag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_not exc_behav aigread disadv female grade_rep pared_nohs
+>  pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* exc_not exc_aig exc_behav lim_eng female grade_rep pared_somecol pared_ba
+> ormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ disadv black grade_rep pa
+> red_nohs
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_not exc_behav lim_eng black white pared_nohs pared_hsorl
+> ess pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp aigmath disadv lim_eng female pared_nohs pared_somecol par
+> ed_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_aig exc_behav exc_educ aigmath aigread white pared_nohs 
+> pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_aig exc_behav aigread disadv female pared_nohs pared_hso
+> rless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_educ aigread disadv black grade_rep pared
+> _nohs pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_not exc_aig disadv lim_eng black grade_rep pared_nohs pa
+> red_hsorless pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp exc_not exc_behav exc_educ aigmath aigread disadv lim_eng 
+> female black pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* exc_aig exc_behav aigmath aigread disadv lim_eng grade_rep pared_nohs par
+> ed_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav aigmath lim_eng black white
+>  pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_educ aigmath aigread disadv black
+>  white pared_nohs pared_hsorless lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_aig exc_behav aigmath aigread disadv lim_eng female blac
+> k pared_nohs pared_hsorless pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp exc_not exc_behav aigmath aigread disadv lim_eng white gra
+> de_rep pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_educ aigmath disadv fem
+> ale black white grade_rep pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav aigmath aigread disadv lim_
+> eng black white pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_educ aigmath disadv fem
+> ale white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ lim_eng bl
+> ack white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_not exc_behav exc_educ aigmath aigread disadv lim_eng bl
+> ack grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ aigmath aigread disa
+> dv lim_eng grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath di
+> sadv lim_eng female black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath aigread li
+> m_eng female black grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread lim_eng
+>  female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigread disadv lim_eng fe
+> male black white grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath li
+> m_eng female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath aigread di
+> sadv lim_eng female black grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath ai
+> gread disadv lim_eng black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath aigread di
+> sadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_educ aigmath aigread di
+> sadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath di
+> sadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath ai
+> gread lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath ai
+> gread disadv lim_eng female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath ai
+> gread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* grade_rep
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* female lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs white
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not disadv
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* grade_rep pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not disadv pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig aigmath aigread lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp aigread black grade_rep
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* aigmath lim_eng pared_nohs lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* aigread disadv white pared_hsorless pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_behav aigmath disadv female lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* aigmath lim_eng grade_rep pared_hsorless lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp aigmath lim_eng black pared_hsorless lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig aigmath female grade_rep pared_nohs pared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_educ disadv white pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_behav disadv female black pared_baormore lag2_ma
+> thscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_behav disadv lim_eng white pared_baormore lag2_m
+> athscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_educ aigmath aigread black pared_nohs pared_some
+> col
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_aig aigmath aigread pared_nohs pared_hsorless pare
+> d_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig exc_educ aigmath aigread grade_rep pared_hsorless pared_som
+> ecol pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig aigread disadv lim_eng female p
+> ared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_educ lim_eng black white pared_hsorless 
+> lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp aigmath aigread disadv lim_eng female black grade_re
+> p lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_behav exc_educ aigread lim_eng fema
+> le black grade_rep
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ aigmath disadv
+>  black pared_hsorless lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigmath aigread gra
+> de_rep pared_nohs lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav aigread disadv lim_eng white
+>  pared_hsorless pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not aigmath aigread lim_eng black grade_rep pare
+> d_nohs pared_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_behav disadv lim_eng black white gr
+> ade_rep pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_educ aigread lim_eng female black pared_
+> hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_aig exc_behav exc_educ aigread disadv lim_eng blac
+> k pared_nohs pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav lim_eng femal
+> e white grade_rep pared_hsorless pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_behav aigmath disadv lim_eng white grade_r
+> ep pared_nohs pared_hsorless pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig exc_behav exc_educ aigmath aigread disadv black white grade
+> _rep pared_nohs pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_behav exc_educ aigmath disadv lim_eng fema
+> le black white pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not exc_aig exc_behav exc_educ aigmath disadv female grade_rep 
+> pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath lim_eng f
+> emale black grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ disa
+> dv female black grade_rep pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ aigread lim_en
+> g female white grade_rep pared_nohs pared_hsorless pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_behav exc_educ aigmath aigread disadv fe
+> male black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread disadv li
+> m_eng female black white pared_nohs pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath disadv li
+> m_eng female white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig aigmath disadv lim_eng 
+> female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_educ aigmath lim_
+> eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigr
+> ead disadv lim_eng white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_educ aigmath aigread lim_eng femal
+> e black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ aigread disadv
+>  lim_eng female black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_behav exc_educ aigmath aigread disadv li
+> m_eng female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigm
+> ath aigread disadv lim_eng female white pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_educ aigmath aigread disadv lim_
+> eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigm
+> ath aigread disadv lim_eng female black grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigm
+> ath aigread disadv lim_eng female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ aigmath aigrea
+> d disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_educ aigmath aigr
+> ead disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigm
+> ath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* aigmath
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* white
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* aigread pared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* aigmath black
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lim_eng female lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_aig exc_behav pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_not pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* black grade_rep pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_not exc_aig aigmath aigread
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_educ disadv pared_nohs pared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp aigread black grade_rep lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_aig exc_educ aigread pared_nohs pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_aig aigread female black grade_rep
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig pared_nohs pared_hsorless lag2_ma
+> thscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_behav exc_educ female black grade_rep
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig aigread black pared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp aigread disadv lim_eng pared_nohs lag2_ma
+> thscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav female pared_hsorless lag2_rea
+> dscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_aig exc_behav lim_eng black pared_somecol pared_baor
+> more
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp aigmath aigread disadv female white pared_nohs lag2_ma
+> thscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_behav aigmath female black pared_nohs pared_hsorle
+> ss lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav aigread female pared_no
+> hs pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_educ aigmath lim_eng female pared_somecol 
+> pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_behav exc_educ aigread disadv lim_eng female pared
+> _hsorless lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not aigread disadv lim_eng female black white lag2_m
+> athscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_behav exc_educ aigread lim_eng black pared_somecol p
+> ared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_educ aigmath female pared_nohs par
+> ed_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_behav exc_educ aigmath aigread lim_eng black white p
+> ared_nohs pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_not exc_aig aigmath aigread disadv lim_eng female grade_rep pared
+> _hsorless pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_not exc_behav aigmath lim_eng female white grade_rep pared_hsorle
+> ss pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_behav aigmath black white grade_rep pared_no
+> hs pared_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_aig exc_behav exc_educ aigmath disadv lim_eng female black white 
+> pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_not exc_aig exc_educ aigmath aigread lim_eng black grade_rep pare
+> d_nohs pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ disadv
+>  female black white pared_hsorless lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav aigmath aigread lim_eng white 
+> pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav aigmath aigread disadv female 
+> black grade_rep pared_nohs pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ aigmath aigread 
+> female black white pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_behav aigread disadv female black white pa
+> red_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigmath aigread disad
+> v female black white pared_hsorless pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_aig exc_behav exc_educ aigmath aigread disadv lim_en
+> g black grade_rep pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_not exc_aig exc_educ aigmath disadv lim_eng female white grade_re
+> p pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav aigmath aigread
+>  disadv lim_eng female black grade_rep pared_hsorless pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_educ aigmath lim_eng female black 
+> white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_behav aigmath aigread disadv lim_eng 
+> female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmat
+> h aigread disadv lim_eng white grade_rep pared_nohs pared_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_aig exc_behav exc_educ aigmath aigread disadv lim_eng female blac
+> k white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmat
+> h aigread disadv lim_eng female white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmat
+> h aigread disadv lim_eng black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigmath aigread disad
+> v female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav aigmath aigread
+>  disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmat
+> h aigread disadv lim_eng female white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmat
+> h aigread lim_eng black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmat
+> h aigread disadv lim_eng female black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath aigrea
+> d disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmat
+> h aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmat
+> h aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* aigread
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_educ
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* grade_rep pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* aigread pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_behav disadv
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_aig pared_hsorless lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* pared_nohs pared_hsorless lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_aig disadv pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lim_eng pared_nohs lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_aig exc_behav black white
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp aigread grade_rep pared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_not aigmath pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_behav lim_eng pared_nohs
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_aig aigmath lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_not exc_educ disadv female black pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_behav aigread disadv lim_eng pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_not exc_aig exc_educ grade_rep pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_aig aigmath female white lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_aig aigmath white grade_rep pared_nohs pared_s
+> omecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_educ disadv lim_eng white grade_rep lag2_maths
+> cal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_not aigmath aigread black white pared_hsorless p
+> ared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_not aigmath lim_eng female black grade_rep lag
+> 2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_aig exc_behav exc_educ aigmath disadv lim_eng bl
+> ack
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_not exc_behav disadv black grade_rep pared_somecol pared_baor
+> more lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_aig exc_educ aigmath female pared_hsorless pared
+> _baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_not aigmath aigread female black grade_rep pared_hsorless par
+> ed_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_educ aigmath black white 
+> pared_nohs pared_hsorless lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_educ aigmath disadv lim_eng black whit
+> e pared_nohs pared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* aigmath aigread disadv lim_eng female black grade_rep pared_nohs 
+> pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_aig exc_educ aigmath disadv lim_e
+> ng black grade_rep pared_hsorless lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_not exc_aig exc_behav exc_educ aigread lim_eng female black g
+> rade_rep pared_nohs pared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_aig exc_educ disadv lim_eng female black pared_nohs pared_hso
+> rless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_aig exc_educ aigmath aigread disadv female whi
+> te grade_rep pared_nohs lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_aig exc_behav aigread disadv lim_eng black par
+> ed_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_educ aigmath lim_eng female black white grade_re
+> p pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigread disadv 
+> lim_eng female white grade_rep pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_aig exc_behav aigread lim_eng female w
+> hite pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_eng
+>  female pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_behav exc_educ aigread disadv female black whi
+> te grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_behav exc_educ aigread disadv female w
+> hite grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_educ aigmath ai
+> gread disadv lim_eng female white pared_hsorless pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_aig exc_behav exc_educ aigmath aigread disadv lim_eng female 
+> black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_educ aigmath di
+> sadv lim_eng black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_aig exc_behav exc_educ aigmath aigread disadv li
+> m_eng female black white grade_rep pared_nohs pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigmath aigread d
+> isadv lim_eng white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav aigmath aig
+> read disadv lim_eng female black pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_aig exc_behav aigmath aigread disadv fem
+> ale black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ ai
+> gmath aigread disadv lim_eng female grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath disadv 
+> lim_eng female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ aigmath aigr
+> ead disadv female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aigmath aigread
+>  disadv lim_eng female black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_educ aigmath ai
+> gread disadv female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigmath aigread d
+> isadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ ai
+> gmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ ai
+> gmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ ai
+> gmath aigread disadv lim_eng female black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav exc_educ ai
+> gmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* aigmath
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* grade_rep
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_educ pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not lim_eng
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* aigread pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig pared_hsorless lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not exc_educ lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig disadv lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_behav grade_rep lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_aig aigmath pared_nohs
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs aigread female lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_educ disadv black white lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_behav aigread disadv female lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_educ grade_rep lag2_read
+> scal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig aigmath lim_eng pared_hsorless pared_someco
+> l lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp female white pared_nohs lag2_mathsca
+> l lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp aigmath disadv black pa
+> red_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp aigread lim_eng female 
+> grade_rep pared_nohs
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig exc_behav exc_educ disadv black pared_hsorl
+> ess lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_aig female white grade_rep pared_n
+> ohs pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_educ disadv female black
+>  white grade_rep
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not aigread disadv lim_eng female 
+> white pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig aigmath aigread disadv lim_e
+> ng grade_rep pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_behav aigread female white grade_r
+> ep pared_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_behav aigmath lim_eng female bla
+> ck grade_rep pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ d
+> isadv white pared_nohs lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav disad
+> v lim_eng grade_rep pared_nohs pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aig
+> math grade_rep pared_hsorless pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav black whit
+> e grade_rep pared_hsorless lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav aigmath ai
+> gread disadv female pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_aig exc_educ aigmath lim_eng white
+>  grade_rep pared_nohs pared_hsorless pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_educ aigread lim_eng bla
+> ck white grade_rep pared_nohs pared_hsorless lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_e
+> duc lim_eng black white pared_nohs pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_educ aigread lim_eng femal
+> e black white grade_rep pared_hsorless pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_behav exc_educ aigread disadv lim_eng female wh
+> ite pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_educ aigmath aigre
+> ad lim_eng black white pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_behav exc_educ lim_
+> eng female black grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav aigma
+> th aigread disadv black white pared_nohs pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_e
+> duc disadv lim_eng female black white pared_nohs pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_behav aigread disadv lim
+> _eng female black white grade_rep pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_beh
+> av exc_educ aigmath aigread disadv lim_eng female pared_hsorless lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_edu
+> c aigmath aigread lim_eng female black white grade_rep pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav aigma
+> th aigread disadv lim_eng female black white grade_rep pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav aigma
+> th aigread disadv lim_eng female black white pared_nohs pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_aig exc_behav exc_educ aigmath aig
+> read disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_edu
+> c aigread disadv lim_eng female black white pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig aigmath
+>  aigread disadv female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_e
+> duc aigmath aigread disadv lim_eng female grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_beh
+> av exc_educ aigmath disadv lim_eng female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_beh
+> av exc_educ aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_beh
+> av exc_educ aigmath aigread disadv female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_edu
+> c aigmath aigread disadv female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_e
+> duc aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_beh
+> av exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_beh
+> av exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_beh
+> av exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_beh
+> av exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* disadv
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* grade_rep
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_not exc_aig
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* grade_rep pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_educ white pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* aigmath grade_rep lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_educ aigread
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_educ aigread white pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp aigmath pared_nohs pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* aigmath aigread lim_eng white
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_behav black white pared_hsorless pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_not exc_educ pared_nohs pared_somecol lag2_mathsc
+> al
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_aig exc_educ female pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* aigread disadv black grade_rep pared_hsorless lag2_re
+> adscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_behav lim_eng black white pared_somecol lag2_read
+> scal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp aigmath lim_eng white grade_rep pared_
+> hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_educ lim_eng female black pared_baor
+> more lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig aigmath female black lag2_math
+> scal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_behav lim_eng white grade_rep pared_
+> nohs pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_not exc_educ lim_eng grade_rep pared_hsorless par
+> ed_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_not aigmath aigread disadv lim_eng female pared_s
+> omecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_aig exc_behav exc_educ female black grade_rep par
+> ed_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_behav exc_educ aigmath lim_eng bla
+> ck white pared_nohs pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_behav aigread disadv lim_eng female pared_hsorles
+> s pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_educ aigread disadv pared_nohs pared
+> _hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_not exc_aig exc_behav exc_educ lim_eng white grad
+> e_rep pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_educ aigmath aigread 
+> disadv lim_eng female black pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_not exc_behav exc_educ aigmath aigread lim_eng fe
+> male pared_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav disadv 
+> female black white pared_nohs pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not aigmath lim_eng b
+> lack grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_educ aigmath aigre
+> ad lim_eng grade_rep pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_educ aigread disadv lim_en
+> g female white pared_nohs pared_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc_edu
+> c disadv female black white grade_rep pared_nohs lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_not exc_behav exc_educ aigread lim_eng female bla
+> ck pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_behav exc_educ aigmath aig
+> read disadv female black grade_rep pared_nohs lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_educ aigmath aigread disad
+> v female black white pared_nohs pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_educ aigmath aigread disad
+> v lim_eng female grade_rep pared_nohs pared_hsorless pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigma
+> th lim_eng female grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aig
+> math black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* exc_aig exc_behav exc_educ aigread disadv lim_eng fem
+> ale black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav
+>  aigmath disadv lim_eng female black grade_rep pared_nohs pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_behav exc_educ aigmat
+> h aigread disadv lim_eng black grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_behav exc_educ aigmat
+> h aigread lim_eng female black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_behav exc_educ aigmat
+> h aigread lim_eng female black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav
+>  exc_educ aigread lim_eng female black white grade_rep pared_nohs pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_educ aigmath 
+> aigread disadv lim_eng female black white grade_rep pared_nohs pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aig
+> math aigread disadv lim_eng female black grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ aigre
+> ad disadv lim_eng female black white pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav
+>  exc_educ aigread disadv lim_eng black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav exc_edu
+> c aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ aig
+> math aigread disadv lim_eng female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav
+>  exc_educ aigmath aigread lim_eng female black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav
+>  exc_educ aigmath aigread disadv female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_educ 
+> aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav
+>  exc_educ aigmath aigread disadv lim_eng female black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_behav
+>  exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* grade_rep
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* white
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs aigmath
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_behav exc_educ
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* aigread female lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_aig pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_educ pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_behav lim_eng pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* aigmath aigread grade_rep lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_behav exc_educ female
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lim_eng pared_nohs pared_somecol pared_baormore l
+> ag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp disadv female grade_rep pared_hsor
+> less
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_aig disadv pared_nohs
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_aig exc_educ lim_eng black pared
+> _hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp female white pared_no
+> hs lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp aigmath white grade_rep lag2_maths
+> cal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_aig aigread disadv white grade_r
+> ep lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* aigmath lim_eng black grade_rep pared_nohs pared_
+> somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_educ female white grade_rep pare
+> d_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs aigread disadv lim_eng grade_rep par
+> ed_nohs pared_hsorless lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_educ female black white pared_hs
+> orless pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_behav exc_educ aigmath
+>  lim_eng female black
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_behav exc_educ aigread white par
+> ed_nohs pared_hsorless pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_not exc_aig exc_behav aigread disadv lim_eng 
+> female black pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_behav aigread disadv black pared_nohs pared_h
+> sorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_aig exc_educ aigr
+> ead disadv lim_eng grade_rep pared_nohs lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_aig exc_behav exc_educ aigread
+>  white grade_rep pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_not exc_aig exc_educ aigmath aigread disadv l
+> im_eng black pared_nohs pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_aig exc_educ aigr
+> ead female grade_rep pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_not exc_aig exc_behav aigmath lim_eng black g
+> rade_rep pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_behav aigread lim
+> _eng female grade_rep pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_behav aigread disadv lim
+> _eng white pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not aigmath aigre
+> ad disadv black pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_aig aigmath lim_eng bl
+> ack white grade_rep pared_nohs pared_hsorless pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_not exc_educ aigmath aigread disadv lim_eng f
+> emale white grade_rep pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_educ aigmath aigread d
+> isadv female black white grade_rep pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_aig exc_educ aigmath aigread d
+> isadv lim_eng black grade_rep pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* exc_behav exc_educ aigmath aigread disadv lim_eng
+>  female black white grade_rep pared_nohs pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_aig exc_educ aigmath dis
+> adv lim_eng black white grade_rep pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav aig
+> read lim_eng female black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_b
+> ehav aigmath disadv lim_eng female black white grade_rep pared_hsorless pared_somecol lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_educ
+>  lim_eng female black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_b
+> ehav exc_educ disadv lim_eng female black white grade_rep pared_nohs pared_hsorless lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav aig
+> math aigread disadv lim_eng female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig aigma
+> th aigread disadv lim_eng female black grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav exc
+> _educ aigmath aigread disadv lim_eng black white grade_rep pared_nohs pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_educ a
+> igread disadv lim_eng female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_b
+> ehav exc_educ aigread disadv lim_eng female black white grade_rep pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_b
+> ehav exc_educ aigmath aigread lim_eng female black grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_b
+> ehav exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_b
+> ehav exc_educ aigmath aigread disadv female black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_b
+> ehav exc_educ aigmath aigread disadv lim_eng black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_b
+> ehav exc_educ aigmath disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_b
+> ehav exc_educ aigmath aigread disadv female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_b
+> ehav exc_educ aigmath aigread lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig exc_b
+> ehav exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* pared_hsorless
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* white grade_rep
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_educ lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_educ pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig black pared_nohs
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs female white
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_behav grade_rep pared_nohs
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* female grade_rep pared_nohs lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_behav exc_educ disadv lim_eng
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig pared_hsorless pared_somecol lag2_mat
+> hscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_behav grade_rep pared_hsorless pared_some
+> col lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not aigmath female grade_rep pared_baormo
+> re
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lim_eng white grade_rep pared_hsorless lag2_r
+> eadscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_educ aigread disad
+> v pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig exc_educ aigmath aigread pared_hsorle
+> ss pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig aigmath female grade_r
+> ep pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_aig disadv female black grad
+> e_rep pared_nohs
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_behav black white la
+> g2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* aigread lim_eng female white pared_nohs pared
+> _hsorless pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_educ aigmath disad
+> v lim_eng white grade_rep
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig exc_behav aigread black pared_nohs pa
+> red_hsorless pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_educ aigmath disadv lim_eng female grade_
+> rep pared_nohs pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig aigread disadv lim_eng black white gr
+> ade_rep pared_nohs pared_baormore
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_educ aigmath female black gr
+> ade_rep pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_behav lim_eng black grade_re
+> p pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp aigmath aigread disadv female 
+> black pared_nohs pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_educ lim_eng femal
+> e white grade_rep pared_nohs pared_hsorless lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_behav aigmath aigread disadv
+>  female pared_nohs pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_educ aigmath aigread lim_eng
+>  female black white pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp aigread disadv lim_eng female 
+> black white pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_educ disadv black 
+> white pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_educ aigmath
+>  disadv lim_eng white grade_rep pared_nohs lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_behav aigmath aigrea
+> d disadv female white pared_nohs pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_educ aigread
+>  disadv lim_eng black grade_rep pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_behav exc_educ aig
+> read lim_eng black grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_educ aigmath 
+> aigread disadv female black white pared_nohs pared_hsorless pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig a
+> igmath aigread disadv black pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig e
+> xc_behav exc_educ aigmath aigread disadv black grade_rep pared_nohs pared_hsorless lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not exc_aig exc_behav aigread disadv lim_
+> eng female black white grade_rep pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_educ aigmath aigre
+> ad disadv lim_eng white grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_educ aigread 
+> disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav
+>  aigmath aigread disadv white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not exc_aig exc_behav exc_educ aigmath ai
+> gread lim_eng female black white pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_behav
+>  exc_educ aigmath aigread disadv lim_eng female grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav
+>  exc_educ aigmath aigread disadv female black white grade_rep pared_nohs pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_aig exc_behav exc_
+> educ aigmath aigread lim_eng black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig exc_behav exc_ed
+> uc aigmath aigread disadv female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig e
+> xc_behav exc_educ aigmath disadv lim_eng black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_behav exc_educ aigma
+> th aigread disadv lim_eng black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig e
+> xc_behav exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig e
+> xc_behav exc_educ aigmath disadv lim_eng female black white pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_aig exc_behav
+>  exc_educ aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig e
+> xc_behav exc_educ aigmath aigread disadv female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig e
+> xc_behav exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig e
+> xc_behav exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##c.lag1_math* i.grade##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp exc_not exc_aig e
+> xc_behav exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* female
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_behav
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs grade_rep
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_educ pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* aigread lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_behav disadv pared_nohs
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_behav pare
+> d_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs aigmath pared_hs
+> orless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not female white lag2_rea
+> dscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp white grade_re
+> p pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_educ female pared_hsorles
+> s lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp a
+> igmath lim_eng lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_educ female pared_nohs pa
+> red_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_behav fema
+> le pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not exc_behav black grade
+> _rep pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not exc_aig exc_behav fem
+> ale white pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig aigread lim_eng femal
+> e white pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not aigmath 
+> white grade_rep pared_nohs lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_educ disadv 
+> lim_eng black pared_hsorless lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_behav aigread disadv lim_eng pared_nohs
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_ed
+> uc black grade_rep pared_nohs lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_aig exc_behav aigread fem
+> ale white grade_rep pared_nohs pared_hsorless
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_behav disadv female grade
+> _rep pared_nohs pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not exc_behav aigmath aig
+> read disadv black pared_hsorless pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* aigread disadv lim_eng female
+>  black white grade_rep pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_educ aigmath disadv black white pared_nohs pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig exc_be
+> hav exc_educ aigmath disadv white pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_behav aigmath disadv female white pared_nohs pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_behav aigm
+> ath lim_eng grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_aig exc_educ
+>  aigread disadv lim_eng female black grade_rep pared_hsorless lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_aig exc_educ
+>  disadv lim_eng female black white pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_behav exc_educ aigmath ai
+> gread disadv black grade_rep pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_ai
+> g exc_behav aigread disadv black white pared_hsorless pared_somecol pared_baormore lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_not exc_aig exc_behav aigmath aigread black white pared_nohs pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig 
+> exc_educ aigread lim_eng female black white pared_nohs pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not aigmath 
+> aigread disadv female black pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_aig exc_beha
+> v aigmath aigread disadv lim_eng white grade_rep pared_nohs pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_aig exc_educ aigmath disadv lim_eng white grade_rep pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_aig aigmat
+> h aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_ai
+> g aigmath aigread disadv lim_eng female black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig 
+> exc_behav exc_educ aigmath aigread lim_eng black grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_not exc_aig exc_behav aig
+> math aigread disadv lim_eng female black white grade_rep pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_behav exc_educ aigmath disadv female black white grade_rep pared_nohs pared_hsorless pared_somecol lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_eng female black pared_nohs pared_hsorless pared_somecol
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_aig exc_behav aigmath aigread disadv female black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_not exc_aig exc_behav aigmath disadv lim_eng female black grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_aig exc_behav exc_educ aigread disadv lim_eng female black white grade_rep pared_nohs pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs exc_not exc_aig 
+> exc_behav exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_not exc_aig exc_behav exc_educ disadv lim_eng female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_not exc_behav aigmath aigread disadv lim_eng female black white grade_rep pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_ai
+> g exc_behav exc_educ aigmath aigread disadv lim_eng female white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_eng female white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_not exc_behav exc_educ aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_any_discp exc_not exc_ai
+> g exc_behav exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal
+ i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grade##i.subj##c.lag1_read* i.grade##c.sgy_mean_* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* lag1_daysabs lag1_any_discp e
+> xc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_eng female black white grade_rep pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal

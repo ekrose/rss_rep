@@ -1,0 +1,1 @@
+sbatch --job-name=r$1 -o logs/r$1.txt -t 28-00:00:00 -p low --ntasks=8 --nodes 1 stata-mp do estimate_variance_robustness.do $1 "$2"

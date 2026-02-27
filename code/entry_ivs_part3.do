@@ -4,8 +4,8 @@ set more off
 capture restore
 
 * Load data and options
-do set_options.do
-do preamble.do
+do code/set_options.do
+do code/preamble.do
 global outcome "aoc_crim"
 global vam_measure = "none"
 

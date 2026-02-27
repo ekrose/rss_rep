@@ -117,8 +117,21 @@ for outset, name in [
               .apply(custom_format)
               .unstack('maxt')
         )
-        latex_str = grouped.to_latex(na_rep="", escape=False)  # escape=False allows commas, decimals
-        with open(f"tables/tableA10.tex", "w") as f:
-            f.write(latex_str)
+        if (name == "shortrun") & (type == "sdev"):
+            latex_str = grouped.to_latex(na_rep="", escape=False)  # escape=False allows commas, decimals
+            with open(f"tables/tableA10a.tex", "w") as f:
+                f.write(latex_str)
+        if (name == "longrun_cjc") & (type == "sdev"):
+            latex_str = grouped.to_latex(na_rep="", escape=False)  # escape=False allows commas, decimals
+            with open(f"tables/tableA10b.tex", "w") as f:
+                f.write(latex_str)
+        if (name == "longrun_cjc") & (type == "tscore_corr"):
+            latex_str = grouped.to_latex(na_rep="", escape=False)  # escape=False allows commas, decimals
+            with open(f"tables/tableA10c.tex", "w") as f:
+                f.write(latex_str)
+        if (name == "longrun_cjc") & (type == "behave_corr"):
+            latex_str = grouped.to_latex(na_rep="", escape=False)  # escape=False allows commas, decimals
+            with open(f"tables/tableA10d.tex", "w") as f:
+                f.write(latex_str)
 
 

@@ -1,0 +1,23 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{6}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+            &\multicolumn{1}{c}{Test scores}&\multicolumn{1}{c}{Study skills}&\multicolumn{1}{c}{Behaviors}&\multicolumn{1}{c}{Criminal arrest}&\multicolumn{1}{c}{Index crime}&\multicolumn{1}{c}{Incarceration}\\
+\hline
+Female      &      0.0201         &      -0.120         &     -0.0194         &   -0.000366         &     -0.0288         &     0.00600         \\
+            &    (0.0298)         &     (0.104)         &    (0.0700)         &    (0.0232)         &    (0.0179)         &    (0.0158)         \\
+[1em]
+Non-white   &      0.0866\sym{**} &     -0.0816         &       0.228\sym{**} &    -0.00457         &    -0.00319         &    -0.00532         \\
+            &    (0.0305)         &     (0.108)         &    (0.0748)         &    (0.0244)         &    (0.0191)         &    (0.0152)         \\
+[1em]
+Constant    &     -0.0391         &      0.0470         &      -0.123         &      0.0247         &      0.0400\sym{*}  &     0.00706         \\
+            &    (0.0277)         &    (0.0975)         &    (0.0655)         &    (0.0215)         &    (0.0167)         &    (0.0147)         \\
+\hline
+N teacher-years&        3721         &        1367         &        2333         &        3721         &        3721         &        3721         \\
+N teachers  &        3721         &        1367         &        2333         &        3721         &        3721         &        3721         \\
+\hline\hline
+\multicolumn{7}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{7}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+}

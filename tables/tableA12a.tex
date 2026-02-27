@@ -1,0 +1,23 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{6}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+            &\multicolumn{1}{c}{Test scores}&\multicolumn{1}{c}{Study skills}&\multicolumn{1}{c}{Behaviors}&\multicolumn{1}{c}{Criminal arrest}&\multicolumn{1}{c}{Index crime}&\multicolumn{1}{c}{Incarceration}\\
+\hline
+Female      &     -0.0542\sym{*}  &      0.0183         &      0.0341         &     -0.0140         &     -0.0147         &     0.00562         \\
+            &    (0.0254)         &     (0.164)         &    (0.0607)         &    (0.0199)         &    (0.0154)         &    (0.0139)         \\
+[1em]
+Non-white   &     -0.0589\sym{*}  &      -0.168         &     -0.0756         &      0.0354         &      0.0481\sym{**} &      0.0289\sym{*}  \\
+            &    (0.0259)         &     (0.161)         &    (0.0634)         &    (0.0206)         &    (0.0154)         &    (0.0146)         \\
+[1em]
+Constant    &      0.0368         &      -0.151         &      -0.203\sym{***}&       0.132\sym{***}&      0.0447\sym{**} &      0.0712\sym{***}\\
+            &    (0.0238)         &     (0.147)         &    (0.0567)         &    (0.0186)         &    (0.0146)         &    (0.0129)         \\
+\hline
+N teacher-years&        5172         &        1983         &        3189         &        5172         &        5172         &        5172         \\
+N teachers  &        5172         &        1983         &        3189         &        5172         &        5172         &        5172         \\
+\hline\hline
+\multicolumn{7}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{7}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+}
