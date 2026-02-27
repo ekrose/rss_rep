@@ -1,0 +1,7 @@
+# Ignore contents of temp and data folders, but keep the folders
+temp/*
+data/*
+
+# Keep .gitkeep files
+!temp/.gitkeep
+!data/.gitkeep
