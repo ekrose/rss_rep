@@ -6,6 +6,7 @@ capture restore
 * Load data and options
 do code/set_options.do 
 do code/preamble.do
+global vam_measure = "none"
 
 * Run short-run regressions
 eststo clear

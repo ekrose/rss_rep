@@ -1,18 +1,10 @@
-*** Estimation Residuals for u-stat estimation of variance covariance stuff
-*** 0) Load and prep data and set options
 clear all
 clear matrix
 set more off
 
-* Outcome to study
-global outcome "`1'"
-
-* Load data and options (spec, drop pval are options)
-do set_options.do `2' `3'
-di "Working with spec ${spec} and dropping low pvalues ${droppval}"
-
-* Execute preamble
-do preamble.do
+* Load data and options 
+do code/set_options.do
+do code/preamble.do
 
 * Get the residuals
 foreach var of varlist aoc_cost_wtp aoc_total_cost_wtp aoc_cost_bottomup aoc_total_cost_bottomup  aoc_any aoc_crim aoc_traff aoc_index aoc_incar gpa_weighted class_rank_w college_bound grad {
@@ -55,13 +47,12 @@ sort teachid year
 by teachid: gen obs = _n
 
 * Save long version for KSS-routines
-save ../dump/teach_mean_resids_spec${spec}_droppval${droppval}_long_samp100.dta, replace
+save temp/teach_mean_resids_long.dta, replace
 
 * Save wide version for U-stat estimators
 drop year 
-* reshape wide *_r, i(teachid school_fe) j(obs)
 reshape wide *_r obs_* school_fe, i(teachid) j(obs)
-save ../dump/teach_mean_resids_spec${spec}_droppval${droppval}_samp100.dta, replace
+save temp/teach_mean_resids.dta, replace
 restore
 
 * Collapse by teacher-school
@@ -74,7 +65,7 @@ by teachid: gen obs = _n
 drop school_fe
 reshape wide *_r, i(teachid) j(obs)
 
-save ../dump/teachSchl_mean_resids_spec${spec}_droppval${droppval}_samp100.dta, replace
+save temp/teachSchl_mean_resids.dta, replace
 restore
 
 * Separately by grade
@@ -88,7 +79,7 @@ foreach grade of numlist 4/8 {
     drop year
     reshape wide *_r, i(teachid) j(obs)
 
-    save ../dump/teach_mean_resids_spec${spec}_droppval${droppval}_gr`grade'_samp100.dta, replace
+    save temp/teach_mean_resids_gr`grade'.dta, replace
     restore
 }
 
@@ -104,6 +95,6 @@ by teachid: gen obs = _n
 drop year
 reshape wide *_r, i(teachid) j(obs)
 
-save ../dump/teach_mean_resids_spec${spec}_droppval${droppval}_cog_crime_non_missing_samp100.dta, replace
+save temp/teach_mean_resids_cog_crime_non_missing.dta, replace
 restore
 

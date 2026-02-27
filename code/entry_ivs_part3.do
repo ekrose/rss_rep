@@ -7,6 +7,7 @@ capture restore
 do set_options.do
 do preamble.do
 global outcome "aoc_crim"
+global vam_measure = "none"
 
 egen district = group(lea)
 fun_vam "${outcome}" 0 

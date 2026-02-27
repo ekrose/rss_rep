@@ -3,10 +3,12 @@ clear all
 clear matrix
 set more off
 capture restore
+capture log close
 
 * Load data and options
 do code/set_options.do 
 do code/preamble.do
+global vam_measure = "none"
 
 *** Short-run outcome entry IVs
 dis "Working on short-run outcomes"
