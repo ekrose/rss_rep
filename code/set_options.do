@@ -11,9 +11,6 @@ sample 10
 di "Working with design covariates: ${covdesign}"
 di "Working with excluded covariates: ${covsadj}"
 
-* Vam function
-do code/vam.ado
-
 * Package analysis 
 capture ssc install gtools
 capture ssc install ivreg2

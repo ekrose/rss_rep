@@ -143,6 +143,10 @@ foreach ll in "${outcome}" aoc_any behavpca studypca {
 	capture predict lag_`ll'_idx, xb		
 } 
 
+* Vam function
+capture drop program vam
+do code/vam.ado
+
 * VAM calculation
 capture program drop fun_vam
 program define fun_vam
