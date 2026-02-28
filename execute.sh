@@ -1,6 +1,5 @@
 # Execute all code 
 source .venv/bin/activate
-pip install requirements.txt
 
 # Tables 1 and A11 ✔️
 stata -b code/summary_stats.do
