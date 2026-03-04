@@ -7,7 +7,7 @@ do code/set_options.do
 do code/preamble.do
 
 * Get the residuals
-foreach var of varlist aoc_cost_wtp aoc_total_cost_wtp aoc_cost_bottomup aoc_total_cost_bottomup  aoc_any aoc_crim aoc_traff aoc_index aoc_incar gpa_weighted class_rank_w college_bound grad {
+foreach var of varlist  aoc_any aoc_crim aoc_traff aoc_index aoc_incar gpa_weighted class_rank_w college_bound grad {
     areg `var' $covdesign, abs(teachid)   
     predict `var'_r, dresiduals 
 }
