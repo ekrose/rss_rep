@@ -1,6 +1,11 @@
 # Execute all code 
 source .venv/bin/activate
 
+# Generate fake/simulated data
+# Output is saved to $PROJECT_DATA_DIR/analysis.dta (set in .envrc)
+# note: summary.pkl is saved in data/summary.pkl and was created by running the code "fake_data_formats.py" on the real administrative data
+python code/simulate_from_summary.py
+
 # Tables 1 and A11 ✔️
 stata -b code/summary_stats.do
 
