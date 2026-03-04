@@ -35,6 +35,7 @@ foreach shortrun of varlist testscores behavpca {
     * Regress on outcomes
     foreach longrun of varlist aoc_any aoc_crim aoc_index aoc_incar gpa_weighted grad college_bound {
         * Run reg
+		dis "Working on outcome: `longrun'"
         eststo: reghdfe `longrun' vam ${covdesign}, vce(cluster teachid mastid) noabsorb
         estadd local design_controls = "\checkmark"
         local beta = _b[vam]

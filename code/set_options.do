@@ -4,12 +4,23 @@ global covdesign = "i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grad
 global covsadj = "pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal"
 
 * Load analysis data
-gzuse data/analysis_data.dta.gz, clear
+if c(username)=="shemtov"{
+ 	global PROJECT_DATA_DIR "/Users/shemtov/Documents/Data_rss"
+}
+
+use ${PROJECT_DATA_DIR}/analysis.dta, clear
 
 * Display options
 di "Working with design covariates: ${covdesign}"
 di "Working with excluded covariates: ${covsadj}"
 
 * Package analysis 
-capture ssc install gtools
-capture ssc install ivreg2
+capture which gtools
+if _rc {
+    ssc install gtools
+}
+
+capture which ivreg2
+if _rc {
+    ssc install ivreg2
+}
