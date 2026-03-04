@@ -15,10 +15,8 @@ global covsadj = "pared_nohs pared_hsorless pared_somecol pared_baormore lag2_ma
 local iter = `1'
 di "Working on iteration `iter'"
 
-* Load data
-gzuse data/analysis_data.dta.gz, clear
-
-* Execute preamble
+* Load data and options 
+do code/set_options.do
 do code/preamble.do
 
 * Get the residuals

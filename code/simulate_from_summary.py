@@ -190,6 +190,22 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
             if np.isnan(vmax):
                 vmax = mean + 3 * abs(std) if std != 0 else mean + 1
 
+            # Binary indicators (min=0, max=1): simulate as Bernoulli(mean)
+            if vmin == 0.0 and vmax == 1.0 and 0 < mean < 1:
+                # Ensure at least one success so SD > 0
+                p = max(mean, 2.0 / n_rows)
+                arr = rng.binomial(1, p, size=n_rows)
+                # Safety: if all same, flip one value
+                if arr.sum() == 0:
+                    arr[0] = 1
+                elif arr.sum() == n_rows:
+                    arr[0] = 0
+                if "float" in col_dtype_str:
+                    data[col] = arr.astype(np.float64)
+                else:
+                    data[col] = arr
+                continue
+
             # Simulate numeric values, ensuring non-zero empirical variability
             if "int" in col_dtype_str and "datetime" not in col_dtype_str:
                 # Integer-like: use discrete sampling to guarantee >1 support points
@@ -268,14 +284,14 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
         col_lower = str(col).lower()
         if pd.api.types.is_numeric_dtype(df[col]):
             # Minimum grade is 4
-            if "grade" in col_lower:
+            if col_lower == "grade":
                 df.loc[df[col] < 4, col] = 4
                 # Ensure non-zero SD: if all collapsed to 4, bump one value
                 if df[col].std() == 0 and len(df[col]) > 1:
                     df.iloc[0, df.columns.get_loc(col)] = df.iloc[0, df.columns.get_loc(col)] + 1
 
             # Minimum year is 1997
-            if "year" in col_lower:
+            if "year" in col_lower and not col_lower.startswith("nyears"):
                 df.loc[df[col] < 1997, col] = 1997
                 # Ensure non-zero SD: if all collapsed to 1997, bump one value
                 if df[col].std() == 0 and len(df[col]) > 1:
@@ -306,15 +322,9 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
         # Determine how many teachers we need
         n_teachers = n_rows // 4
 
-        # Base teacher IDs from the existing data in this column
-        base_ids = df[t_col].dropna().unique()
-        if len(base_ids) == 0:
-            base_ids = np.array([f"T{i}" for i in range(1, n_teachers + 1)], dtype=object)
-
-        teacher_ids = []
-        while len(teacher_ids) < n_teachers:
-            teacher_ids.extend(list(base_ids))
-        teacher_ids = np.array(teacher_ids[:n_teachers], dtype=object)
+        # Use sequential integer IDs so teachid stays numeric (required by
+        # Stata factor-variable commands like reghdfe ... abs(x#teachid)).
+        teacher_ids = np.arange(1, n_teachers + 1)
 
         # Assign exactly 4 observations per teacher
         new_teacher_values = np.repeat(teacher_ids, 4)
@@ -395,13 +405,35 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
                 df.loc[two_idxs, subj_col] = target_subject
 
 
+    # Ensure student-level ID columns (e.g. mastid) are unique integers.
+    # In the real data each row is a distinct student-teacher-year-subject
+    # observation, so the student identifier must be unique per row.
+    student_id_cols = [
+        c for c in df.columns
+        if any(tok in str(c).lower() for tok in ["mastid"])
+    ]
+    for sid_col in student_id_cols:
+        df[sid_col] = np.arange(1, n_rows + 1).astype(df[sid_col].dtype)
+
+    # twin_id identifies twin pairs: each twin_id should be shared by
+    # exactly 2 observations.  Assign pair IDs so that rows 0-1 share
+    # twin_id 1, rows 2-3 share twin_id 2, etc.
+    twin_cols = [
+        c for c in df.columns if str(c).lower() == "twin_id"
+    ]
+    for tw_col in twin_cols:
+        pair_ids = np.repeat(np.arange(1, n_rows // 2 + 1), 2)
+        if n_rows % 2 == 1:
+            pair_ids = np.append(pair_ids, pair_ids[-1] + 1)
+        df[tw_col] = pair_ids.astype(df[tw_col].dtype)
+
     # Check that each *relevant* numeric variable has non-zero standard deviation.
     # Treat pure identifier columns (e.g. teachid_*) as categorical for this purpose
     # and exclude them from the SD requirement.
     numeric_stds = df.std(numeric_only=True)
     id_like_cols = [
         c for c in numeric_stds.index
-        if any(tok in str(c).lower() for tok in ["teachid", "teacher", "cmb_teachid"])
+        if any(tok in str(c).lower() for tok in ["teachid", "teacher", "cmb_teachid", "mastid", "twin_id"])
     ]
     zero_std = numeric_stds[
         (numeric_stds == 0)
@@ -472,8 +504,8 @@ if __name__ == "__main__":
         summary = pickle.load(f)
     
     # Example: simulate with custom number of observations
-    df_sim_custom = simulate_from_summary(summary, n_observations=10000)
-    print("Simulated shape (custom 10k):", df_sim_custom.shape)
+    df_sim_custom = simulate_from_summary(summary, n_observations=20000)
+    print("Simulated shape (custom 20k):", df_sim_custom.shape)
     
     # Verify no missing values
     missing_counts = df_sim_custom.isna().sum()
