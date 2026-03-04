@@ -4,10 +4,10 @@ set more off
 capture restore
 
 * Load data and options
-do code/set_options.do
-do code/preamble.do
 global outcome "aoc_crim"
 global vam_measure = "none"
+do code/set_options.do
+do code/preamble.do
 
 egen district = group(lea)
 fun_vam "${outcome}" 0 

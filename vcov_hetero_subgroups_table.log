@@ -21,39 +21,25 @@ Notes:
       3. Maximum number of variables is set to 5,000 but can be increased;
           see help set_maxvar.
 
-. do code/estimate_variance_robustness.do 
+. do code/vcov_hetero_subgroups_table.do 
 
+. **************************************************
+. * Make table
+. **************************************************
 . clear all
 
 . clear matrix
 
 . set more off
 
-. capture ssc install tuples
-
-. set seed 617238
-
 . 
-. * Options
-. global outcome = "testscores"
+. *** (1) Build matrices of SD of teacher effects and their standard errors
+. * Load variance (and SE) estimates that have been calculated in Python
+. preserve
 
-. global covdesign = "`0'"
-
-. global covdesign = regexr("$covdesign", "^[0-9]+","")
-
-. di "Working with covdesign ${covdesign}"
-Working with covdesign 
-
-. dis "-------------"
--------------
-
-. 
-. global covsadj = "pared_nohs pared_hsorless pared_somecol pared_baormore lag2
-> _mathscal lag2_readscal"
-
-. local iter = `1'
-invalid syntax
-r(198);
+. use "temp/hetero_SDs.dta", clear
+file temp/hetero_SDs.dta not found
+r(601);
 
 end of do-file
-r(198);
+r(601);

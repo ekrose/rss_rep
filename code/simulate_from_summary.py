@@ -359,50 +359,41 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
                     s = rng.choice(schools)
                     df.loc[block_idx, s_col] = s
 
-        # If we also have a subject column, ensure each teacher has at least
-        # two observations in the same subject. Teachers can be observed in
-        # only some subjects, but for any teacher there must exist at least
-        # one subject with count >= 2.
+        # Enforce year and subject structure within each teacher so that
+        # preamble.do's "drop if nteachhr_years < 2" drops zero rows and
+        # the Chetty VAM leave-one-out procedure always has a valid
+        # complement year.
+        #
+        # Structure per teacher (4 rows):
+        #   rows 0-1: year_A, same subject
+        #   rows 2-3: year_B, same subject  (year_B != year_A)
+        # This guarantees each teacher-subject pair has >= 2 distinct years.
+        year_cols = [c for c in df.columns if str(c).lower() == "year"]
         subject_cols = [
             c for c in df.columns
             if any(tok in str(c).lower() for tok in ["subject", "subj"])
         ]
+
+        if year_cols:
+            y_col = year_cols[0]
+            all_years = df[y_col].dropna().unique()
+            if len(all_years) < 2:
+                all_years = np.array([1997, 1998])
+
+            for i, block_idx in enumerate(teacher_blocks):
+                # Pick two distinct years
+                yr_pair = rng.choice(all_years, size=2, replace=False)
+                df.loc[block_idx[:2], y_col] = yr_pair[0]
+                df.loc[block_idx[2:], y_col] = yr_pair[1]
+
         for subj_col in subject_cols:
-            # For each teacher, find the maximum count over subjects
-            pair_counts = (
-                df.groupby([t_col, subj_col]).size().rename("n")
-            )
-            if pair_counts.empty:
-                continue
-
-            max_per_teacher = pair_counts.groupby(level=0).max()
-            bad_teachers = max_per_teacher[max_per_teacher < 2].index.to_list()
-
-            if not bad_teachers:
-                continue
-
             all_subjects = df[subj_col].dropna().unique()
             if len(all_subjects) == 0:
                 continue
-
-            for teacher_id in bad_teachers:
-                idxs = df.index[df[t_col] == teacher_id]
-                if len(idxs) < 2:
-                    # Should not happen because we already enforced >=2 obs
-                    continue
-
-                # Choose a target subject for this teacher: either the one
-                # they already have (if any) or from the global pool.
-                current_subjects = df.loc[idxs, subj_col].dropna().unique()
-                if len(current_subjects) > 0:
-                    target_subject = rng.choice(current_subjects)
-                else:
-                    target_subject = rng.choice(all_subjects)
-
-                # Assign the first two observations for this teacher to the
-                # target subject so that subject count for this teacher is >= 2.
-                two_idxs = idxs.to_list()[:2]
-                df.loc[two_idxs, subj_col] = target_subject
+            for i, block_idx in enumerate(teacher_blocks):
+                # All 4 rows get the same subject
+                subj = rng.choice(all_subjects)
+                df.loc[block_idx, subj_col] = subj
 
 
     # Ensure student-level ID columns (e.g. mastid) are unique integers.

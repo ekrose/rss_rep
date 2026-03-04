@@ -1,0 +1,1581 @@
+
+  ___  ____  ____  ____  ____ ®
+ /__    /   ____/   /   ____/      StataNow 19.5
+___/   /   /___/   /   /___/       SE—Standard Edition
+
+ Statistics and Data Science       Copyright 1985-2025 StataCorp LLC
+                                   StataCorp
+                                   4905 Lakeway Drive
+                                   College Station, Texas 77845 USA
+                                   800-782-8272        https://www.stata.com
+                                   979-696-4600        service@stata.com
+
+Stata license: Single-user , expiring  8 Mar 2027
+Serial number: 401909205246
+  Licensed to: Yotam Shem-Tov
+               
+
+Notes:
+      1. Stata is running in batch mode.
+      2. Unicode is supported; see help unicode_advice.
+      3. Maximum number of variables is set to 5,000 but can be increased;
+          see help set_maxvar.
+
+. do /tmp/test_predict3.do 
+
+. clear all
+
+. do code/set_options.do
+
+. * Set universal design options
+. global covdesign = "i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.g
+> rade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mean_* exc_no
+> t exc_aig exc_behav exc_educ aigmath aigread disadv lim_eng female black whit
+> e grade_rep lag1_daysabs lag1_any_discp"
+
+. 
+. global covsadj = "pared_nohs pared_hsorless pared_somecol pared_baormore lag2
+> _mathscal lag2_readscal"
+
+. 
+. * Load analysis data
+. if c(username)=="shemtov"{
+.         global PROJECT_DATA_DIR "/Users/shemtov/Documents/Data_rss"
+. }
+
+. 
+. use ${PROJECT_DATA_DIR}/analysis.dta, clear
+
+. 
+. * Display options
+. di "Working with design covariates: ${covdesign}"
+Working with design covariates: i.year##i.grade##i.subj i.grade##i.subj##c.lag1
+> _math* i.grade##i.subj##c.lag1_read* i.grade##c.sgyts_mean_* i.grade##c.s_mea
+> n_* exc_not exc_aig exc_behav exc_educ aigmath aigread disadv lim_eng female 
+> black white grade_rep lag1_daysabs lag1_any_discp
+
+. di "Working with excluded covariates: ${covsadj}"
+Working with excluded covariates: pared_nohs pared_hsorless pared_somecol pared
+> _baormore lag2_mathscal lag2_readscal
+
+. 
+. * Package analysis 
+. capture which gtools
+
+. if _rc {
+.     ssc install gtools
+. }
+
+. 
+. capture which ivreg2
+
+. if _rc {
+.     ssc install ivreg2
+. }
+
+. 
+end of do-file
+
+. do code/preamble.do
+
+. * Create any variables as needed
+. encode subject, gen(subj)
+
+. 
+. * Restrict grades and years
+. keep if grade > 3
+(0 observations deleted)
+
+. keep if (year >= 1997)
+(0 observations deleted)
+
+. 
+. * Keep only teachers that appear in at least 2 years per subject
+. bys teachid subject: egen nteachhr_years = nvals(year)
+
+. drop if nteachhr_years < 2
+(0 observations deleted)
+
+. capture drop nteachhr_years 
+
+. 
+. * Other covariates
+. capture gen male = 1 - female
+
+. gen college_bound = inlist(bound_for_code,"1","2") if !missing(bound_for_code
+> )
+(13,942 missing values generated)
+
+. replace class_rank_w = 1 if class_rank_w > 1 & !missing(class_rank_w)
+(1,018 real changes made)
+
+. 
+. * Fill in twin indicators
+. gen twins_all = twin_id
+
+. replace twins_all = -99 if twins_all == .
+(0 real changes made)
+
+. bys twin_id year grade: egen sgend_twin = max(female)
+
+. bys twin_id year grade: egen sgend_twin2 = min(female)
+
+. gen twins_same_gend = twin_id if sgend_twin == sgend_twin2
+(2,228 missing values generated)
+
+. 
+. * Add first PCA measures
+. foreach var in readscal mathscal {
+  2.         assert missing(`var') == 0
+  3. }
+
+. foreach prefix in "" "lead1_" "lead2_" "lead3_" "lead4_" {
+  2.         qui pca `prefix'mathscal `prefix'readscal
+  3.         qui predict `prefix'cogpca, score
+  4.         
+.         qui pca `prefix'homework `prefix'freeread `prefix'watchtv
+  5.         qui predict `prefix'studypca, score
+  6. 
+.         * Generate subject specific test scores
+.         gen `prefix'testscores = `prefix'cogpca if subject == "hr"
+  7.         replace `prefix'testscores = `prefix'mathscal if subject == "math"
+  8.         replace `prefix'testscores = `prefix'readscal if subject == "eng"
+  9. 
+. }
+(13,452 missing values generated)
+(6,816 real changes made)
+(6,636 real changes made)
+(13,452 missing values generated)
+(6,816 real changes made)
+(6,636 real changes made)
+(13,452 missing values generated)
+(6,816 real changes made)
+(6,636 real changes made)
+(13,452 missing values generated)
+(6,816 real changes made)
+(6,636 real changes made)
+(13,452 missing values generated)
+(6,816 real changes made)
+(6,636 real changes made)
+
+. 
+. foreach var of varlist lead1_daysabs lead1_any_discp lead_grade_rep {
+  2.         capture drop _tmp
+  3.         bys year grade: egen _tmp = sd(`var')
+  4.     gen `var'_norm = `var' / _tmp
+  5. }
+(600 missing values generated)
+
+. qui pca lead1_daysabs_norm lead1_any_discp_norm lead_grade_rep_norm
+
+. qui predict behavpca, score
+
+. replace behavpca = -behavpca
+(19,400 real changes made)
+
+. 
+. capture drop _tmp
+
+. bys year grade: egen _tmp = sd(behavpca)
+(600 missing values generated)
+
+. gen behavpca_normalized = behavpca / _tmp
+(600 missing values generated)
+
+. drop _tmp
+
+. 
+. foreach var of varlist lead2_daysabs lead2_any_discp lead1_grade_rep {
+  2.         capture drop _tmp
+  3.         bys year grade: egen _tmp = sd(`var')
+  4.     gen `var'_norm = `var' / _tmp
+  5. }
+(2,603 missing values generated)
+
+. qui pca lead2_daysabs_norm lead2_any_discp_norm lead1_grade_rep_norm
+
+. qui predict lead1_behavpca, score
+
+. replace lead1_behavpca = -lead1_behavpca
+(17,397 real changes made)
+
+. replace lead1_behavpca = . if grade == 8
+(2,732 real changes made, 2,732 to missing)
+
+. 
+. foreach var of varlist lead3_daysabs lead3_any_discp lead2_grade_rep {
+  2.         capture drop _tmp
+  3.         bys year grade: egen _tmp = sd(`var')
+  4.     gen `var'_norm = `var' / _tmp
+  5. }
+(3,102 missing values generated)
+
+. qui pca lead3_daysabs_norm lead3_any_discp_norm lead2_grade_rep_norm
+
+. qui predict lead2_behavpca, score
+
+. replace lead2_behavpca = -lead2_behavpca
+(16,898 real changes made)
+
+. 
+. foreach var of varlist lead4_daysabs lead4_any_discp lead3_grade_rep {
+  2.         capture drop _tmp
+  3.         bys year grade: egen _tmp = sd(`var')
+  4.     gen `var'_norm = `var' / _tmp
+  5. }
+(1,738 missing values generated)
+
+. qui pca lead4_daysabs_norm lead4_any_discp_norm lead3_grade_rep_norm
+
+. qui predict lead3_behavpca, score
+
+. replace lead3_behavpca = -lead3_behavpca
+(18,262 real changes made)
+
+. 
+. * Drop any means of excluded variables
+. foreach var of global covsadj {
+  2.         drop *_mean_`var'*
+  3. }
+
+. 
+. * Dummy out any missing controls in design variables and adjust variables
+. foreach var of global covsadj {
+  2.         if strpos("`var'", "#") == 0 {
+  3.                 qui desc `var', varlist
+  4.                 local _tmp = r(varlist)
+  5.                 foreach v of local _tmp {
+  6.                         gen madj_`v' = missing(`v')
+  7.                         replace `v' = 0 if missing(`v')
+  8.                 }
+  9.         }
+ 10. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+
+. global covsadj = "${covsadj} madj_*"
+
+. 
+. foreach var of global covdesign {
+  2.         if strpos("`var'", "#") == 0 {
+  3.                 qui desc `var', varlist
+  4.                 local _tmp = r(varlist)
+  5.                 foreach v of local _tmp {
+  6.                         gen mdes_`v' = missing(`v')
+  7.                         replace `v' = 0 if missing(`v')
+  8.                 }
+  9.         }
+ 10. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+
+. 
+. * Fix missing values of means
+. foreach v in  exc_not exc_aig exc_behav exc_educ{
+  2.         ** Replace missings
+.         local vv = "s_mean_`v'"
+  3.         gen `vv'_mdes = missing(`vv')
+  4.         replace `vv' = 0 if missing(`vv')
+  5. 
+.         ** Replace missings in means
+.         local vv = "sgyts_mean_`v'"
+  6.         gen `vv'_mdes = missing(`vv')
+  7.         replace `vv' = 0 if missing(`vv')
+  8. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+
+. 
+. * One more
+. gen sgyts_mean_disadv_mdes = missing(sgyts_mean_disadv)
+
+. replace sgyts_mean_disadv = 0 if missing(sgyts_mean_disadv)
+(0 real changes made)
+
+. 
+. global covdesign = "${covdesign} mdes_* *_mdes"
+
+. 
+. 
+. * Predict cognitive and crime outcomes based on parent chars and lag (Missing
+>  dummies)
+. foreach ll in "${outcome}" aoc_any behavpca studypca {
+  2.         qui reg `ll' ${covsadj} 
+  3.         capture predict all_`ll'_idx, xb        
+  4. 
+.         qui reg `ll' pared_* madj_pared_*
+  5.         capture predict par_`ll'_idx, xb        
+  6. 
+.         qui reg `ll' lag2_mathscal lag2_readscal madj_lag2_mathscal madj_lag2
+> _readscal
+  7.         capture predict lag_`ll'_idx, xb                
+  8. } 
+
+. 
+. * Vam function
+. capture drop program vam
+
+. do code/vam.ado
+
+. *! version 2.0.1  27jul2013  Michael Stepner, stepner@mit.edu
+. 
+. /* CC0 license information:
+> To the extent possible under law, the author has dedicated all copyright and 
+> related and neighboring rights
+> to this software to the public domain worldwide. This software is distributed
+>  without any warranty.
+> 
+> This code is licensed under the CC0 1.0 Universal license.  The full legal te
+> xt as well as a
+> human-readable summary can be accessed at http://creativecommons.org/publicdo
+> main/zero/1.0/
+> */
+. 
+. * Why did I include a formal license? Jeff Atwood gives good reasons: http://
+> www.codinghorror.com/blog/2007/04/pick-a-license-any-license.html
+. 
+. 
+. program define vam
+  1.         
+.         version 10.1
+  2. 
+.         set more off
+  3. 
+.         syntax varname(ts fv), teacher(varname) year(varname) class(varname) 
+> [ ///
+>                 by(varlist) ///
+>                 controls(varlist ts fv) absorb(varname) tfx_resid(varname) //
+> /
+>                 data(string) output(string) output_addvars(varlist) ///
+>                 driftlimit(integer -1) ///
+>                 QUASIexperiment]
+  4. 
+.         * Error checks
+.         local depvar `varlist'
+  5.         
+.         capture confirm variable score_r, exact
+  6.         if (_rc==0) {
+  7.                 di as error "The dataset loaded in memory when vam is run 
+> cannot have a variable named score_r."
+  8.                 exit 110
+  9.         }
+ 10.         
+.         capture confirm variable tv, exact
+ 11.         if (_rc==0) {
+ 12.                 di as error "The dataset loaded in memory when vam is run 
+> cannot have a variable named tv."
+ 13.                 exit 110
+ 14.         }
+ 15.         
+.         if ("`quasiexperiment'"!="") {
+ 16.                 capture confirm variable tv_2yr_l, exact
+ 17.                 if (_rc==0) {
+ 18.                         di as error "The dataset loaded in memory when vam
+>  is run cannot have a variable named tv_2yr_l."
+ 19.                         exit 110
+ 20.                 }
+ 21.                 
+.                 capture confirm variable tv_2yr_f, exact
+ 22.                 if (_rc==0) {
+ 23.                         di as error "The dataset loaded in memory when vam
+>  is run cannot have a variable named tv_2yr_f."
+ 24.                         exit 110
+ 25.                 }
+ 26.                 
+.                 capture confirm variable tv_ss, exact
+ 27.                 if (_rc==0) {
+ 28.                         di as error "The dataset loaded in memory when vam
+>  is run cannot have a variable named tv_ss."
+ 29.                         exit 110
+ 30.                 }
+ 31.         }
+ 32.         
+.         local merge_tv=0
+ 33.         local merge_resid=0
+ 34.         if ("`data'"=="") local data="preserve"
+ 35.         else {
+ 36.                 if !inlist("`data'","preserve","tv","merge tv","merge scor
+> e_r","merge tv score_r","merge score_r tv","variance") {
+ 37.                         di as error "Not a valid argument for data. Choose
+>  either 'preserve', 'tv', 'merge [tv AND/OR score_r]', or 'variance'."
+ 38.                         exit 198
+ 39.                 }
+ 40.                 else {
+ 41.                         tokenize "`data'"
+ 42.                         if ("`1'")=="merge" {
+ 43.                                 if ("`2'"=="tv") | ("`3'"=="tv") local mer
+> ge_tv=1
+ 44.                                 if ("`2'"=="score_r") | ("`3'"=="score_r")
+>  local merge_resid=1
+ 45.                         }
+ 46.                 }
+ 47.         }       
+ 48.         
+.         if "`tfx_resid'"!="" & "`absorb'"!="" {
+ 49.                 di as error "Cannot specify an absorb variable and a tfx_r
+> esid variable simultaneously."
+ 50.                 exit 198
+ 51.         }
+ 52.         
+.         * If output was left blank, set a tempfile for the tv output
+.         if `"`output'"'=="" {
+ 53.                 tempfile output
+ 54.                 local nooutput=1
+ 55.         }
+ 56.         else local nooutput=0
+ 57.         
+.         * Start log
+.         if (`nooutput'!=1) log using `"`output'_log"', replace
+ 58.         
+.         * Process by variables
+.         if ("`by'"!="") {
+ 59.                 tempvar byvar
+ 60.                 egen `byvar'=group(`by'), label
+ 61.                 sum `byvar', meanonly
+ 62.                 local by_vals=`r(max)'
+ 63.         }
+ 64.         else local by_vals=1
+ 65. 
+.         ****************
+.         
+.         preserve
+ 66.         
+.         *** Run through separately for each by-value.
+.         local firstloop=1
+ 67.         forvalues l=1/`by_vals' {
+ 68.         
+.                 if (`firstloop'!=1) restore, preserve
+ 69.                 
+.                 *** Print heading (with by-variable identifier if applciable)
+.                 di "{txt}{hline}"
+ 70.                 if ("`by'"!="") {
+ 71.                         local bylabel : label `byvar' `l', strict
+ 72.                         di "{bf:-> by variables:} `by' = `bylabel'"
+ 73.                 }
+ 74. 
+.                 *** Drop invalid observations ***
+.                 qui drop if missing(`teacher',`year',`class')
+ 75. 
+.                 *** Keep only the correct by-value
+.                 if ("`by'"!="") qui keep if `byvar'==`l'
+ 76.                 
+.                 *** Run regression
+.                 
+.                 * If absorb or tfx_resid is not empty (only one is non-empty,
+>  otherwise an error was thrown), use areg 
+.                 if "`absorb'"!="" | "`tfx_resid'"!="" {
+ 77.                         qui areg `depvar' `controls' , absorb(`absorb'`tfx
+> _resid')
+ 78.                 }
+ 79.                 * If absorb and tfx_resid are both empty, run regular regr
+> ession
+.                 else {
+ 80.                         qui reg `depvar' `controls'
+ 81.                 }
+ 82.                 
+.                 *** Predict residuals
+.                 
+.                 * If tfx_resid is empty, predict residuals
+.                 if "`tfx_resid'"=="" {
+ 83.                         qui predict score_r if e(sample),r 
+ 84.                 }
+ 85.                 * If tfx_resid was specified, predict residuals + absorbed
+>  teacher fixed effects
+.                 else {
+ 86.                         qui predict score_r if e(sample), dresiduals
+ 87.                 }
+ 88.                 
+.                 *** Save residuals to a dataset if merging them later
+.                 if `merge_resid'==1 {
+ 89.                         tempfile resid_data_`l'                 
+ 90.                         qui save `"`resid_data_`l''"', replace
+ 91.                 }
+ 92. 
+.                 *** Save number of parameters
+.                 
+.                 tempname num_obs num_par
+ 93.                 
+.                 scalar `num_obs' = e(N)
+ 94. 
+.                 * If absorb is not empty (and tfx_resid is), save (number of 
+> slopes + number of clusters + 1)
+.                 if "`absorb'"!="" {
+ 95.                         scalar `num_par' = e(df_m) + e(df_a) + 1
+ 96.                 }
+ 97.                 * Otherwise, save (number of slopes + 1)
+.                 else {
+ 98.                         scalar `num_par' = e(df_m) + 1
+ 99.                 }
+100. 
+.                 *** Create var for number of students in class
+.                 tempvar n_tested
+101.                 qui bys `teacher' `year' `group' `class': egen `n_tested' 
+> = count(score_r)
+102. 
+.                 *** Compute total variance ***
+.                 tempvar class_mean index
+103.                 qui by `teacher' `year' `group' `class': egen `class_mean'
+>  = mean(score_r) 
+104.                 qui by `teacher' `year' `group' `class': g `index' = _n
+105. 
+.                 tempname var_total
+106.                 qui sum score_r
+107.                 scalar `var_total' = r(Var)*((`num_obs' - 1)/(`num_obs' - 
+> `num_par'))
+108.                 
+.                 *** Compute individual variance (i.e. within class variance)
+.                 *--> note that we use rmse instead of direct variance of resi
+> duals here to deal with fact that class effects have not been shrunk
+.                 tempname num_class var_ind var_class
+109. 
+.                 tempvar individual_dev_from_class
+110.                 qui gen `individual_dev_from_class' = score_r - `class_mea
+> n'
+111.                 
+.                 qui count if `index'==1 & `n_tested'!=0
+112.                 scalar `num_class' = r(N)
+113. 
+.                 qui sum `individual_dev_from_class'
+114.                 scalar `var_ind' = r(Var)*((`num_obs' - 1)/(`num_obs' - `n
+> um_class' - `num_par' + 1))
+115. 
+. 
+.                 ********** Collapse to class-level data **********
+.                 
+.                 qui by `teacher' `year' `group' `class': keep if _n==1
+116. 
+.         
+.                 *** Estimate covariance of two classes taught by same teacher
+>  in the same year
+.                 set seed 9827496
+117.                 tempvar rand classnum
+118.                 g `rand'=uniform()
+119.                 bys `teacher' `year' (`rand'): gen `classnum'=_n
+120.                 
+.                 * If there are multiple classes per teacher-year cell, comput
+> e the covariance.
+.                 * Otherwise set to 0. Will display as missing in output, but 
+> internally set to 0 because it will never appear in the VCV, but the way thin
+> gs are coded requires that it be non-missing.
+.                 tempname cov_sameyear corr_sameyear obs_sameyear
+121.                 qui sum `classnum'
+122.                 if (r(max)==1) {
+123.                         local missing_sameyear=1
+124.                         scalar `cov_sameyear'=0
+125.                 }
+126.                 else {
+127.                         local missing_sameyear=0
+128.                         tempvar identifier
+129.                         egen `identifier'=group(`teacher' `year')
+130.                         qui tsset `identifier' `classnum'/*, noquery*/
+131.                         qui corr `class_mean' f.`class_mean' [aw=`n_tested
+> '+f.`n_tested'], cov
+132.                         scalar `cov_sameyear'=r(cov_12)
+133.                         scalar `corr_sameyear'=r(cov_12) / ( sqrt(r(Var_1)
+> ) * sqrt(r(Var_2)) )
+134.                         scalar `obs_sameyear'=r(N)
+135.                 }
+136.                 
+.                 *** Compute the variance of the class-level shock.  Hits all 
+> kids in the class in the same way, but is unrelated across classes even taugh
+> t by the same teacher in the same year.
+.                 scalar `var_class' = `var_total' - `var_ind' - `cov_sameyear'
+137.                 if (`var_class'<0) {
+138.                         di as error "Note: var_class has been computed as 
+> being less than 0."
+139.                         di "var_class is defined as = var_total - var_ind 
+> - cov_sameyear."
+140.                         di "Computed variances: var_total, var_ind, cov_sa
+> meyear, var_class"
+141.                         di `var_total',`var_class',`var_ind',`cov_sameyear
+> '
+142.                         di "This negative variance can occur because cov_s
+> ameyear is calculated using only the subsample of observations that teach mul
+> tiple classes per year (in the same by-group)."
+143.                 }
+144.                 
+.                 tempvar weight
+145.                 qui g `weight'=1/(`var_class' + `var_ind'/`n_tested')
+146.                 
+.                 *** Keep teacher-years which have no weight
+.                 
+.                 tempvar excess_weight
+147.                 qui gen `excess_weight'=(missing(`weight'))
+148. 
+.                 qui replace `weight'=1 if missing(`weight')
+149.                 * note: adding this weight doesn't affect the class_mean, 
+> because missing observations are not included in the mean computation.  it on
+> ly affects the rawsum of weight, and so we remove it afterward.
+. 
+.                 
+.                 ********** Collapse to teacher-year level data using precisio
+> n weights **********
+.                 collapse (mean) `class_mean' (rawsum) `weight' `n_tested' `ex
+> cess_weight' [aw=`weight'], by(`teacher' `year' `by') fast
+150.                 
+.                 * Remove the excess weight used to keep missing scores
+.                 qui replace `weight'=`weight'-`excess_weight'
+151.                 
+.                 *** Estimate the covariance of years t and t+i for every i, a
+> nd store in vector m
+.                 qui tsset `teacher' `year'/*, noquery*/
+152.                 
+.                 tempvar minyear maxyear diff validyear minvalidyear maxvalidy
+> ear diffvalid
+153.                 
+.                 qui bys `teacher': egen `minyear'=min(`year')
+154.                 qui by `teacher': egen `maxyear'=max(`year')
+155.                 qui g `diff'=`maxyear'-`minyear'
+156.                 qui sum `diff'
+157.                 local maxspan=`r(max)'
+158.                 
+.                 qui gen `validyear'=`year' if !missing(`class_mean')
+159.                 qui by `teacher': egen `minvalidyear'=min(`validyear')
+160.                 qui by `teacher': egen `maxvalidyear'=max(`validyear')
+161.                 qui g `diffvalid'=`maxvalidyear'-`minvalidyear'
+162.                 qui sum `diffvalid'
+163.                 local maxscorespan=`r(max)'
+164.                 
+.                 if (`maxscorespan'<`maxspan') & (`driftlimit'<=0) {
+165.                         di as error _n  "error: The maximum lags of teache
+> r data is `maxspan', but the maximum lags of teacher data with class scores i
+> s `maxscorespan'."
+166.                         di as error             "       You must either se
+> t driftlimit() <= `maxscorespan', or drop observations so that the spans are 
+> no longer mismatched."
+167.                         exit 499
+168.                 }
+169.                 if (`driftlimit'>`maxscorespan') {
+170.                         di as error "error: driftlimit(`driftlimit') was s
+> pecified, which is greater than the number of lags (`maxscorespan') in the da
+> ta."
+171.                         exit 499
+172.                 }
+173.                 
+.                 mata:CC=compute_cov_corr("`class_mean'","`n_tested'",`maxscor
+> espan',"`teacher'")
+174.                 
+.                 if (`driftlimit'>0)     mata:m=create_m(CC[.,1],st_numscalar(
+> "`cov_sameyear'"),`maxspan',`driftlimit')
+175.                 else                            mata:m=create_m(CC[.,1],st
+> _numscalar("`cov_sameyear'"))
+176.                 
+.                 *** Print estimated variances and covariances           
+.                 di "Standard deviations: total, classes, students, teachers s
+> ame year"
+177.                 if (`missing_sameyear'==0) di sqrt(`var_total'),sqrt(`var_
+> class'),sqrt(`var_ind'),sqrt(`cov_sameyear')
+178.                 else di sqrt(`var_total'),sqrt(`var_class'),sqrt(`var_ind'
+> ),.
+179.                 
+.                 di "Covariances (left), correlations (middle), observations (
+> right).  Row i indicates the relation between year t and t+i:"
+180.                 mata:CC[.,1..3]
+181.                 
+.                 if (`driftlimit'>0) {
+182.                         di "Drift limit specified:"
+183.                         di `driftlimit'
+184.                         
+.                         di "Covariances used for VA computations:"
+185.                         mata: m[2..length(m)]'
+186.                 }
+187.                 
+.                 mata:check_m_nomissing(m)
+188.                 
+.                 *** Accumulate the estimated variances/covariances/correlatio
+> ns across by-vals
+.                 if (`firstloop'==1) {
+189.                         mata:cov_lag_accum= CC[.,1]
+190.                         mata:corr_lag_accum= CC[.,2]
+191.                         mata:obs_lag_accum= CC[.,3]
+192.                         mata:cov_se_lag_accum= CC[.,4]
+193.                         mata:var_total_accum=   st_numscalar("`var_total'"
+> )
+194.                         mata:var_class_accum=   st_numscalar("`var_class'"
+> )
+195.                         mata:var_ind_accum=     st_numscalar("`var_ind'")
+196.                         
+.                         if (`missing_sameyear'==1) {
+197.                                 mata:cov_sameyear_accum=.
+198.                                 mata:corr_sameyear_accum=.
+199.                                 mata:obs_sameyear_accum=0
+200.                         }
+201.                         else {
+202.                                 mata:cov_sameyear_accum=st_numscalar("`cov
+> _sameyear'")
+203.                                 mata:corr_sameyear_accum=st_numscalar("`co
+> rr_sameyear'")
+204.                                 mata:obs_sameyear_accum=st_numscalar("`obs
+> _sameyear'")
+205.                         }
+206.                 }
+207.                 else {
+208.                         mata:cov_lag_accum=             rightAppendMatrice
+> s(cov_lag_accum,CC[.,1])
+209.                         mata:corr_lag_accum=    rightAppendMatrices(corr_l
+> ag_accum,CC[.,2])
+210.                         mata:obs_lag_accum=             rightAppendMatrice
+> s(obs_lag_accum,CC[.,3])
+211.                         mata:cov_se_lag_accum=  rightAppendMatrices(cov_se
+> _lag_accum,CC[.,4])
+212.                         mata:var_total_accum=   var_total_accum,st_numscal
+> ar("`var_total'")
+213.                         mata:var_class_accum=   var_class_accum,st_numscal
+> ar("`var_class'")
+214.                         mata:var_ind_accum=             var_ind_accum,st_n
+> umscalar("`var_ind'")
+215.                         
+.                         if (`missing_sameyear'==1) {
+216.                                 mata:cov_sameyear_accum= cov_sameyear_accu
+> m,.
+217.                                 mata:corr_sameyear_accum= corr_sameyear_ac
+> cum,.
+218.                                 mata:obs_sameyear_accum= obs_sameyear_accu
+> m,.
+219.                         }
+220.                         else {
+221.                                 mata:cov_sameyear_accum=cov_sameyear_accum
+> ,st_numscalar("`cov_sameyear'")
+222.                                 mata:corr_sameyear_accum=corr_sameyear_acc
+> um,st_numscalar("`corr_sameyear'")
+223.                                 mata:obs_sameyear_accum=obs_sameyear_accum
+> ,st_numscalar("`obs_sameyear'")
+224.                         }
+225.                 }
+226.                 
+.                 *********
+.                         
+.                 * Count the number of obs for each teacher
+.                 sort `teacher' `year'
+227.                 tempvar obs_teacher
+228.                 by `teacher': egen `obs_teacher'=count(`teacher')
+229. 
+.                 * Compute teacher VA
+.                 qui gen float tv=.
+230.                 
+.                 if "`quasiexperiment'"!="" {
+231.                         qui gen float tv_2yr_l=.
+232.                         qui gen float tv_2yr_f=.
+233.                         qui gen float tv_ss=.
+234.                         
+.                         mata: driftcalclist(vectorToStripeDiag(m), "`teacher'
+> ", "`year'", "`class_mean'", "`weight'", "`obs_teacher'", "tv", "tv_2yr_l", "
+> tv_2yr_f", "tv_ss")
+235.                 }
+236.                 else mata:driftcalclist(vectorToStripeDiag(m), "`teacher'"
+> , "`year'", "`class_mean'", "`weight'", "`obs_teacher'", "tv")
+237.                 
+.         
+.                 * Save the VA estimates to a dataset
+.                 if ("`quasiexperiment'"=="") keep `teacher' `year' `by' tv
+238.                 else keep `teacher' `year' `by' tv tv_2yr_l tv_2yr_f tv_ss
+239.                 
+.                 if (`firstloop'!=1) append using `"`output'"', nolabel
+240.                 qui save `"`output'"', replace
+241. 
+.                 * Turn firstloop counter off
+.                 local firstloop=0
+242.         }
+243.         
+.         di "{txt}{hline}"
+244.         
+.         * Save VA estimates
+.         if "`output_addvars'"!="" quietly {
+245.                 restore, preserve
+246.                 keep `teacher' `year' `by' `output_addvars' 
+247.                 bys `teacher' `year' `by' `output_addvars': keep if _n==1
+248.                 merge m:1 `teacher' `year' `by' using `"`output'"', nogen 
+> nolabel
+249.         }
+250.         sort `teacher' `year' `by'
+251.         qui save `"`output'"', replace
+252.         
+.         * Save "variances / covariances / correlations" dataset to csv
+.         if ("`by'"!="") {
+253.                 local bylabels=""
+254.                 forvalues i=1/`by_vals' {
+255.                         local bylabel : label `byvar' `i', strict
+256.                         local bylabel=subinstr("`bylabel'"," ","_",.)
+257.                         local bylabels `bylabels' _`bylabel'
+258.                 }
+259.                 mata:saveVariancesToDataset(cov_lag_accum, corr_lag_accum,
+>  obs_lag_accum, cov_se_lag_accum, var_total_accum, var_class_accum, var_ind_a
+> ccum, cov_sameyear_accum, corr_sameyear_accum, obs_sameyear_accum, tokens(st_
+> local("bylabels")))
+260.         }
+261.         else mata:saveVariancesToDataset(cov_lag_accum, corr_lag_accum, ob
+> s_lag_accum, cov_se_lag_accum, var_total_accum, var_class_accum, var_ind_accu
+> m, cov_sameyear_accum, corr_sameyear_accum, obs_sameyear_accum, "")
+262.         if (`nooutput'!=1) qui outsheet using `"`output'_variance.csv"', c
+> omma replace
+263.         
+.         * Load the correct output dataset
+.         tokenize "`data'"
+264.         if inlist("`1'","preserve","merge") {
+265.                 restore
+266.                 
+.                 if (`merge_resid'==1) {
+267.                         if ("`byvar'"!="") qui keep if missing(`teacher',`
+> year',`class',`byvar')
+268.                         else qui keep if missing(`teacher',`year',`class')
+269.                         forvalues l=1/`by_vals' {
+270.                                 append using `"`resid_data_`l''"', nolabel
+271.                         }
+272.                 }
+273.                 if (`merge_tv'==1) qui merge m:1 `teacher' `year' `by' `ou
+> tput_addvars' using `"`output'"', nogen nolabel
+274.                 /* else "`data'"=="preserve", and that is already loaded. 
+> */            
+.         }
+275.         else {
+276.                 restore, not
+277.                 
+.                 if ("`data'"=="tv") use `"`output'"', clear
+278.                 /* else "`data'"=="variance", and that is already loaded. 
+> */            
+.         }
+279.         
+.         * Close log
+.         if (`nooutput'!=1) log close
+280. 
+. end
+
+. 
+. 
+. version 11
+
+. set matastrict on
+
+. 
+. mata:
+------------------------------------------------- mata (type end to exit) -----
+: real rowvector computeweights(real matrix M, real scalar i, real colvector c,
+>  | real colvector weights) {
+>         
+>         // construct matrix A which is used to select the relevant elements o
+> f M in constructing the VCV matrix
+>         real matrix temp
+>         real matrix A
+>         temp=designmatrix(c)
+>         A = temp, J(rows(c),cols(M)-cols(temp),0)
+>         
+>         // use A to select elements of M and build the VCV.  The second term 
+> adjusts the diagonal elements of the VCV matrix to account for the class-leve
+> l and individual-level shocks
+>         real matrix vcv
+>         if (args()==4) vcv=A*M*A' + diag(1:/weights)
+>         else vcv=A*M*A'
+>         
+>         // phi is the vector of autocovariances, selected correctly using the
+>  matrix A.
+>         real rowvector phi
+>         phi=M[i,.]*A'
+>         
+>         // return the vector of weights
+>         return (phi*invsym(vcv))
+>         
+> }
+
+: 
+: real matrix compute_cov_corr(string scalar scores_var, string scalar weight_v
+> ar, real scalar dim, string scalar teacher_var) {
+>         
+>         // pre-allocate matrix
+>         real matrix CC
+>         CC = J(dim,4,.)
+>         
+>         // Fill cov's and corr's: between time t and t+i
+>         real scalar i
+>         real scalar tstat
+>         for (i=1; i<=dim; i++) {
+>                 // check that there are >=2 obs, in order to compute covarian
+> ce
+>                 stata(invtokens(("quietly count if !missing(",scores_var,",f"
+> ,strofreal(i),".",scores_var,")"),""))
+>                 if (st_numscalar("r(N)")>1) {
+>                         stata(invtokens(("quietly corr ",scores_var," f",stro
+> freal(i),".",scores_var," [aw=",weight_var,"+f",strofreal(i),".",weight_var,"
+> ], cov"),""))
+>                         CC[i,1]=st_numscalar("r(cov_12)")
+>                         CC[i,2]=CC[i,1] / ( sqrt(st_numscalar("r(Var_1)")) * 
+> sqrt(st_numscalar("r(Var_2)")) )
+>                 }
+>                 CC[i,3]=st_numscalar("r(N)")
+>                 
+>                 // Compute SE for covariance estimate
+>                 if (st_numscalar("r(N)")>1) {
+>                         stata(invtokens(("quietly reg ",scores_var," f",strof
+> real(i),".",scores_var," [aw=",weight_var,"+f",strofreal(i),".",weight_var,"]
+> , cluster(",teacher_var,")"),""))
+>                         tstat=st_matrix("e(b)")[1,1] / sqrt( st_matrix("e(V)"
+> )[1,1] )
+>                         CC[i,4]=abs(CC[i,1]/tstat)
+>                 }
+>         }
+> 
+>         return (CC)
+> }
+
+: 
+: real rowvector create_m(real colvector lag_covariances, real scalar cov_samey
+> ear, | real scalar lagdim, real scalar driftlimit) {
+> 
+>         real rowvector m
+> 
+>         if (args()==2)  m=cov_sameyear,lag_covariances'
+>         else {
+>                 if (length(lag_covariances)<driftlimit) _error("driftlimit sp
+> ecified is higher than the number of lags in the dataset")
+>                 m=cov_sameyear,lag_covariances'[1..driftlimit],J(1,lagdim-dri
+> ftlimit,lag_covariances[driftlimit])
+>         }
+>         
+>         return (m)
+> }
+
+: 
+: void check_m_nomissing(real rowvector m) {
+>         if (missing(m)>0) _error("covariance vector contains missing values")
+> }
+
+: 
+: real matrix vectorToStripeDiag(real vector m) {
+>         real scalar dim
+>         dim = length(m)
+>         
+>         // pre-allocate matrix M
+>         real matrix M
+>         M=J(dim,dim,.)
+>         
+>         // fill lower triangle of M
+>         real scalar i
+>         real scalar j
+>         for (i=1; i<=dim; i++) {
+>                 for (j=i; j<=dim; j++) {
+>                         M[j,i]=m[j-i+1]
+>                 }
+>         }
+>         
+>         _makesymmetric(M)
+>         return (M)
+> }
+
+: 
+: real matrix rightAppendMatrices(real matrix A, real matrix B) {
+>         real scalar rA
+>         real scalar rB
+>         rA=rows(A)
+>         rB=rows(B)
+>         
+>         if (rA==rB)             return (A,B)
+>         else if (rA<rB) return ( ( A \ J(rB-rA,cols(A),.) ) , B )
+>         else                    return ( A , ( B \ J(rA-rB,cols(B),.) ) )
+> }
+
+: 
+: void saveVariancesToDataset(real matrix cov_lag_accum, real matrix corr_lag_a
+> ccum, real matrix obs_lag_accum, real matrix cov_se_lag_accum, real rowvector
+>  var_total_accum, real rowvector var_class_accum, real rowvector var_ind_accu
+> m, real rowvector cov_sameyear_accum, real rowvector corr_sameyear_accum, rea
+> l rowvector obs_sameyear_accum, string rowvector suffixes) {
+> 
+>         stata("clear")
+>         
+>         // count number of lags, create correct number of obs, generate varia
+> ble for number of lags
+>         real scalar n_lags
+>         n_lags=rows(cov_lag_accum)
+>         
+>         real scalar null
+>         null=st_addvar("int","lag")
+>         
+>         st_addobs(n_lags)
+>         stata("qui replace lag=_n")
+>         st_addobs(1)
+>         
+>         // generate output variables
+>         st_store(1::n_lags, st_addvar("float", "cov_lag":+suffixes), cov_lag_
+> accum)
+>         st_store(1::n_lags, st_addvar("float", "corr_lag":+suffixes), corr_la
+> g_accum)
+>         st_store(1::n_lags, st_addvar("float", "obs_lag":+suffixes), obs_lag_
+> accum)
+>         st_store(1::n_lags, st_addvar("float", "cov_se_lag":+suffixes), cov_s
+> e_lag_accum)
+>         st_store(n_lags+1, st_addvar("float", "var_total":+suffixes), var_tot
+> al_accum)
+>         st_store(n_lags+1, st_addvar("float", "var_class":+suffixes), var_cla
+> ss_accum)
+>         st_store(n_lags+1, st_addvar("float", "var_ind":+suffixes), var_ind_a
+> ccum)
+>         st_store(n_lags+1, st_addvar("float", "cov_sameyear":+suffixes), cov_
+> sameyear_accum)
+>         st_store(n_lags+1, st_addvar("float", "corr_sameyear":+suffixes), cor
+> r_sameyear_accum)
+>         st_store(n_lags+1, st_addvar("float", "obs_sameyear":+suffixes), obs_
+> sameyear_accum)
+> }
+note: variable null set but not used.
+
+: 
+: real scalar driftcalc(real matrix M, real scalar i, real colvector c, real co
+> lvector weights, real colvector scores) {
+> 
+>         // b is the vector of weights
+>         real rowvector b
+>         b=computeweights(M, i, c, weights)
+>         
+>         // return the computed tv estimate
+>         return (b*scores)
+>         
+> }
+
+: 
+: void driftcalclist(real matrix M, string scalar teacher_var, string scalar ti
+> me_var, string scalar scores_var, string scalar weights_var, string scalar te
+> acherobs_var, string scalar va_var, | string scalar va_2yr_l_var, string scal
+> ar va_2yr_f_var, string scalar va_ss_var) {
+> 
+>         real scalar quasi
+>         if (args()==7) quasi=0
+>         else if (args()==10) quasi=1
+>         else _error("The mata command driftcalclist must either be called wit
+> h no quasi-experiment variables or the full set of 3 quasi-experiment variabl
+> es.)")
+> 
+>         real scalar nobs
+>         nobs=st_nobs()
+>         
+>         // get variable indices for the variables referenced in the loop (ref
+> erring by index speeds up the loop)
+>         real scalar teacher_var_ind
+>         real scalar time_var_ind
+>         real scalar teacherobs_var_ind
+>         real scalar va_var_ind
+>         teacher_var_ind=st_varindex(teacher_var)
+>         time_var_ind=st_varindex(time_var)
+>         teacherobs_var_ind=st_varindex(teacherobs_var)
+>         va_var_ind=st_varindex(va_var)
+>         if (quasi==1) {
+>                 real scalar va_2yr_l_var_ind
+>                 real scalar va_2yr_f_var_ind
+>                 real scalar va_ss_var_ind
+>                 va_2yr_l_var_ind=st_varindex(va_2yr_l_var)
+>                 va_2yr_f_var_ind=st_varindex(va_2yr_f_var)
+>                 va_ss_var_ind=st_varindex(va_ss_var)
+>         }
+>         
+>         // create views of the variables we need
+>         real matrix Z
+>         st_view(Z=.,.,(teacher_var,time_var,weights_var,scores_var))
+>         
+>         
+>         // Declarations
+>         real scalar obs
+>         real scalar teacher
+>         real scalar obs_teacher
+>         real scalar time
+>         real scalar new_teacher
+>         real scalar new_time
+>         real scalar year_index
+>         real matrix Z_teacher
+>         real matrix Z_obs
+>         real matrix Z_quasi
+>         
+>         // set missing b/c referenced in first loop's if statement
+>         teacher=.
+>         time=.
+>         
+>         // Loop over all observations
+>         for (obs=1; obs<=nobs; obs++) {
+>         
+>                 new_teacher=_st_data(obs,teacher_var_ind)
+>                 new_time=_st_data(obs,time_var_ind)
+>         
+>                 // Only perform calculations if we've reached a new teacher-y
+> ear
+>                 if (new_time != time | new_teacher != teacher) {
+>         
+>                         // save new time id
+>                         time=new_time
+>                 
+>                         // If we've reached a new teacher
+>                         if (new_teacher != teacher) {
+>                         
+>                                 // save new teacher id
+>                                 teacher=new_teacher
+>                                 
+>                                 // save number of observations for that teach
+> er
+>                                 obs_teacher=_st_data(obs,teacherobs_var_ind)
+>                                 
+>                                 // select subview of Z, Z_teacher, which only
+>  contains the correct teacher's data
+>                                 st_subview(Z_teacher=., Z, (obs,obs+obs_teach
+> er-1), .)
+>                                 
+>                                 // define teacher-specific scalar which index
+> es first year of teaching at 1
+>                                 year_index=min(Z_teacher[.,2])-1
+>                                 
+>                         }
+>                 
+>                         // remove the rows of Z_teacher corresponding to curr
+> ent year
+>                         Z_obs=select(Z_teacher, Z_teacher[.,2]:!=time)
+>                                         
+>                         // remove rows of Z_obs that do not have score data
+>                         Z_obs=select(Z_obs, Z_obs[.,4]:!=.)
+>                         
+>                         // if there are actually observations in other years,
+>  compute VA
+>                         if (rows(Z_obs) > 0) {  
+>                                 st_store(obs,va_var_ind,driftcalc(M,time-year
+> _index,Z_obs[.,2]:-year_index,Z_obs[.,3],Z_obs[.,4]))
+>                         }
+>                         
+>                         if (quasi==1) {
+>                                 // remove the rows of Z_obs corresponding to 
+> the previous year
+>                                 Z_quasi=select(Z_obs, Z_obs[.,2]:!=time-1)
+>                                 if (rows(Z_quasi) > 0) {
+>                                         st_store(obs,va_2yr_l_var_ind,driftca
+> lc(M,time-year_index,Z_quasi[.,2]:-year_index,Z_quasi[.,3],Z_quasi[.,4]))
+>                                 }
+>                                 
+>                                 // remove the rows of Z_obs corresponding to 
+> the next year
+>                                 Z_quasi=select(Z_obs, Z_obs[.,2]:!=time+1)
+>                                 if (rows(Z_quasi) > 0) {
+>                                         st_store(obs,va_2yr_f_var_ind,driftca
+> lc(M,time-year_index,Z_quasi[.,2]:-year_index,Z_quasi[.,3],Z_quasi[.,4]))
+>                                 }
+>                                 
+>                                 // remove the rows of Z_obs corresponding to 
+> {t-2,t-1,t+1,t+2}
+>                                 Z_quasi=select(Z_obs, (Z_obs[.,2]:>time+2)+(Z
+> _obs[.,2]:<time-2))
+>                                 if (rows(Z_quasi) > 0) {
+>                                         st_store(obs,va_ss_var_ind,driftcalc(
+> M,time-year_index,Z_quasi[.,2]:-year_index,Z_quasi[.,3],Z_quasi[.,4]))
+>                                 }
+>                         }               
+>                 }
+>         }
+> }
+
+: end
+-------------------------------------------------------------------------------
+
+. 
+end of do-file
+
+. 
+. * VAM calculation
+. capture program drop fun_vam
+
+. program define fun_vam
+  1.         args outcome cov_opt
+  2.                 * args:
+.                 *       "outcome": outcome variable of interest (e.g., anysc1
+> 621, mathscal) 
+.                 *       "cov_opt": indicator for whether or not to include th
+> e "excluded" adjustment controls in the VAM calculation. 
+. 
+.         if ("${vam_measure}" == "jackson") | ("${vam_measure}" == "naive") | 
+> ("${vam_measure}" == "blp") | ("${vam_measure}" == "none") {
+  3. 
+.                 *** 1) Calculate residuals and LOO VAMs (w/t EB shrinkage)
+.                 if `cov_opt' == 1 {
+  4.                         qui areg `outcome' ${covdesign} ${covsadj}, abs(te
+> achid)        
+  5.                 }
+  6.                 else {
+  7.                         qui areg `outcome' ${covdesign}, abs(teachid)   
+  8.                 }
+  9.                 predict score_r, dresiduals
+ 10.                 predict xhat, xb
+ 11.                 predict xhatd, xbd
+ 12.                 gen teach_fe = xhatd - xhat
+ 13. 
+.                 *** 2) Build teacher-year-subject level dataset
+.                 bysort teachid year: egen double ebar_jt = mean(score_r)
+ 14.                 qui sum ebar_jt
+ 15.                 replace ebar_jt = ebar_jt - r(mean)
+ 16. 
+.                 * Recentered leave-year-out ebar
+.                 bysort teachid: egen double res_j_total = total(score_r)
+ 17.                 bysort teachid year: egen double res_jt_total = total(scor
+> e_r)
+ 18.                 bysort teachid: egen double n_j = count(score_r)
+ 19.                 bysort teachid year: egen double n_jt = count(score_r)
+ 20. 
+.                 gen double loo_ebar_jt = (res_j_total - res_jt_total)/(n_j - 
+> n_jt)
+ 21.                 qui sum loo_ebar_jt
+ 22.                 replace loo_ebar_jt = loo_ebar_jt - r(mean)
+ 23.                 bysort teachid: egen nyears_j = nvals(year)
+ 24. 
+.                 * Leave out school-grade
+.                 bysort teachid school_fe grade: egen double res_j_total_schgr
+> ade = total(score_r)
+ 25.                 bysort teachid school_fe grade: egen double n_j_schgrade =
+>  count(score_r)
+ 26.                 gen loo_ebar_schgrade = (res_j_total - res_j_total_schgrad
+> e) / (n_j - n_j_schgrade)
+ 27.                 gen ebar_schgrade = res_j_total_schgrade / n_j_schgrade
+ 28. 
+.                 * Leave out school
+.                 bysort teachid school_fe: egen double res_j_total_school = to
+> tal(score_r)
+ 29.                 bysort teachid school_fe: egen double n_j_school = count(s
+> core_r)
+ 30.                 gen loo_ebar_school = (res_j_total - res_j_total_school) /
+>  (n_j - n_j_school)
+ 31.                 gen ebar_school = res_j_total_school / n_j_school
+ 32.                 
+.                 * Get total students and scores from other years
+.                 preserve 
+ 33.                 collapse (mean) n_jt res_jt_total, by(teachid year subject
+> )
+ 34.                 rename n_jt n_jtm1 
+ 35.                 rename res_jt_total res_jtm1_total
+ 36.                 rename year merge_year
+ 37.                 tempfile twoyearlom
+ 38.                 save `twoyearlom', replace
+ 39.                 restore
+ 40. 
+.                 * Leave outs of additional years
+.                 gen double loo_ebar_jt2 = (res_j_total - res_jt_total)
+ 41.                 gen double loo_denom_tmp = (n_j - n_jt)
+ 42. 
+.                 foreach k of numlist 1/2 {
+ 43.                         capture drop merge_year
+ 44.                         gen merge_year = year - `k'
+ 45.                         merge m:1 teachid merge_year subject using `twoyea
+> rlom', nogen keep(1 3)
+ 46.                                 replace loo_ebar_jt2 = loo_ebar_jt2 - res_
+> jtm1_total
+ 47.                                 replace loo_denom_tmp = loo_denom_tmp - n_
+> jtm1
+ 48.                                 if `k' == 1 {
+ 49.                                         gen loo_ebar_jtm1 = loo_ebar_jt2/l
+> oo_denom_tmp
+ 50.                                 }
+ 51.                                 drop res_jtm1_total n_jtm1
+ 52. 
+.                         capture drop merge_year
+ 53.                         gen merge_year = year + `k'
+ 54.                         merge m:1 teachid merge_year subject using `twoyea
+> rlom', nogen keep(1 3)
+ 55.                                 replace loo_ebar_jt2 = loo_ebar_jt2 - res_
+> jtm1_total
+ 56.                                 replace loo_denom_tmp = loo_denom_tmp - n_
+> jtm1
+ 57.                                 if `k' == 1 {
+ 58.                                         gen loo_ebar_jtm1p1 = loo_ebar_jt2
+> /loo_denom_tmp
+ 59.                                         gen loo_ebar_jtp1 = (res_j_total -
+>  res_jt_total - res_jtm1_total)/(n_j - n_jt - n_jtm1)
+ 60.                                 }
+ 61.                                 drop res_jtm1_total n_jtm1
+ 62.                 }
+ 63.                 
+.                 replace loo_ebar_jt2 = loo_ebar_jt2/loo_denom_tmp
+ 64.                 replace loo_ebar_jt2 = . if loo_denom_tmp <= 0 | loo_denom
+> _tmp == .
+ 65.                 drop loo_denom_tmp
+ 66. 
+.                 qui sum loo_ebar_jt2
+ 67.                 replace loo_ebar_jt2 = loo_ebar_jt2 - r(mean)
+ 68. 
+.                 qui sum loo_ebar_jtm1
+ 69.                 replace loo_ebar_jtm1 = loo_ebar_jtm1 - r(mean)
+ 70. 
+.                 if "$vam_measure" == "none" {
+ 71.                         gen vam  = loo_ebar_jt
+ 72.                         gen vaml2 = loo_ebar_jtm1
+ 73.                         gen vaml3 = loo_ebar_jtm1p1
+ 74.                         gen vaml4 = loo_ebar_jt2
+ 75.                         gen vamlf1 = loo_ebar_jtp1
+ 76.                         gen resid = score_r - vam
+ 77.                         gen yhat = xhat + vam
+ 78.                 }
+ 79.                 else if "$vam_measure" == "blp" {
+ 80.                         * BLP using LOO mean
+.                         reg ebar_jt ibn.nyears_j#c.loo_ebar_jt
+ 81.                         predict vam, xb
+ 82.                         gen resid = score_r - vam
+ 83.                         gen yhat = xhat + vam
+ 84. 
+.                         * BLP using leave out t and t-1
+.                         reg ebar_jt ibn.nyears_j#c.loo_ebar_jtm1
+ 85.                         predict vaml2, xb
+ 86. 
+.                         * BLP using leave out t, t-1 and t+1
+.                         reg ebar_jt ibn.nyears_j#c.loo_ebar_jtm1p1
+ 87.                         predict vaml3, xb
+ 88. 
+.                         * BLP using leave out t, t-1, t-2, t+1 and t+2
+.                         reg ebar_jt ibn.nyears_j#c.loo_ebar_jt2
+ 89.                         predict vaml4, xb
+ 90.                 }
+ 91. 
+.                 else if "$vam_measure" == "naive" {
+ 92. 
+.                         *** lambda (shrinkage)
+.                         * _tmp_n_jt
+.                         capture drop _tmp_n_jt
+ 93.                         bysort teachid year: gen double _tmp_n_jt = n_jt^2
+>  if _n == 1
+ 94.                         
+.                         capture drop total_n_jt2_loo
+ 95.                         bysort teachid: egen total_n_jt2_loo = total(_tmp_
+> n_jt)
+ 96.                         replace total_n_jt2_loo = total_n_jt2_loo - n_jt^2
+ 97.                         capture drop _tmp_n_jt
+ 98. 
+.                         capture drop _lambda_jt
+ 99.                         gen double _lambda_jt = (total_n_jt2_loo/(n_jt_oth
+> er^2))*`var_classroom' + `var_e'/(n_jt_other) + `var_teacher_effects'
+100.                         bysort teachid year: replace _lambda_jt = . if _n 
+> > 1
+101.                         qui sum _lambda_jt
+102.                         capture drop lambda
+103.                         gen double lambda = `var_teacher_effects'/r(mean)
+104. 
+.                         * VAM with naive shrinkage
+.                         capture drop vam_naiveeb
+105.                         gen double vam_naiveeb = lambda*loo_ebar_jt
+106.                 }
+107.                 else if "${vam_measure}" == "jackson"{
+108.                         *** 3) Notes: To conduct Jackson/Kane and Staigr E
+> B procedure we need several variances
+.                         * Variance of residuals (=Var_e + Var_teachers + Var_
+> classroom) 
+.                         qui sum score_r
+109.                         local var_res=r(sd)^2
+110. 
+.                         * Variance of within-class error term (Var_e)
+.                         capture drop classYear
+111.                         egen classYear = group(teachid year)
+112. 
+.                         areg score_r, abs(classYear) 
+113.                         capture drop _tmpres
+114.                         predict _tmpres, residuals
+115.                         qui sum _tmpres
+116.                         local var_e=r(sd)^2
+117.                         drop _tmpres
+118. 
+. 
+.                         * Variance of teacher effects --- will be done by ran
+> dom matches of classrooms
+.                         * We will use both methods and compare. But first bui
+> lt data in a format of a classroom residuals
+.                         preserve
+119.                         keep teachid year n_jt ebar_jt
+120.                         duplicates drop 
+121. 
+.                         * Variance of teacher effects using random matching o
+> f classrooms
+.                         * random match of classrooms within a teacher
+.                         global numiters = 200
+122.                         mat sims = J(${numiters},1,.)
+123.                         local cc = 1
+124.                         forvalues itr = 1(1)$numiters{
+125.                                 dis "Working on iteration `itr'"
+126.                                 capture drop _draw _random_match
+127.                                 gen double _draw = runiform() 
+128.                                 sort teachid _draw
+129.                                 by teachid: gen _random_match = _n
+130. 
+.                                 forvalues ss = 1(1)2{
+131.                                         capture drop *ebar`ss' 
+132.                                         gen _ebar`ss' = ebar_jt if _random
+> _match == `ss'        
+133.                                         by teachid: egen ebar`ss' = max(_e
+> bar`ss')
+134.                                 }
+135.                                 corr ebar1 ebar2 if _random_match == 1, co
+> variance
+136.                                 mat sims[`cc',1] = r(cov_12)
+137.                                 local ++cc
+138.                         }
+139.                         svmat sims
+140.                         rename sims1 sims
+141.                         sum sims, d
+142.                         local var_teacher_effects = r(p50)
+143.                         restore
+144. 
+.                         * Variance of classroom effects
+.                         local var_classroom = `var_res' - `var_e' - `var_teac
+> her_effects'
+145. 
+.                         *** 4) EB shrinkage
+.                         local cc = 1
+146.                         levelsof year, local(_listyears)
+147.                         foreach yr of local _listyears{
+148.                                 dis "Working on year: `yr'"
+149.                                 preserve
+150.                                 keep teachid year n_jt ebar_jt
+151.                                 duplicates drop 
+152.                                 drop if year == `yr'
+153. 
+.                                 gen double h_jt = 1/(`var_classroom' + `var_e
+> '/n_jt )
+154.                                 gen h_by_ebar_jt=ebar_jt/(`var_classroom' 
+> + `var_e'/n_jt )
+155.                                 bysort teachid: egen denominator=total(h_j
+> t)
+156.                                 bysort teachid: egen numerator=total(h_by_
+> ebar_jt)
+157.                                 gen double ebar_j= numerator/denominator
+158.                                 gen double vam_eb = ebar_j*(`var_teacher_e
+> ffects'/(`var_teacher_effects'+(1/denominator)))
+159. 
+.                                 * Save to a temp file
+.                                 keep vam_eb teachid
+160.                                 duplicates drop
+161.                                 gen year = `yr'
+162. 
+.                                 if `cc' == 1{
+163.                                         tempfile vamEB
+164.                                         save vamEB, replace               
+>               
+165.                                 }
+166.                                 else{
+167.                                         append using vamEB
+168.                                         save vamEB, replace
+169.                                 }
+170.                                 restore
+171.                                 local ++cc
+172.                         }
+173. 
+.                         * Merge back
+.                         merge m:1 teachid year using vamEB, nogen
+174.                 }
+175. 
+.                 dis "SD of teacher effects is: `var_teacher_effects'"
+176.                 dis "SD of classroom shocks is: `var_classroom'"
+177.                 dis "SD of individual within-classroom residuals is: `var_
+> e'"
+178.         }
+179.         else if "${vam_measure}" == "chetty"{
+180.                 *Chetty's version of vam (he just uses something he calls 
+> "score")
+.                 capture drop classChetty score_r
+181.                 egen classChetty = group(teachid year)
+182.                 global dtadir "temp/"
+183.                 if `cov_opt' == 1{
+184.                         vam `outcome', teacher(teachid) year(year) class(c
+> lassChetty) controls(${covdesign} ${covsadj}) output("$dtadir/tfx") tfx_resid
+> (teachid) driftlimit(5) data(merge tv score_r) quasiexperiment
+185.                 }
+186.                 else{
+187.                         vam `outcome', teacher(teachid) year(year) class(c
+> lassChetty) controls(${covdesign}) output("$dtadir/tfx") tfx_resid(teachid) d
+> riftlimit(5) data(merge tv score_r) quasiexperiment
+188.                 }               
+189.                 rename tv vam
+190.                 rename tv_2yr_l vaml2
+191.                 rename tv_ss vaml4
+192.                 gen vaml3 = vaml4
+193.                 gen yhat = vaml3
+194.         }
+195.         else if "${vam_measure}" == "MElogit"{
+196.                 
+.                 melogit `outcome' $covdesign || teachid:
+197.                 * estimates store melgtNoDemo
+. 
+.                 capture drop vam_melgt
+198.                 gen vam_melgt = .
+199.                 levelsof year, local(_tmp)
+200.                 foreach yy of local _tmp{
+201.                         dis `Working on LOO VAM/EBmeans of year: yy'
+202.                         capture drop _tmpyear*
+203.                         predict _tmpyear if year != `yy', remeans
+204.                         bysort teachid: egen double _tmpyear2 = max(_tmpye
+> ar)
+205.                         assert vam_melgt ==. if year == `yy'
+206.                         replace vam_melgt =  _tmpyear2 if year == `yy'
+207.                 }
+208.         }
+209.         else {
+210.                 dis "NO valid VAM measure specified"
+211.         }
+212. end
+
+. 
+. 
+end of do-file
+
+. global outcome "aoc_crim"
+
+. di "Testing predict for ${outcome}"
+Testing predict for aoc_crim
+
+. reg ${outcome} ${covsadj}
+note: madj_pared_nohs omitted because of collinearity.
+note: madj_pared_hsorless omitted because of collinearity.
+note: madj_pared_somecol omitted because of collinearity.
+note: madj_pared_baormore omitted because of collinearity.
+note: madj_lag2_mathscal omitted because of collinearity.
+note: madj_lag2_readscal omitted because of collinearity.
+
+      Source |       SS           df       MS      Number of obs   =    20,000
+-------------+----------------------------------   F(6, 19993)     =      0.66
+       Model |  .711543984         6  .118590664   Prob > F        =    0.6792
+    Residual |  3572.97441    19,993  .178711269   R-squared       =    0.0002
+-------------+----------------------------------   Adj R-squared   =   -0.0001
+       Total |  3573.68595    19,999  .178693232   Root MSE        =    .42274
+
+------------------------------------------------------------------------------
+    aoc_crim | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+  pared_nohs |  -.0053057   .0127743    -0.42   0.678    -.0303443    .0197329
+pared_hsor~s |   .0069244   .0060718     1.14   0.254    -.0049769    .0188257
+pared_some~l |   .0049379   .0060208     0.82   0.412    -.0068633    .0167391
+pared_baor~e |  -.0082946   .0072733    -1.14   0.254     -.022551    .0059618
+lag2_maths~l |   .0021185   .0030813     0.69   0.492    -.0039212    .0081582
+lag2_reads~l |  -.0008095   .0031043    -0.26   0.794    -.0068942    .0052752
+madj_pare~hs |          0  (omitted)
+madj_pare~ss |          0  (omitted)
+madj_pared~l |          0  (omitted)
+madj_pared~e |          0  (omitted)
+madj_l~hscal |          0  (omitted)
+madj_l~dscal |          0  (omitted)
+       _cons |   .2299483    .005024    45.77   0.000     .2201008    .2397958
+------------------------------------------------------------------------------
+
+. predict test_all_idx, xb
+
+. su test_all_idx
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+test_all_idx |     20,000      .23295    .0059648   .2111654     .24989
+
+. 
+end of do-file
