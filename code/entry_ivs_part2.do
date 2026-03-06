@@ -1,14 +1,24 @@
+* =============================================================================
+* entry_ivs_part2.do — Table A6
+*
+* Same entry IV strategy as entry_ivs_part1.do but adds school-grade fixed
+* effects (via ivreghdfe with absorb(school_fe#grade)). This tests whether
+* the forecast unbiasedness result holds within school-grade cells.
+*
+* Table A6: short-run outcomes (test scores, behaviors, study skills)
+*   with school-grade FE
+* =============================================================================
 clear all
 clear matrix
 set more off
 capture restore
 
 * Load data and options
-do code/set_options.do 
+do code/set_options.do
 do code/preamble.do
 global vam_measure = "none"
 
-* Run short-run regressions
+* Run short-run entry IV regressions with school-grade FE
 eststo clear
 local mcount = 1
 foreach outcome of varlist testscores behavpca studypca {

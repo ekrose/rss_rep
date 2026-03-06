@@ -1,3 +1,18 @@
+* =============================================================================
+* entry_ivs_part3.do — Table A7
+*
+* Extended entry IV analysis for criminal arrest, progressively adding fixed
+* effects. Uses school-grade entry of new teachers as the instrument.
+*
+* Columns 1-3: 2SLS regressions of criminal arrest on school-grade-level VA,
+*   instrumented by entry IV, with increasingly stringent FE:
+*     Col 1: design controls only
+*     Col 2: + school-grade FE
+*     Col 3: + school-grade FE + district-grade-year FE
+* Columns 4-6: Reduced-form regressions of the excluded-variable index
+*   (all_aoc_crim_idx) on the entry IV, with the same FE progression.
+*   Tests whether the IV correlates with observables.
+* =============================================================================
 clear all
 clear matrix
 set more off
@@ -9,8 +24,9 @@ global vam_measure = "none"
 do code/set_options.do
 do code/preamble.do
 
+* Create district identifier from LEA (local education agency)
 egen district = group(lea)
-fun_vam "${outcome}" 0 
+fun_vam "${outcome}" 0
 
 eststo clear
 local mcount = 1

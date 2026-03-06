@@ -1,3 +1,27 @@
+"""
+vcov_hetero.py — Figures 3-4 and A5
+
+Heterogeneity analysis: estimates correlations and 1-SD effects of teacher
+effects across student subgroups.
+
+For each binary covariate (white, male, disadvantaged, arrest risk):
+  - estimate_heterog_variance.do produces separate residuals for subgroup=0
+    and subgroup=1 (e.g., testscores_r0, testscores_r1)
+  - This script computes cross-group correlations and 1-SD effects
+
+Figures:
+  3a: Correlation of short-run effects across subgroups
+  3b: Correlation of CJC long-run effects across subgroups
+  3c: Correlation of academic long-run effects across subgroups
+  4a: 1-SD effect on criminal arrest by subgroup (behavioral effects)
+  4b: 1-SD effect on incarceration by subgroup (behavioral effects)
+  A5a: 1-SD effect on criminal arrest by subgroup (test score effects)
+  A5b: 1-SD effect on incarceration by subgroup (test score/study skill effects)
+
+Reads: temp/teach_mean_resids_cov{white,male,disadv,atrisk}.dta
+Writes: figures/figure3a-c.pdf, figures/figure4a-b, figures/figureA5a-b
+"""
+
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -20,7 +44,7 @@ plt.style.use('ggplot')
 
 #####################################
 ### 0) Options/globals
-##################################### 
+#####################################
 
 # Color options
 col_grad = 'blue'

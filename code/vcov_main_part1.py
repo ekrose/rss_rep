@@ -1,3 +1,17 @@
+"""
+vcov_main_part1.py — Table 3, Figure A1
+
+Computes the variance-covariance matrix of teacher effects on short-run
+outcomes using U-statistic estimators:
+  - Table 3: SD of teacher effects (diagonal) and correlations (off-diagonal)
+    for test scores, math, reading, study skills, and behaviors
+  - Figure A1: scatter plot comparing SD(math) vs SD(reading) effects to
+    estimates from other papers in the literature
+
+Reads: temp/teach_mean_resids.dta (wide format from estimate_variance.do)
+Writes: tables/table3.tex, figures/figureA1.pdf
+"""
+
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -21,7 +35,7 @@ plt.style.use('ggplot')
 
 #####################################
 ### 0) Options/globals
-##################################### 
+#####################################
 # Color options
 col_grad = 'blue'
 col_gpa = 'royalblue'

@@ -1,3 +1,18 @@
+"""
+vcov_main_part2.py — Table 2
+
+Computes the full variance-covariance matrix of teacher effects on both
+short-run and long-run outcomes, with analytical standard errors:
+  - Table 2: SD of teacher effects and correlations for long-run outcomes
+    (CJC, GPA, graduation, college) — the long-run counterpart to Table 3
+
+Uses the same teacher-year residuals as part1 but adds long-run outcomes
+(criminal justice contact, GPA, college, graduation).
+
+Reads: temp/teach_mean_resids.dta (wide format from estimate_variance.do)
+Writes: tables/table2.tex
+"""
+
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -20,7 +35,7 @@ plt.style.use('ggplot')
 
 #####################################
 ### 0) Options/globals
-##################################### 
+#####################################
 # Color options
 col_grad = 'blue'
 col_gpa = 'royalblue'

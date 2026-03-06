@@ -1,3 +1,19 @@
+"""
+vcov_main_part3.py — Figure 1
+
+Bar charts showing the effect of a 1-SD increase in short-run teacher effects
+(test scores, behaviors, study skills) on each long-run outcome:
+  - Figure 1a: CJC outcomes (any arrest, criminal arrest, index crime, incarceration)
+  - Figure 1b: academic outcomes (GPA, graduation, college attendance)
+
+Each bar height = Cov(mu^short, mu^long) / SD(mu^short), i.e., the "1-SD
+effect." Error bars show 95% CIs from analytical standard errors. Percentage
+annotations show the effect relative to the outcome mean.
+
+Reads: temp/teach_mean_resids.dta
+Writes: figures/figure1a.pdf, figures/figure1b.pdf
+"""
+
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -20,7 +36,7 @@ plt.style.use('ggplot')
 
 #####################################
 ### 0) Options/globals
-##################################### 
+#####################################
 # Color options
 col_grad = 'blue'
 col_gpa = 'royalblue'

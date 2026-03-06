@@ -1,3 +1,23 @@
+* =============================================================================
+* preamble.do
+* Sourced by most .do files after set_options.do. Performs all data preparation
+* steps needed before estimation:
+*   1. Sample restrictions: grades > 3, years >= 1997, teachers with >= 2 years
+*   2. Derived variables: male indicator, college-bound, twin indicators
+*   3. PCA indices: cognitive (math+reading), study habits (homework+reading+TV),
+*      and behavioral (absences+discipline+grade retention) — computed at current
+*      and lead periods (lead1_ through lead4_)
+*   4. Subject-specific test scores: assigns testscores = cogpca for homeroom,
+*      mathscal for math, readscal for English
+*   5. Missing-value handling: creates dummy indicators (mdes_*, madj_*) for
+*      missing covariates and replaces missing values with zero
+*   6. Prediction indices: regresses outcomes on excluded covariates (covsadj)
+*      to form all_*_idx, par_*_idx, lag_*_idx — used in OVB and IV analyses
+*   7. VAM estimation: defines fun_vam program for computing leave-out
+*      value-added measures with multiple shrinkage options (none, BLP, Jackson
+*      EB, Chetty, naive EB)
+* =============================================================================
+
 * Create any variables as needed
 encode subject, gen(subj)
 
@@ -22,7 +42,10 @@ bys twin_id year grade: egen sgend_twin = max(female)
 bys twin_id year grade: egen sgend_twin2 = min(female)
 gen twins_same_gend = twin_id if sgend_twin == sgend_twin2
 
-* Add first PCA measures
+* Construct PCA-based composite indices for cognitive, study, and behavioral
+* outcomes at the current period and all lead periods (lead1_ through lead4_).
+* "testscores" is subject-specific: cogpca for homeroom, mathscal for math,
+* readscal for English.
 foreach var in readscal mathscal {
 	assert missing(`var') == 0
 }
@@ -82,12 +105,17 @@ qui pca lead4_daysabs_norm lead4_any_discp_norm lead3_grade_rep_norm
 qui predict lead3_behavpca, score
 replace lead3_behavpca = -lead3_behavpca
 
-* Drop any means of excluded variables
+* Drop school/grade-year-teacher-subject means of excluded covariates
+* (these means are generated in the analysis data but should not appear
+* in the design matrix when excluded variables are used separately)
 foreach var of global covsadj {
 	drop *_mean_`var'*
 }
 
-* Dummy out any missing controls in design variables and adjust variables
+* Handle missing values in covariates: for each non-interaction term in covsadj
+* and covdesign, create a missing-value indicator (madj_* or mdes_*) and replace
+* the missing value with zero. This allows the regression to run on the full
+* sample while controlling for missingness.
 foreach var of global covsadj {
 	if strpos("`var'", "#") == 0 {
 		qui desc `var', varlist
@@ -131,7 +159,11 @@ replace sgyts_mean_disadv = 0 if missing(sgyts_mean_disadv)
 global covdesign = "${covdesign} mdes_* *_mdes"
 
 
-* Predict cognitive and crime outcomes based on parent chars and lag (Missing dummies)
+* Construct predicted-outcome indices for use in OVB tests and IV analyses.
+* For each outcome (the main outcome + aoc_any, behavpca, studypca):
+*   all_*_idx: predicted using all excluded covariates (covsadj)
+*   par_*_idx: predicted using only parental education dummies
+*   lag_*_idx: predicted using only twice-lagged test scores
 foreach ll in "${outcome}" aoc_any behavpca studypca {
 	qui reg `ll' ${covsadj} 
 	capture predict all_`ll'_idx, xb	
@@ -147,13 +179,34 @@ foreach ll in "${outcome}" aoc_any behavpca studypca {
 capture drop program vam
 do code/vam.ado
 
-* VAM calculation
+* =============================================================================
+* fun_vam: Value-Added Model estimation program
+*
+* Computes leave-out teacher value-added measures using one of several methods
+* controlled by the global $vam_measure:
+*   "none"    — raw leave-out means (no shrinkage)
+*   "blp"     — best linear predictor (BLP) shrinkage by number of years
+*   "jackson" — Jackson/Kane-Staiger empirical Bayes shrinkage
+*   "chetty"  — Chetty, Friedman, Rockoff (2014) approach via vam.ado
+*   "naive"   — naive EB shrinkage using estimated variance components
+*
+* Creates the following variables:
+*   vam       — leave-year-out VA estimate (leave out year t)
+*   vaml2     — leave out years t and t-1
+*   vaml3     — leave out years t, t-1, and t+1
+*   vaml4     — leave out years t, t-1, t-2, t+1, and t+2
+*   score_r   — student-level regression residual (dresiduals from areg)
+*   ebar_jt   — teacher-year mean residual
+*
+* Also creates school-level leave-out variables (loo_ebar_schgrade,
+* loo_ebar_school) used in the entry IV specifications.
+* =============================================================================
 capture program drop fun_vam
 program define fun_vam
 	args outcome cov_opt
 		* args:
-		* 	"outcome": outcome variable of interest (e.g., anysc1621, mathscal) 
-		*	"cov_opt": indicator for whether or not to include the "excluded" adjustment controls in the VAM calculation. 
+		* 	"outcome": outcome variable of interest (e.g., anysc1621, mathscal)
+		*	"cov_opt": indicator for whether or not to include the "excluded" adjustment controls in the VAM calculation.
 
 	if ("${vam_measure}" == "jackson") | ("${vam_measure}" == "naive") | ("${vam_measure}" == "blp") | ("${vam_measure}" == "none") {
 
@@ -408,23 +461,6 @@ program define fun_vam
 		rename tv_ss vaml4
 		gen vaml3 = vaml4
 		gen yhat = vaml3
-	}
-	else if "${vam_measure}" == "MElogit"{
-		
-		melogit `outcome' $covdesign || teachid:
-		* estimates store melgtNoDemo
-
-		capture drop vam_melgt
-		gen vam_melgt = .
-		levelsof year, local(_tmp)
-		foreach yy of local _tmp{
-			dis `Working on LOO VAM/EBmeans of year: yy'
-			capture drop _tmpyear*
-			predict _tmpyear if year != `yy', remeans
-			bysort teachid: egen double _tmpyear2 = max(_tmpyear)
-			assert vam_melgt ==. if year == `yy'
-			replace vam_melgt =  _tmpyear2 if year == `yy'
-		}
 	}
 	else {
 		dis "NO valid VAM measure specified"

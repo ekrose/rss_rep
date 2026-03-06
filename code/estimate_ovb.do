@@ -1,16 +1,35 @@
+* =============================================================================
+* estimate_ovb.do — Figure 2, Figure A3, Tables A4 and A5
+*
+* Omitted variable bias (OVB) analysis. For each outcome:
+*   1. Regress outcome on design covariates absorbing teacher FE to extract
+*      the teacher effect (teach_fe = xbd - xb from areg).
+*   2. Regress outcome on design + excluded covariates + twin FE (via reghdfe),
+*      then form the fitted value of the excluded covariates + twin FE
+*      (covadj_predict). This is the "omitted variables fit."
+*   3. Regress covadj_predict on teach_fe: the slope measures the degree to
+*      which teacher effects are correlated with omitted variables.
+*   4. Binscatter plots of covadj_predict vs. teach_fe (Figures 2 and A3).
+*
+* Table A4: OVB tests for short-run outcomes (test scores, behaviors, study)
+* Table A5: OVB tests for CJC long-run outcomes (any arrest, criminal, index,
+*           incarceration)
+* Figures A3c-d: OVB for academic long-run (college-bound, GPA)
+* =============================================================================
+
 *** 0) Load and prep data and set options
 clear all
 clear matrix
 set more off
 
 * Load data and options
-do code/set_options.do 
+do code/set_options.do
 do code/preamble.do
 
-* RHS variables (must be defined below)
+* The teacher effect extracted from areg is the RHS variable in the OVB test
 global regvar "teach_fe"
 
-*** 1) OVB tests for short-run outcomes
+*** 1) OVB tests for short-run outcomes (Table A4, Figures 2a-b)
 eststo clear
 foreach outcome of varlist testscores behavpca studypca {
     capture drop xhat xhatd teach_fe
@@ -61,7 +80,7 @@ esttab using tables/tableA4.tex, tex replace ///
             prefix(\multicolumn{@span}{c}{) suffix(})   ///
             span erepeat(\cmidrule(lr){@span}))   
 
-*** 2) OVB tests for long-run academic outcomes
+*** 2) OVB tests for long-run academic outcomes (Figures A3c-d)
 eststo clear
 foreach outcome of varlist college_bound gpa_weighted {
     capture drop xhat xhatd teach_fe
@@ -102,7 +121,7 @@ foreach outcome of varlist college_bound gpa_weighted {
 	graph export figures/figure`figtitle'.pdf, replace
 }
 
-*** 3) OVB tests for CJC long-run outcomes
+*** 3) OVB tests for CJC long-run outcomes (Table A5, Figures A3a-b)
 eststo clear
 foreach outcome of varlist aoc_any aoc_crim aoc_index aoc_incar {
     capture drop xhat xhatd teach_fe

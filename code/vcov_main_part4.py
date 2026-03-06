@@ -1,3 +1,18 @@
+"""
+vcov_main_part4.py — Figure A2
+
+Same as vcov_main_part3.py (1-SD effect bar charts) but uses lead-period
+short-run outcomes (lead1_testscores, lead1_studypca) instead of
+contemporaneous ones. This shows how the effects change when using next-year
+test scores and study skills as the short-run measure.
+
+  - Figure A2a: CJC outcomes
+  - Figure A2b: academic outcomes
+
+Reads: temp/teach_mean_resids.dta
+Writes: figures/figureA2a.pdf, figures/figureA2b.pdf
+"""
+
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -20,7 +35,7 @@ plt.style.use('ggplot')
 
 #####################################
 ### 0) Options/globals
-##################################### 
+#####################################
 # Color options
 col_grad = 'blue'
 col_gpa = 'royalblue'

@@ -1,14 +1,36 @@
+* =============================================================================
+* teacher_chars.do — Tables A1 and A12
+*
+* Examines the relationship between teacher characteristics and teacher effects.
+*
+* Table A1: Regresses teacher-year mean residuals (from estimate_variance.do)
+*   on teacher demographics (female, non-white, age, experience, education,
+*   average student test scores, pay). Each column is a different outcome
+*   (test scores, study skills, behaviors, criminal arrest, index crime,
+*   incarceration).
+*
+* Table A12a: "Match effects" by gender — whether the gap in teacher effects
+*   between male and female students correlates with teacher gender/race.
+*   Uses residuals from estimate_heterog_variance.do (teach_mean_resids_covmale).
+*
+* Table A12b: "Match effects" by race — same analysis for white vs. non-white
+*   students (teach_mean_resids_covwhite).
+*
+* Inputs:
+*   temp/teach_mean_resids_long.dta — teacher-year residuals (from Step 2)
+*   data/teacher_covars.dta — teacher characteristics (from Step 0b)
+*   temp/teach_mean_resids_covwhite.dta — heterogeneous residuals by race
+*   temp/teach_mean_resids_covmale.dta — heterogeneous residuals by gender
+* =============================================================================
 clear all
 clear matrix
 set more off
 
-* Load the residuals
+* Load the teacher-year residuals and merge on teacher characteristics
 use temp/teach_mean_resids_long.dta, replace
-
-* Merge on the teacher Xs
 merge m:1 teachid year using data/teacher_covars.dta, nogen keep(3)
 
-*** 1) Basic regressions
+*** 1) Basic regressions (Table A1)
 * Code covariates
 gen female = gender == "F"
 gen non_white = ethnic == "B"
@@ -36,7 +58,9 @@ foreach out of varlist testscores_r studypca_r behave_r  aoc_crim_r aoc_index_r 
 esttab using tables/tableA1.tex, replace se mtitles("Test scores" "Study skills" "Behaviors" "Criminal arrest" "Index crime" "Incarceration") stats(N nteach, labels("N teacher-years" "N teachers")) coeflabels(female "Female" non_white "Non-white" age "Age" higher_ba "Masters or higher" score_normed "Averge test score" relative_pay "Pay (standardized)" nprior "Prior experience" _cons "Constant")
 
 
-*** 2) Match effects in race / gender
+*** 2) Match effects in race / gender (Tables A12a, A12b)
+* Test whether the gap in teacher effects across student subgroups
+* (white vs non-white; male vs female) is correlated with teacher demographics.
 use data/teacher_covars.dta, clear
 keep teachid year gender ethnic
 gsort teachid -year

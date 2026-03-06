@@ -1,23 +1,50 @@
+* =============================================================================
+* covariate_correlation_part1.do — In-text calculations (Stata step)
+*
+* Computes the correlation between teacher effects and the design covariates,
+* used to quantify how much of the variation in teacher effects could be
+* explained by observable covariates. The result is an upper bound on the
+* bias from sorting on observables.
+*
+* Procedure:
+*   1. Regress test scores on design covariates absorbing teacher FE
+*   2. Save the coefficient vector (beta) and variance-covariance matrix (sigma)
+*   3. Manually reconstruct the design matrix X (expanding factor variables
+*      and interactions) so that teacher-year means of X can be paired with
+*      sigma in the Python step
+*   4. Collapse X to teacher-year means and save to temp/teach_mean_covars.dta
+*   5. Save sigma to temp/sigma.dta
+*
+* The Python step (covariate_correlation_part2.py) then computes:
+*   E_j[x_j' Sigma x_j'] across all teacher cross-year pairs, which gives
+*   the average bias in the variance estimate due to covariate correlations.
+*
+* Output:
+*   temp/teach_mean_covars.dta — teacher-year mean covariate values
+*   temp/sigma.dta — variance-covariance matrix of regression coefficients
+* =============================================================================
 clear all
 clear matrix
 set more off
 
-* Load data and options 
+* Load data and options
 do code/set_options.do
 do code/preamble.do
 
-* Get the VCV for test scores
+* Regress test scores on design covariates absorbing teacher FE
 areg testscores $covdesign, abs(teachid) robust
-assert e(sample) == 1    // All data is used for test score VA
+assert e(sample) == 1    // All data should be used for test score VA
 
-* Save VCV and beta
+* Save the coefficient vector and VCV matrix from the regression
 matrix beta = e(b)
 matrix sigma = e(V)
 
-* Save fits to check procedure
-predict xb, xb 
+* Save fitted values to verify the manual design matrix construction
+predict xb, xb
 
-* Create design matrix manually
+* Manually reconstruct the design matrix X by parsing Stata's coefficient
+* names (which encode factor variables and interactions like "2.grade#1.subj").
+* This is necessary because Stata does not export the design matrix directly.
 local beta_names : colnames beta
 local vcount = 1
 foreach col of local beta_names {

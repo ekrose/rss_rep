@@ -1,16 +1,29 @@
-*** Produce summary statitisc
+* =============================================================================
+* summary_stats.do — Tables 1 and A11
+*
+* Produces two summary statistics tables:
+*   Table 1:   Basic summary statistics for the full sample, CJC-observed
+*              subsample, and youth with a criminal arrest
+*   Table A11: Heterogeneity summary statistics across demographic subgroups
+*              (race, sex, economic disadvantage, arrest risk)
+*
+* The "arrest risk" subgroup is constructed by regressing criminal arrest on
+* all covariates (design + excluded) and splitting at the median fitted value.
+* =============================================================================
+
 *** 0) Load and prep data and set options
 clear all
 clear matrix
 set more off
 
-*** 1) Build risk measure
+*** 1) Build arrest-risk measure (used as a subgroup in Table A11)
 * Load data and options
 do code/set_options.do
 
 * Execute preamble
 do code/preamble.do
 
+* Predict arrest probability using all covariates, split at median
 qui reg aoc_crim ${covdesign} ${covsadj}
 predict arrest_hat, xb
 su arrest_hat, d
@@ -20,8 +33,9 @@ keep atrisk mastid teachid year subj
 tempfile _atrisk
 save `_atrisk', replace
 
-***2) Summary statistics
-* Load data and options 
+*** 2) Summary statistics
+* Reload data fresh (the preamble modifies variables; reload to get raw values)
+* Then merge back the arrest-risk indicator computed above
 do code/set_options.do
 
 * Merge back atrisk
@@ -49,7 +63,7 @@ bys twin_id year grade: egen sgend_twin = max(female)
 bys twin_id year grade: egen sgend_twin2 = min(female)
 gen twins_same_gend = twin_id if sgend_twin == sgend_twin2
 
-* Beahvioral pca
+* Construct behavioral PCA index (same as in preamble, but on the raw sample)
 foreach var of varlist lead1_daysabs lead1_any_discp lead_grade_rep {
     capture drop _tmp
     bys year grade: egen _tmp = sd(`var')

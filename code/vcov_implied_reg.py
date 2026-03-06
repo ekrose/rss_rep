@@ -1,3 +1,27 @@
+"""
+vcov_implied_reg.py — Tables 4 and A8
+
+Estimates the "implied multivariate regression" of long-run teacher effects
+on short-run teacher effects using U-statistics. This decomposes each
+long-run effect into contributions from test score, behavioral, and study
+skill teacher effects.
+
+The regression coefficients beta = Sigma_XX^{-1} Sigma_XY where:
+  Sigma_XX = variance-covariance of short-run teacher effects
+  Sigma_XY = covariance of short-run with long-run teacher effects
+
+Standard errors are computed via parametric bootstrap: draw from the joint
+sampling distribution of all U-statistic estimates (using the analytical
+sampling covariance matrix), recompute beta for each draw, and take the SD.
+
+Table 4:  Uses teacher-year pairs (teach_mean_resids.dta)
+Table A8: Uses teacher-school pairs (teachSchl_mean_resids.dta) — tests
+          robustness to within-school sorting
+
+Reads: temp/teach_mean_resids.dta, temp/teachSchl_mean_resids.dta
+Writes: tables/table4.tex, tables/tableA8.tex
+"""
+
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -33,7 +57,7 @@ col_crime = 'peru'
 col_aoc_index = 'red'
 col_aoc_incar = 'darkred'
 
-### 0) Function for table making
+### 0) Function for implied regression + parametric bootstrap SEs
 def tabfunc(effects, outcome):
     results = pd.DataFrame(columns=list(effects.keys()) + list(outcome.keys()), index=effects.keys())
     results_vcv = pd.DataFrame(columns=list(effects.keys()) + list(outcome.keys()), index=effects.keys())

@@ -1,3 +1,27 @@
+"""
+vcov_robustness.py — Figure A4
+
+Aggregates 1-SD effect estimates across all robustness specifications
+(produced by estimate_variance_robustness.do via run_robustness.sh) and
+plots how the effect of teacher quality on criminal arrest varies with the
+number of covariates in the model.
+
+For each specification file (temp/robust/resids_iter{N}.dta):
+  - Computes the 1-SD effect of test score and behavioral teacher effects
+    on criminal arrest
+
+Then:
+  - Groups specifications by number of control terms
+  - Plots the median, min, and max 1-SD effect vs. number of controls
+  - Overlays the preferred specification estimate
+
+Figure A4a: Test score effects on criminal arrest
+Figure A4b: Behavioral effects on criminal arrest
+
+Reads: temp/robust/*.dta, code/robust_options.txt, temp/teach_mean_resids.dta
+Writes: figures/figureA4a.pdf, figures/figureA4b.pdf
+"""
+
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -35,36 +59,6 @@ col_aoc_incar = 'darkred'
 ##################################### 
 ### 1) Estimation
 ##################################### 
-
-if True:
-    # Fix the format from robust_options.txt
-    lines = robust_options = pd.read_csv('code/robust_options.txt').iloc[:,0].tolist()
-    ls = []
-    for cc, l in enumerate(lines):
-        if cc == 0:
-            ls.append(l)
-        else:
-            _t = l.startswith('> ')
-            if _t:
-                ls[-1] = ls[-1]+l.replace('> ', '')
-            else:
-                ls.append(l)
-
-    # check which specification have already been estimated and remove them
-    done_specs = glob.glob("temp/robust/resids_iter*")
-    done_iters = [int(re.findall(r'[0-9]+', l)[0])  for l in done_specs]
-
-    # Send code to cluster
-    for cc in range(len(ls)):
-        if cc in done_iters:
-            print('Option number already estimated: {} \n'.format(cc)) 
-            pass
-        else:
-            opt = ls[cc]
-            print('Working on option number: {} \n'.format(cc)) 
-            print('and specification: {} \n \n \n \n \n'.format(opt)) 
-            os.system('bash script_robust_options.sh {} \"{}\"'.format(cc, opt))
-
 
 # Plot sensitivities
 specs = glob.glob("temp/robust/*.dta")

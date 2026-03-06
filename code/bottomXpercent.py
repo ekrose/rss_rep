@@ -1,4 +1,25 @@
-#teacher ustat
+"""
+bottomXpercent.py — Figure 5
+
+Policy simulation: what are the gains from removing the bottom X% of teachers
+ranked by different indices?
+
+Three screening strategies compared:
+  1. Oracle: rank teachers by a weighted index of their true long-run effects
+     (criminal arrest + college attendance). Sweeps over all possible weights.
+  2. Short-run oracle: rank by a weighted index of true short-run effects
+     (test scores, behaviors, study skills). Sweeps over a 3D weight grid.
+  3. EB short-run: rank by the empirical Bayes posterior of the short-run
+     index (accounts for estimation noise in individual teacher estimates).
+
+For each strategy, computes the expected change in college attendance (X-axis)
+and criminal arrest reduction (Y-axis) from removing the bottom 5% of teachers.
+The Pareto frontier shows the trade-off between the two outcomes.
+
+Reads: temp/teach_mean_resids.dta
+Writes: figures/figure5.pdf
+"""
+
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -16,13 +37,12 @@ import seaborn as sns
 sns.set(style="white", color_codes=True)
 plt.style.use('ggplot')
 
-# from scipy.stats import multivariate_normal
 from scipy.stats import norm
 
 
 #####################################
 ### 0) Options/globals
-##################################### 
+#####################################
 # Options
 ns = 300
 ncpus = 21
@@ -71,7 +91,9 @@ crime = tresids.filter(regex='aoc_crim_r', axis=1).values[:,:]
 ### 1) Crime/college attendence
 #####################################
 
-### i) Crime/college value added is observed (oracle)
+### i) Oracle ranking: teachers' true long-run effects are known
+# Computes the Pareto frontier of (college gain, arrest reduction) from
+# removing the bottom 5% of teachers ranked by w*X + (1-w)*Y, sweeping w.
 def oracal_fun(origX, origY, bottom_Xpercent = 0.05):
 
     '''
@@ -114,6 +136,8 @@ def oracal_fun(origX, origY, bottom_Xpercent = 0.05):
     
 
 
+### ii) Short-run oracle: rank by a weighted index of true short-run effects
+# Sweeps over a 3D simplex of weights on (test scores, behaviors, study skills).
 def shortrunOrecal_fun(origX, origY, cog = cog, behave = behave, study = study, bottom_Xpercent = 0.05, grid_len=10):
 
     # Variance-covariance matrix (Sigma) of origX and origY 
@@ -191,6 +215,10 @@ def shortrunOrecal_fun(origX, origY, cog = cog, behave = behave, study = study, 
     return np.array(changeX), np.array(changeY), np.array(lsw1), np.array(lsw2), np.array(lsw3)
 
 
+### iii) EB short-run: rank by empirical Bayes posteriors of short-run effects
+# Projects true long-run effects onto the *observed* (noisy) short-run measures
+# using BLP coefficients b = Sigma_hat^{-1} Sigma_true, then screens on the
+# EB index. This is the feasible strategy a policymaker would implement.
 def shortrunEB_fun(origX, origY, cog = cog, behave = behave, study = study, bottom_Xpercent = 0.05, grid_len=10):
 
     # TRUE variance-covariance matrix of origX and origY 

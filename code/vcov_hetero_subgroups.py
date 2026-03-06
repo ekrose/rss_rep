@@ -1,4 +1,19 @@
-#teacher ustat
+"""
+vcov_hetero_subgroups.py — Table A13 (estimation step)
+
+Computes the SD of teacher effects separately for each student subgroup
+(white/non-white, male/female, disadvantaged/not, high/low arrest risk)
+and each outcome. Saves the results to temp/hetero_SDs.dta, which is then
+read by vcov_hetero_subgroups_table.do to format the LaTeX table.
+
+For each subgroup value (0 and 1) and each outcome:
+  - sd_func(d) gives the SD of teacher effects for that subgroup
+  - sd_samp_var(d) gives the analytical standard error
+
+Reads: temp/teach_mean_resids_cov{white,male,disadv,atrisk}.dta
+Writes: temp/hetero_SDs.dta
+"""
+
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -21,7 +36,7 @@ plt.style.use('ggplot')
 
 #####################################
 ### 0) Options/globals
-##################################### 
+#####################################
 # Color options
 col_grad = 'blue'
 col_gpa = 'royalblue'
