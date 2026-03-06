@@ -1,3 +1,22 @@
+"""
+vcov_t_sensitivity.py — Table A10
+
+Sensitivity of variance and correlation estimates to the time gap between
+teacher-year observations used in the U-statistic.
+
+Uses varcovar_gaps() and correl_func_gaps() which restrict to residual pairs
+separated by at least `mint` and at most `maxt` years. This tests whether
+results are driven by autocorrelation patterns at specific time horizons.
+
+Table A10a: SD of short-run teacher effects by (mint, maxt)
+Table A10b: SD of long-run CJC teacher effects by (mint, maxt)
+Table A10c: Correlation of CJC effects with test score effects by (mint, maxt)
+Table A10d: Correlation of CJC effects with behavioral effects by (mint, maxt)
+
+Reads: temp/teach_mean_resids_long.dta (long format, includes year variable)
+Writes: tables/tableA10a-d.tex
+"""
+
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -21,7 +40,7 @@ plt.style.use('ggplot')
 
 #####################################
 ### 0) Options/globals
-##################################### 
+#####################################
 # Color options
 col_grad = 'blue'
 col_gpa = 'royalblue'

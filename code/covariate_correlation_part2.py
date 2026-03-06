@@ -1,3 +1,24 @@
+"""
+covariate_correlation_part2.py — In-text calculations (Python step)
+
+Computes the average bias in the variance-of-teacher-effects estimate
+that would arise from correlation between teacher effects and design
+covariates. This is used to argue that the OVB from covariate sorting
+is negligible.
+
+For each teacher j with T_j year observations, computes:
+  x_jt' * Sigma * x_js  for all pairs (t, s) with t != s
+where x_jt is the teacher-year mean of the design matrix and Sigma is the
+variance-covariance matrix of the regression coefficients. The average of
+these cross-products across teachers gives the expected bias.
+
+Reads:
+  temp/teach_mean_covars.dta — teacher-year mean covariates (from part1)
+  temp/sigma.dta — VCV matrix of regression coefficients (from part1)
+Writes:
+  tables/in_text_citations.txt — the computed bias value
+"""
+
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -20,7 +41,7 @@ plt.style.use('ggplot')
 
 #####################################
 ### 0) Load
-##################################### 
+#####################################
 
 # Load mean covariates 
 covs = pd.read_stata("temp/teach_mean_covars.dta")
@@ -40,7 +61,8 @@ grouped = {
     for j, g in covs.groupby('teachid')
 }
 
-# Compute correlation for each teacher
+# For each teacher, compute the average cross-year product x_jt' Sigma x_js
+# (excluding same-year pairs), which measures the bias contribution.
 def compute_teacher_mean(j):
     X = grouped[j].values
     X_sigma = X @ sigma

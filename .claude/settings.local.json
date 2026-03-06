@@ -6,7 +6,15 @@
       "Bash(git push:*)",
       "Bash(export:*)",
       "Bash(/tmp/test_predict3.do:*)",
-      "Bash(/tmp/test_predict4.do:*)"
+      "Bash(/tmp/test_predict4.do:*)",
+      "Bash(ls:*)",
+      "Bash(source:*)",
+      "Bash(bash:*)",
+      "Bash(python3:*)",
+      "Bash(/Applications/StataNow/StataSE.app/Contents/MacOS/stata-se:*)",
+      "Bash(python:*)",
+      "Bash(pkill:*)",
+      "Bash(kill:*)"
     ]
   }
 }

@@ -1,6 +1,17 @@
-**************************************************
-* Make table
-**************************************************
+* =============================================================================
+* vcov_hetero_subgroups_table.do — Table A13
+*
+* Reads SD-of-teacher-effects estimates (and their standard errors) computed
+* by vcov_hetero_subgroups.py from temp/hetero_SDs.dta, then formats them
+* into a LaTeX table with columns for each demographic subgroup (white/
+* non-white, male/female, disadvantaged/not, high/low arrest risk).
+*
+* The Python script computes the U-statistic SD estimates; this script
+* handles only the table layout and export.
+*
+* Input:  temp/hetero_SDs.dta (from vcov_hetero_subgroups.py)
+* Output: tables/tableA13.tex
+* =============================================================================
 clear all
 clear matrix
 set more off

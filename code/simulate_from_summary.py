@@ -340,6 +340,11 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
             elif len(schools) == 1:
                 schools = np.array([schools[0], "S2"], dtype=object)
 
+            # Limit school pool so each school has enough teachers for
+            # within-school estimators (need ≥2 teachers per school).
+            max_schools = min(len(schools), max(n_teachers // 10, 20))
+            schools = rng.choice(schools, size=max_schools, replace=False)
+
             # One row block per teacher (4 rows per teacher)
             indices = df.index.to_numpy()
             teacher_blocks = np.split(indices, n_teachers)
@@ -358,6 +363,14 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
                     # Single school (all 4 obs same school)
                     s = rng.choice(schools)
                     df.loc[block_idx, s_col] = s
+
+            # Synchronize school_fe (numeric FE used by Stata) with
+            # the school structure just assigned via s_col.
+            fe_col_name = "school_fe"
+            if fe_col_name in df.columns and fe_col_name != s_col:
+                unique_schools_assigned = df[s_col].unique()
+                school_to_fe = {s: i + 1 for i, s in enumerate(unique_schools_assigned)}
+                df[fe_col_name] = df[s_col].map(school_to_fe)
 
         # Enforce year and subject structure within each teacher so that
         # preamble.do's "drop if nteachhr_years < 2" drops zero rows and
@@ -495,7 +508,7 @@ if __name__ == "__main__":
         summary = pickle.load(f)
     
     # Example: simulate with custom number of observations
-    df_sim_custom = simulate_from_summary(summary, n_observations=20000)
+    df_sim_custom = simulate_from_summary(summary, n_observations=10000)
     print("Simulated shape (custom 20k):", df_sim_custom.shape)
     
     # Verify no missing values

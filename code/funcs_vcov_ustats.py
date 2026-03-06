@@ -1,4 +1,39 @@
-#teacher ustat
+"""
+funcs_vcov_ustats.py — U-statistic variance/covariance estimator library.
+
+Core estimation functions for the paper's variance decomposition methodology.
+All Python analysis scripts import this module.
+
+Key functions:
+  Point estimates:
+    varcovar(X, Y)       — U-statistic estimate of Cov(mu^X, mu^Y) where mu^X
+                           and mu^Y are teacher effects on outcomes X and Y.
+                           When X=Y, this estimates Var(mu^X).
+    sd_func(X)           — sqrt(Var(mu^X))
+    correl_func(X, Y)    — Corr(mu^X, mu^Y)
+    sd_effect_func(X, Y) — Cov(mu^X, mu^Y) / SD(mu^X), i.e., the effect on Y
+                           of a 1-SD increase in teacher X effects
+    reg_coef_func(X, Y)  — Cov(mu^X, mu^Y) / Var(mu^X), i.e., the regression
+                           coefficient of mu^Y on mu^X
+
+  Standard errors (all via analytical delta-method formulas):
+    vcv_samp_var(X)         — sampling variance of Var(mu^X)
+    sd_samp_var(X)          — sampling variance of SD(mu^X) (delta method)
+    vcv_samp_covar(X, Y)    — sampling variance of Cov(mu^X, mu^Y)
+    corr_samp_covar(X, Y)   — sampling variance of Corr(mu^X, mu^Y)
+    sd_effect_samp_covar(X,Y) — sampling variance of the 1-SD effect
+    ustat_samp_covar(A,B,C,D) — sampling covariance between Cov(A,B) and Cov(C,D)
+
+  Time-gap variants:
+    varcovar_gaps(X, Y, years, min, max) — U-statistic using only residual
+        pairs separated by min to max years
+
+Input format: X and Y are J-by-max(T_j) numpy arrays of teacher-year mean
+residuals. Row j contains the residuals for teacher j across their T_j
+observed years, padded with NaN for unobserved periods. Each teacher must
+have at least 2 non-missing observations.
+"""
+
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -167,8 +202,8 @@ def testfuncs(func_varcovar):
     # print(bsci_varcovar(X,Y))
 
 
-# Lambdas
-def sd_func(sX, yearWeighted=False): 
+# Convenience functions: compose varcovar() into commonly-needed statistics
+def sd_func(sX, yearWeighted=False):
     return np.power(varcovar(sX, sX, yearWeighted=yearWeighted), 0.5) 
 
 def correl_func(sX,sY,yearWeighted = False): 
@@ -185,6 +220,12 @@ def reg_coef_func(sX,sY,yearWeighted = False):
 
 
 ### Standard errors
+# All SE functions implement the analytical variance formulas derived in the
+# paper's appendix. The key building blocks are:
+#   sampc(X,Y)  — within-teacher sampling covariance of X and Y residuals
+#   makec(X,Y)  — the C_jj and C_jk weight matrices from the U-statistic
+#   lamb_sum()  — bias-corrected product of weighted sums (Lemma in appendix)
+
 # Helper function for sampling covariances
 def sampc(X,Y):
     Xmeans = np.nanmean(X, axis=1)

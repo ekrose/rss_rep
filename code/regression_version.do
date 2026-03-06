@@ -1,3 +1,19 @@
+* =============================================================================
+* regression_version.do — Tables A2 and A3
+*
+* Regression-based variance decomposition: regresses long-run outcomes on
+* Chetty-style shrunken teacher VA measures, with design controls.
+*
+* For each short-run VA type (test scores, behavioral index):
+*   1. Computes Chetty et al. (2014) teacher VA using vam.ado
+*   2. Regresses each long-run outcome on VAM with design controls,
+*      clustering on teacher and student
+*   3. Reports the "1 SD effect" = beta * SD(VAM)
+*
+* Table A2: VAM based on test score effects
+* Table A3: VAM based on behavioral index effects
+* =============================================================================
+
 *** 0) Load and prep data and set options
 clear all
 clear mata

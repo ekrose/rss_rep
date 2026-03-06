@@ -1,4 +1,22 @@
-#teacher ustat
+"""
+vcov_within_schl.py — Table A9
+
+Within-school variance decomposition. Computes the implied multivariate
+regression of long-run teacher effects on short-run effects, restricting
+to variation *within* schools. This tests whether the cross-outcome
+relationship is driven by between-school sorting.
+
+withinOnly_school(X, Y, sids): for each school, computes the U-statistic
+variance/covariance of teacher effects using only teachers within that
+school, then aggregates across schools weighted by number of teachers.
+
+tabfunc(): same structure as vcov_implied_reg.py but calls withinOnly_school
+instead of the standard varcovar(). SEs via parametric bootstrap.
+
+Reads: temp/teach_mean_resids.dta (includes school_fe columns)
+Writes: tables/tableA9.tex
+"""
+
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -22,7 +40,7 @@ plt.style.use('ggplot')
 
 #####################################
 ### 0) Options/globals
-##################################### 
+#####################################
 # Options
 ns = 500
 
@@ -56,7 +74,7 @@ def withinOnly_school(sX, sY, sids, yearWeighted = False):
             else:
                 nteach =  np.sum(np.sum(~np.isnan(left),1) >= 2)
             try:
-                sdevs_ses += [ustat.vcv_samp_var(left, right)*nteach**2]
+                sdevs_ses += [ustat.vcv_samp_covar(left, right)*nteach**2]
                 sdevs += [ustat.varcovar(left, right, yearWeighted = yearWeighted)*nteach]
                 totler += [nteach]
             except:     # If not enough obs to compute SE, skip it

@@ -1,3 +1,23 @@
+* =============================================================================
+* entry_ivs_part1.do — Table 5 (Forecast Unbiasedness IV Tests)
+*
+* Tests whether teacher VA estimates are forecast-unbiased using an
+* instrumental variables strategy based on teacher entry into new schools
+* or school-grade combinations. The instrument is the mean leave-out VA
+* of teachers entering a school-grade cell for the first time, which is
+* plausibly exogenous to student sorting within the receiving school.
+*
+* For each outcome, the procedure:
+*   1. Computes leave-out teacher VA (via fun_vam with vam_measure="none")
+*   2. Constructs the entry IV: mean LOO-VA of teachers new to the
+*      school-grade (or school), conditional on >= 3 years of school-grade data
+*   3. Runs 2SLS: outcome = lambda * ebar_schgrade, instrumented by entry IV
+*   4. Tests H0: lambda = 1 (forecast unbiasedness)
+*
+* Table 5a: short-run outcomes (test scores, behaviors, study skills)
+* Table 5b: long-run outcomes (criminal arrest, incarceration, college-bound)
+* =============================================================================
+
 *** 0) Load and prep data and set options
 clear all
 clear matrix
@@ -6,11 +26,11 @@ capture restore
 capture log close
 
 * Load data and options
-do code/set_options.do 
+do code/set_options.do
 do code/preamble.do
 global vam_measure = "none"
 
-*** Short-run outcome entry IVs
+*** Short-run outcome entry IVs (Table 5a)
 dis "Working on short-run outcomes"
 eststo clear
 local mcount = 1
@@ -74,8 +94,8 @@ foreach outcome of varlist testscores behavpca studypca {
                 prefix(\multicolumn{@span}{c}{) suffix(})   ///
                 span erepeat(\cmidrule(lr){@span}))       
 
-*** Long-run outcome entry IVs
-dis "Working on short-run outcomes"
+*** Long-run outcome entry IVs (Table 5b)
+dis "Working on long-run outcomes"
 eststo clear
 local mcount = 1
 foreach outcome of varlist aoc_crim aoc_incar college_bound {

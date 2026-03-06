@@ -5,3 +5,5 @@ data/*
 # Keep .gitkeep files
 !temp/.gitkeep
 !data/.gitkeep
+!data/analysis.dta
+!data/teacher_covars.dta
