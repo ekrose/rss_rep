@@ -15,8 +15,8 @@ np.set_printoptions(suppress=True)
 np.set_printoptions(precision=5)
 
 # Paths
-home = "/accounts/projects/crwalters/cncrime"
-data_path = "/accounts/projects/crwalters/cncrime/data/NCERDC"
+home = "/"
+data_path = "/data/NCERDC"
 firstyr = 2006
 lastyr = 2013
 
@@ -37,11 +37,6 @@ if 0:
         cmb['coursetitle'] = cmb.coursetitle.str.replace(r'( adv )',' advanced ')
         cmb['coursetitle'] = cmb.coursetitle.str.replace(r'(self contained)','self-contained')
         cmb['coursetitle'] = cmb.coursetitle.str.replace(r'([\s]+)',' ')
-
-        # Set of courses taken...
-            # these won't be year specific, so need to recode later
-        # cmb['unique_courses'] = cmb.groupby(['lea','schlcode','mastid']).coursetitle.apply(lambda x: str(x.unique()))
-        # cmb['unique_courses'] = cmb.unique_courses.astype(str)
 
         # Subset to the state courses we want
         cmb['coursecode'] = pd.to_numeric(cmb.statecourse.str.replace('[^0-9]','').apply(lambda x: x[:4]))
@@ -82,13 +77,13 @@ if 0:
     data['school_course_grade_year_fe'] = data.groupby(['lea','schlcode','year','grade','coursetitle']).grouper.group_info[0]
 
     # Save full dataset
-    data.to_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/cmb.pkl.gz", compression='gzip')
+    data.to_pickle("data/cmb.pkl.gz", compression='gzip')
 
 
 ### 1b) Add p values
-if 0:
+if 1:
     from scipy.stats import chi2_contingency
-    data = pd.read_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/cmb.pkl.gz", compression='gzip')
+    data = pd.read_pickle("data/cmb.pkl.gz", compression='gzip')
 
     # Add pvalues for grades 4-8 and 2007 on
     def chi2(table):
@@ -122,10 +117,10 @@ if 0:
     pvals = pd.DataFrame(ans, columns=['school_course_grade_year_fe','pval'])
     data = data.merge(pvals, how='left', on=['school_course_grade_year_fe'])
     data.loc[data.pval.notnull()].groupby(['lea','schlcode','year','grade','coursetitle']).pval.first().reset_index().to_pickle(
-        "/accounts/projects/crwalters/cncrime/users/ekrose/data/pvals.pkl.gz", compression='gzip')
+        "data/pvals.pkl.gz", compression='gzip')
 
 ### 3) Build EOG data
-if 0:
+if 1:
     print("\n\nAdding EOG files")
     eogs = []
     for year in range(1996,2014):
@@ -196,11 +191,11 @@ if 0:
 
     # Save
     assert eog[['mastid','year','grade']].duplicated().sum() == 0
-    eog.to_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/eog.pkl.gz", compression='gzip')
+    eog.to_pickle("data/eog.pkl.gz", compression='gzip')
 
 
 ### 4) Add EOC data
-if 0:
+if 1:
     print("\n\nAdding EOC files")
     eocs = []
     for year in range(firstyr-2,lastyr+1):
@@ -248,11 +243,11 @@ if 0:
                         ) / eoc.groupby(['year'])[col].transform('std')
     
     # Save
-    eoc.to_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/eoc.pkl.gz", compression='gzip')
+    eoc.to_pickle("data/eoc.pkl.gz", compression='gzip')
 
 
 ### 5) Add demographic data from various files
-if 0:
+if 1:
     '''
     EOG coding changes:
     pared:
@@ -526,7 +521,7 @@ if 0:
     assert tosave.mastid.duplicated().sum() == 0
 
     # Save 
-    tosave.to_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/demos.pkl.gz", compression='gzip')
+    tosave.to_pickle("data/demos.pkl.gz", compression='gzip')
 
 
 ### 6) Add disciplinary data
@@ -575,11 +570,11 @@ if 0:
     susp = pd.concat(susps)
     susp.drop_duplicates(inplace=True)
     assert susp[['mastid','year']].duplicated().sum() == 0
-    susp.to_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/susp.pkl.gz", compression='gzip')
+    susp.to_pickle("data/susp.pkl.gz", compression='gzip')
 
 
 ### 6b) Add absences data from MBuild files
-if 0:
+if 1:
     '''
     In mbuild, days daysabs exists only in 2004-2005m 2013-, days member exists in 2006- in mbuild files
     In accdemo, daysabs exists 2006-2015, also has times_tardy, unexc_abs, times_in_susp, times_out_susp, days_in_susp, days_out_susp
@@ -620,11 +615,11 @@ if 0:
     acc = pd.concat(acc)
     acc.drop_duplicates(inplace=True)
     assert acc[['mastid','year']].duplicated().sum() == 0
-    acc.to_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/absences.pkl.gz", compression='gzip')
+    acc.to_pickle("data/absences.pkl.gz", compression='gzip')
 
 
 ### 7) Add graduation data
-if 0:
+if 1:
     ls_files = []
     for yr in range(2006,2016+1):
         print('Working on Student Exit file from year {}'.format(yr))
@@ -676,13 +671,12 @@ if 0:
 
     # save
     assert grd.mastid.duplicated().sum() == 0
-    # In [195]: grd.columns                                                                                                                                                      
-    # Out[195]: Index(['mastid', 'grad_year', 'dropout_year', 'grad', 'dropout', 'max_year_stuExit_file'], dtype='object')
-    grd[['mastid','grad','dropout']].to_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/schoolExit.pkl.gz", compression='gzip')
+    grd[['mastid','grad','dropout']].to_pickle(
+        "data/schoolExit.pkl.gz", compression='gzip')
 
 
 ### 9) Add 12th grade GPA data, college plans, etc.
-if 0:
+if 1:
     print("\n\nWorking on GPA files")
     finals = []
     for year in range(2005,2011):
@@ -740,11 +734,11 @@ if 0:
 
     # save
     assert gpa.mastid.duplicated().sum() == 0
-    gpa.to_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/gpa.pkl.gz", compression='gzip')
+    gpa.to_pickle("data/gpa.pkl.gz", compression='gzip')
 
 
 ### 8) Add school data
-if 0:
+if 1:
     print("\n\nWorking on school files")
     finals = []
     for year in range(2006,2013+1):
@@ -765,59 +759,10 @@ if 0:
     schl['spec_ed_schl'] = (schl.schl_type.astype(str) == "2").astype(int)
     schl['alt_schl'] = (schl.schl_type.astype(str) == "4").astype(int)
     schl = schl.groupby(['lea','schlcode'])[['charter_schl','magnet_schl','voc_schl','spec_ed_schl','alt_schl']].max().reset_index()
-    schl.to_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/schls.pkl.gz", compression='gzip')
-
-
-### 9) Add teacher Xs
-if 0:
-    print("\n\nWorking on teacher files")
-    # Education
-    finals = []
-    for year in range(2006,2011+1):
-        print("Loading teacher data for {}".format(year))
-        with gzip.open(data_path + "/Teacher/Education/lsprseduc{}.dta.gz".format(year), 'rb') as inF:
-            lic = pd.read_stata(inF)
-            lic['year'] = year    
-        finals += [lic,]
-
-    for year in range(2012,2013+1):
-        print("Loading teacher data for {}".format(year))
-        with gzip.open(data_path + "/Teacher/Education/educ_pub{}.dta.gz".format(str(year)[-2:]), 'rb') as inF:
-            lic = pd.read_stata(inF)
-            lic['year'] = year    
-        finals += [lic,]
-
-    # Combine and collapse
-    lic = pd.concat(finals)
-    lic = lic.loc[lic.teachid.notnull()]
-    lic.to_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/teach_educ.pkl.gz", compression='gzip')
-
-    # License
-    finals = []
-    for year in range(2006,2011+1):
-        print("Loading teacher data for {}".format(year))
-        with gzip.open(data_path + "/Teacher/License/licsal_pay_lic{}.dta.gz".format(year), 'rb') as inF:
-            lic = pd.read_stata(inF)
-            lic['year'] = year    
-        finals += [lic,]
-
-    for year in range(2012,2013+1):
-        print("Loading teacher data for {}".format(year))
-        with gzip.open(data_path + "/Teacher/License/area_pub{}.dta.gz".format(str(year)[-2:]), 'rb') as inF:
-            lic = pd.read_stata(inF).rename(columns={'cls_lvl_elvl_cd':'cls_lvl_elv_cd'})
-            lic['year'] = year    
-        finals += [lic,]
-
-    # Combine and collapse
-    lic = pd.concat(finals)
-    lic = lic.loc[lic.teachid.notnull()]
-    lic[['teachid','year','pgm_sts_cd','lic_type_cd','cls_lvl_cd','cls_lvl_elv_cd']].to_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/teach_lic.pkl.gz", compression='gzip')
-            # cls_lvl_elv_cd missing in 2010 / 2011
-            # cls_lvl_cd changes in 2010 on...
-
+    schl.to_pickle("data/schls.pkl.gz", compression='gzip')
 
 ### 10) SAR file data and student counts
-if 0:
+if 1:
     print("\n\nWorking on SAR files")
     finals = []
     for year in range(1997,2014):
@@ -829,13 +774,13 @@ if 0:
 
     sar = pd.concat(finals, sort=False, ignore_index=True)
     sar['semstr'] = pd.to_numeric(sar.semstr)
-    sar.to_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/sar.pkl.gz", compression='gzip')
+    sar.to_pickle("data/sar.pkl.gz", compression='gzip')
 
 
 ### 10) Build crime indicators
 if 1:
     # Latest AOC data (dates are basically through the end of 2019)
-    aoc_data = pd.read_pickle("/scratch/public/wacrim/aoc_data/offense_newonly_2020-09-08.pkl", compression='gzip')
+    aoc_data = pd.read_pickle("aoc_data/offense_newonly_2020-09-08.pkl", compression='gzip')
 
     # Remove motions --- rows with a charge code of "MOTIONS"
     aoc_data = aoc_data.loc[~aoc_data.off_charged_code.isin([5046])]   
@@ -861,8 +806,8 @@ if 1:
     aoc_data = aoc_data.merge(ids[['crrkey','group_id']], how='left', on='crrkey')
 
     # Load codes and categories
-    codes = pd.read_csv(home + "/teachers_final/aux/valid_codes.csv")
-    ucr_codes = pd.read_csv(home + "/teachers_final/aux/nc_offensecodes_categories.csv")
+    codes = pd.read_csv(home + "/aux/valid_codes.csv")
+    ucr_codes = pd.read_csv(home + "/aux/nc_offensecodes_categories.csv")
 
     # Any arrest, any valid arrest, ucr categories, same for conviction
     aoc_data['any'] = 1
@@ -951,17 +896,17 @@ if 1:
     tosave = tosave.loc[tosave.mastid.notnull()]
 
     # Save
-    tosave.to_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/aoc.pkl.gz", compression='gzip')
+    tosave.to_pickle("data/aoc.pkl.gz", compression='gzip')
 
-### 11) Combine into panel pased on EOG data
+### 11) Combine into panel based on EOG data
 if 1:
     # Load EOG files
-    data = pd.read_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/eog.pkl.gz", compression='gzip').drop(['sex','ethnic','bdate'], axis=1).drop_duplicates()
+    data = pd.read_pickle("data/eog.pkl.gz", compression='gzip').drop(['sex','ethnic','bdate'], axis=1).drop_duplicates()
     data = data.loc[~data.duplicated(['mastid','year'])]
         # Unique in mastid-year, drops ssmall share of sstudents in multipel schools
 
     # Add teacher assignments from CMB files
-    cmb = pd.read_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/cmb.pkl.gz", compression='gzip').rename(
+    cmb = pd.read_pickle("data/cmb.pkl.gz", compression='gzip').rename(
             columns={'sex':'sex_cmb','ethnic':'ethnic_cmb'})
     cmb = cmb.loc[cmb.grade.between(3,8)]
     cmb = cmb.loc[cmb.teachid.notnull()]
@@ -975,7 +920,7 @@ if 1:
         data = data.merge(tmp, how='left', on=['mastid','year','grade'])
 
     # Add teacher validity info from SAR files to each teacher ID
-    sar = pd.read_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/sar.pkl.gz", compression='gzip')
+    sar = pd.read_pickle("data/sar.pkl.gz", compression='gzip')
     sar['sar_reg_hr'] = ((pd.to_numeric(sar.subjct, errors='coerce') == 0)*(sar['astype'] == "TE")*(pd.to_numeric(sar.acadlvl, errors='coerce') == 2)).astype(int)
     sar['sar_reg_math'] = ((pd.to_numeric(sar.subjct, errors='coerce').between(2000,2999))*(sar['astype'] == "TE")*(pd.to_numeric(sar.acadlvl, errors='coerce') == 2)).astype(int)
     sar['sar_reg_eng'] = ((pd.to_numeric(sar.subjct, errors='coerce').between(1000,1999))*(sar['astype'] == "TE")*(pd.to_numeric(sar.acadlvl, errors='coerce') == 2)).astype(int)
@@ -1027,15 +972,15 @@ if 1:
     data = data.drop(todrop, axis=1)
 
     # Add schools
-    schl = pd.read_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/schls.pkl.gz", compression='gzip')
+    schl = pd.read_pickle("data/schls.pkl.gz", compression='gzip')
     data = data.merge(schl, how='left', on=['lea','schlcode'])
 
     # Add other data
-    demos = pd.read_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/demos.pkl.gz", compression='gzip')
-    susp = pd.read_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/susp.pkl.gz", compression='gzip')
-    absences = pd.read_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/absences.pkl.gz", compression='gzip')
-    grd = pd.read_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/schoolExit.pkl.gz", compression='gzip')
-    gpa = pd.read_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/gpa.pkl.gz", compression='gzip')
+    demos = pd.read_pickle("data/demos.pkl.gz", compression='gzip')
+    susp = pd.read_pickle("data/susp.pkl.gz", compression='gzip')
+    absences = pd.read_pickle("data/absences.pkl.gz", compression='gzip')
+    grd = pd.read_pickle("data/schoolExit.pkl.gz", compression='gzip')
+    gpa = pd.read_pickle("data/gpa.pkl.gz", compression='gzip')
     data = data.merge(demos, how='left', on='mastid')
     data = data.merge(susp, how='left', on=['mastid','year'])
     data = data.merge(absences, how='left', on=['mastid','year'])
@@ -1104,7 +1049,7 @@ if 1:
         data[ll].where(data['ethnic'].notnull(), np.nan, inplace=True)
 
     # Add lag reading / math scores and study skills
-    eog = pd.read_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/eog.pkl.gz", compression='gzip').drop(['sex','ethnic','bdate'], axis=1).drop_duplicates()
+    eog = pd.read_pickle("data/eog.pkl.gz", compression='gzip').drop(['sex','ethnic','bdate'], axis=1).drop_duplicates()
     eog['year_orig'] = eog.year
     eog['year'] = eog.year + 1
     eog = eog.loc[~eog.duplicated(['mastid','year'], keep=False)]       # about 800 obs. Can only happen if a mastid appears in multiple grades in the same year.
@@ -1180,7 +1125,7 @@ if 1:
     data['age2019'] = (pd.to_datetime("2019-12-31") - pd.to_datetime(data.bdate, format="%Y-%m-%d")).dt.days / 365.25 
 
     # New AOC data
-    aoc = pd.read_pickle("/accounts/projects/crwalters/cncrime/users/ekrose/data/aoc.pkl.gz", compression='gzip')
+    aoc = pd.read_pickle("data/aoc.pkl.gz", compression='gzip')
     aoc = aoc.merge(data.groupby('mastid').bdate.min().reset_index(), how='inner', on='mastid')
 
     # Offenses age 16-21
@@ -1194,7 +1139,6 @@ if 1:
     for col in ['aoc_' + c for c in cols]:
         data[col] = data[col].fillna(0)
 
-    # YST: Added on June 19, 2024
     data = data.merge(aoc.groupby('mastid')[cols].sum().rename(columns=lambda x: 'aoc_total_' + x).reset_index(), how='left', on='mastid')
     for col in ['aoc_total_' + c for c in cols]:
         data[col] = data[col].fillna(0)
@@ -1234,7 +1178,7 @@ if 1:
         print("Working on means for {}".format(control))
         data['sgy_mean_{}'.format(control)] = data.groupby('school_year_grade_fe')[control].transform('mean')
         data['s_mean_{}'.format(control)] = data.groupby('school_fe')[control].transform('mean')
-            # NB these are missing of non-missing values for each control
+            # NB these are missing if non-missing values for each control
             # will need to fill in means where all obs are missing control in stata using whatever method is preferred
 
     # Add year lags of sgy_means
@@ -1244,12 +1188,12 @@ if 1:
     data = data.merge(tmp, how='left', on=['mastid','year'])
 
     # Save
-    data.to_stata('/scratch/public/ncrime/tmp.dta', write_index=False) 
+    data.to_stata('data/tmp.dta', write_index=False) 
 
 ### 12) Build final analysis dataset
 if 1:
     # Load the data
-    data = pd.read_stata('/scratch/public/ncrime/tmp.dta')
+    data = pd.read_stata('data/tmp.dta')
 
     ## Drop observations with no teacher of any type
     data = data.loc[data.teachid_hr.notnull() | data.teachid_math.notnull() | data.teachid_eng.notnull()]
@@ -1321,7 +1265,7 @@ if 1:
     orig_shape = data.loc[(data.grade >= 4) & data.year.between(1997,2013)].shape[0]
 
     # Add pvalues for sorting
-    if 0: 
+    if 1: 
         from scipy.stats import chi2_contingency
 
         # Add pvalues for grades 4-8 and 2007 on
@@ -1358,7 +1302,7 @@ if 1:
             ans = p.map(classroom_chi2, data.school_year_grade_fe.unique())
 
         pvals = pd.DataFrame(ans, columns=['lea','schlcode','year','grade','pval'])
-        pvals.to_pickle('/scratch/public/ncrime/pvals_post.pkl')
+        pvals.to_pickle('data/pvals_post.pkl')
 
         # Make histogram
         import matplotlib
@@ -1371,15 +1315,15 @@ if 1:
         axes.set_xlabel('P-value') 
         axes.set_ylabel('Density of school-grade-year observations') 
         fig.tight_layout()
-        fig.savefig('/accounts/projects/crwalters/cncrime/teachers_final/figures/pvalue_histogram.pdf')
+        fig.savefig('figures/pvalue_histogram.pdf')
         fig, axes = plt.subplots()
         sns.histplot(data=pvals.loc[pvals.pval < 1], x="pval", stat='probability', ax=axes)
         axes.set_xlabel('P-value') 
         axes.set_ylabel('Density of school-grade-year observations') 
         fig.tight_layout()
-        fig.savefig('/accounts/projects/crwalters/cncrime/teachers_final/figures/pvalue_histogram_l1.pdf')
+        fig.savefig('figures/pvalue_histogram_l1.pdf')
     else:
-        pvals = pd.read_pickle('/scratch/public/ncrime/pvals_post.pkl')
+        pvals = pd.read_pickle('data/pvals_post.pkl')
 
     data = data.merge(pvals, how='left', on=['lea','schlcode','year','grade'])
 
@@ -1421,23 +1365,7 @@ if 1:
             tmp['nyears{}'.format(name)] = tmp.groupby(grp)['nyears{}'.format(name)].cumsum() - 1
             data = data.merge(tmp, how='left', on=grp +['year'])
 
-    # data.loc[data.teachid == np.random.choice(data.teachid.unique()),
-    #     ['teachid','year','school_fe','grade','subject','teach_first_year','teach_last_year','teach_nyears']].drop_duplicates()
-
     # Save
-    data.to_stata('/scratch/public/ncrime/analysis_11_01_2021.dta', write_index=False, convert_dates = {'bdate':'td'}) 
-
-
-# Report when we can observe stuff
-data = pd.read_stata('/scratch/public/ncrime/analysis_08_03_2021.dta')
-print(data.groupby(['year','grade']).mathscal.apply(lambda x: x.notnull().mean()).unstack())
-print(data.groupby(['year','grade']).aoc_any.apply(lambda x: x.notnull().mean()).unstack())
-print(data.groupby(['year','grade']).any_discp.apply(lambda x: x.notnull().mean()).unstack())
-print(data.groupby(['year','grade']).daysabs.apply(lambda x: x.notnull().mean()).unstack())
-print(data.groupby(['year','grade']).mastid.nunique().unstack())
-
-# Teacher concordencse
-data['tmp'] = data.cmb_teachid_math == data.teachid_eogm
-print(data.loc[data.cmb_teachid_math.notnull() & data.teachid_eogm.notnull() & (data.subject == "math")].groupby(['year','grade']).tmp.mean().unstack())
+    data.to_stata('data/analysis_data.dta', write_index=False, convert_dates = {'bdate':'td'}) 
 
 
