@@ -5,9 +5,42 @@ Rose, Schellenberg, and Shem-Tov, *Econometrica*, 2026
 
 ## Overview
 
-This repository contains the replication code for all tables and figures in the paper. Due to data privacy limitations, the original administrative data from the North Carolina Education Research Data Center (NCERDC) cannot be shared. Instead, simulated data is provided that preserves the variable names, types, and approximate distributions of the original data.
+This repository contains the replication code for all tables and figures in the paper. Due to data privacy restrictions, the original administrative data cannot be shared; simulated data is provided instead (see [Data Availability Statement](#data-availability-statement) and [Simulated data](#simulated-data)).
 
 **Results produced from the simulated data will not reproduce the estimates reported in the paper.**
+
+## Data Availability Statement
+
+The analysis uses confidential administrative data from two sources that are **not** publicly available and cannot be shared in this replication archive due to data privacy restrictions. The archive instead provides simulated data that preserves the structure and approximate distributions of the original data (see [Simulated data](#simulated-data) below). Results produced from the simulated data will not reproduce the estimates reported in the paper.
+
+### Datasets included in this archive
+
+| File | Description |
+|---|---|
+| `data/analysis.dta` | Simulated student-level analysis dataset (10,000 observations) |
+| `data/teacher_covars.dta` | Simulated teacher characteristics dataset |
+
+### Datasets excluded from this archive
+
+**1. North Carolina Education Research Data Center (NCERDC)**
+North Carolina public school administrative records, including student test scores, demographic characteristics, and teacher employment records. The NCERDC data do not carry a formal version number; the relevant cohorts and years are described in the paper. These data are confidential and governed by a data use agreement with NCERDC.
+
+**2. North Carolina Administrative Office of the Courts (NCAOC)**
+Administrative records of adult criminal justice contact for North Carolina residents, linked to the NCERDC records. These data were acquired directly from the AOC.
+
+### Accessing the original data
+
+**NCERDC**: Independent researchers may apply for access to North Carolina public school administrative records through the North Carolina Education Research Data Center, housed at Duke University's Center for Child and Family Policy. Access requires an approved research proposal and executed data use agreement. Applications are subject to institutional review. See [https://childandfamilypolicy.duke.edu/project/nc-education-research-data-center/](https://childandfamilypolicy.duke.edu/project/nc-education-research-data-center/) for current application procedures, requirements, and fees. The monetary cost and processing time for new applications are set by NCERDC.
+
+**NCAOC**: Researchers seeking access to North Carolina criminal justice administrative records should contact the North Carolina Administrative Office of the Courts directly. These data are not routinely available to outside researchers and may require a data use agreement.
+
+### Data citations
+
+North Carolina Education Research Data Center (NCERDC). *North Carolina Public School Administrative Records*. Durham, NC: Duke University Center for Child and Family Policy. 
+
+North Carolina Administrative Office of the Courts (NCAOC). *Administrative Records of Criminal Justice Contact*. Raleigh, NC: North Carolina Administrative Office of the Courts.
+
+---
 
 ## Requirements
 
