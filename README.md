@@ -68,7 +68,7 @@ Two environment variables must be set before running the code:
 | `PROJECT_DATA_DIR` | Path to the directory containing `analysis.dta` |
 | `STATA` | Full path to the Stata executable |
 
-These are defined in `.envrc`, which `execute.sh` sources automatically. You must edit `.envrc` to reflect your local paths before running anything.
+These are defined in `.envrc`, which `execute.sh` sources automatically — no additional software required. You must edit `.envrc` to reflect your local paths before running anything.
 
 **`.envrc` is a hidden file** (the `.` prefix causes it to be hidden by default on Mac and Linux). To open it:
 
@@ -89,7 +89,7 @@ Common Stata executable paths:
 - **Linux**: `/usr/local/stata/stata-se`
 - **Windows**: this script requires a Unix shell (bash); run via [WSL](https://learn.microsoft.com/en-us/windows/wsl/) and use the Linux path above
 
-If you do not use [direnv](https://direnv.net/), you can instead export the variables manually in your terminal before running `execute.sh`:
+Alternatively, you can export the variables manually in your terminal before running `execute.sh`:
 
 ```bash
 export PROJECT_DATA_DIR="/path/to/your/data/"
