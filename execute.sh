@@ -149,12 +149,8 @@ python code/vcov_main_part4.py
 # -----------------------------------------------------------------------------
 # Step 10: Robustness to covariate specification
 # Figure A4
-#   - estimate_variance_robustness.do must be run once per specification via
-#     run_robustness.sh (see README.md). Residuals are saved to temp/robust/.
-#   - vcov_robustness.py aggregates results across specifications.
+#   - Run separately: bash run_robustness.sh [n_workers]
 # -----------------------------------------------------------------------------
-bash run_robustness.sh 7
-python code/vcov_robustness.py
 
 # -----------------------------------------------------------------------------
 # Step 11: Teacher characteristics

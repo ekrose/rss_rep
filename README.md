@@ -166,13 +166,15 @@ Follow the steps in the requirements section above to ensure your environment is
 
 ### Full replication
 
-Run `execute.sh` from the repository root. This script runs all analysis code in the correct order:
+Run `execute.sh` from the repository root. This script runs all analysis code in the correct order, except for the code to produce Figure A4, which is discussed further below.
+
+To run:
 
 ```bash
 bash execute.sh
 ```
 
-To capture all output to a log file:
+Alternatively, to capture all output to a log file:
 
 ```bash
 PYTHONUNBUFFERED=1 bash execute.sh > log_master.txt 2>&1
@@ -182,20 +184,13 @@ Each block in `execute.sh` is annotated with the table or figure it produces. Ma
 
 ### Robustness specifications (Figure A4)
 
-The robustness analysis (`estimate_variance_robustness.do`) is designed to be run once per covariate specification. The file `code/robust_options.txt` contains 812 specifications. Use `run_robustness.sh` to loop over them:
+Figure A4 requires running 812 covariate specifications in parallel and is not included in `execute.sh` because the appropriate number of parallel workers depends on your hardware. Run it separately after `execute.sh` completes:
 
 ```bash
-# Run all 812 specifications with 4 parallel workers (default)
-bash run_robustness.sh
-
-# Run with 8 parallel workers
-bash run_robustness.sh 8
-
-# Run only the first 10 specifications (for testing)
-bash run_robustness.sh 4 10
+bash run_robustness.sh [n_workers]   # e.g. bash run_robustness.sh 8
 ```
 
-Each iteration runs Stata and saves residuals to `temp/robust/`. After all iterations complete, run `python code/vcov_robustness.py` to aggregate results and produce Figure A4.
+The default is 4 parallel workers. Each worker runs one Stata process; set `n_workers` to however many cores you want to dedicate. Residuals are saved to `temp/robust/` as they complete, and Figure A4 is produced automatically when all iterations finish.
 
 ## Output
 

@@ -19,12 +19,13 @@
 #   temp/robust/iter{N}.log          — Stata log per specification
 # =============================================================================
 
-STATA="/Applications/StataNow/StataSE.app/Contents/MacOS/stata-se"
+PROJECT_ROOT="$(cd "$(dirname "$0")" && pwd)"
+source "$PROJECT_ROOT/.envrc"
+source "$PROJECT_ROOT/.venv/bin/activate"
+
 DOFILE="code/estimate_variance_robustness.do"
 OPTIONS_FILE="code/robust_options.txt"
 LOGDIR="temp/robust"
-export PROJECT_DATA_DIR="$HOME/Documents/Data_rss"
-PROJECT_ROOT="$(cd "$(dirname "$0")" && pwd)"
 
 NWORKERS="${1:-4}"
 MAX_ITER="${2:-0}"
@@ -165,3 +166,7 @@ if [ "$n_errors" -gt 0 ]; then
 else
     echo "All iterations succeeded."
 fi
+
+echo ""
+echo "Producing Figure A4..."
+python "$PROJECT_ROOT/code/vcov_robustness.py"
