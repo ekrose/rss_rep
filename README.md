@@ -169,7 +169,6 @@ Follow the steps in the requirements section above to ensure your environment is
 Run `execute.sh` from the repository root. This script runs all analysis code in the correct order:
 
 ```bash
-source .venv/bin/activate
 bash execute.sh
 ```
 

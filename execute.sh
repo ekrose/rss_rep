@@ -3,7 +3,6 @@
 # Master execution script for Rose, Schellenberg, and Shem-Tov (Econometrica 2026)
 #
 # Usage:
-#   source .venv/bin/activate
 #   bash execute.sh
 #
 # See README for complete instructions. Important steps are:
