@@ -59,15 +59,42 @@ pip install -r requirements.txt
 
 Note: if you have Anaconda installed, you may need to run `conda deactivate` before activating the virtual environment, depending on your Anaconda configuration.
 
-### Environment variable
+### Environment variables
 
-The analysis data file (`analysis.dta`) is read from the path specified by the environment variable `PROJECT_DATA_DIR`. This is set in `.envrc` (compatible with [direnv](https://direnv.net/)):
+Two environment variables must be set before running the code:
 
+| Variable | Description |
+|---|---|
+| `PROJECT_DATA_DIR` | Path to the directory containing `analysis.dta` |
+| `STATA` | Full path to the Stata executable |
+
+These are defined in `.envrc`, which `execute.sh` sources automatically. You must edit `.envrc` to reflect your local paths before running anything.
+
+**`.envrc` is a hidden file** (the `.` prefix causes it to be hidden by default on Mac and Linux). To open it:
+
+- **Terminal**: `open -e .envrc` (Mac) or `nano .envrc` (any Unix shell)
+- **Finder**: Press `Cmd+Shift+.` to toggle hidden files, then open `.envrc` in any text editor
+- **Windows Explorer**: Enable "Show hidden items" in the View menu
+
+The file looks like this — edit both lines to match your system:
+
+```bash
+export PROJECT_DATA_DIR="$HOME/Documents/GitHub/rss_rep/data/"
+export STATA="/Applications/StataNow/StataSE.app/Contents/MacOS/stata-se"
 ```
-export PROJECT_DATA_DIR="$HOME/Documents/GitHub/rsss_rep/data/"
-```
 
-If you do not use direnv, export this variable manually before running any code. The directory must exist.
+Common Stata executable paths:
+- **Mac (Stata SE)**: `/Applications/Stata/StataSE.app/Contents/MacOS/stata-se`
+- **Mac (Stata MP)**: `/Applications/Stata/StataMP.app/Contents/MacOS/stata-mp`
+- **Linux**: `/usr/local/stata/stata-se`
+- **Windows**: this script requires a Unix shell (bash); run via [WSL](https://learn.microsoft.com/en-us/windows/wsl/) and use the Linux path above
+
+If you do not use [direnv](https://direnv.net/), you can instead export the variables manually in your terminal before running `execute.sh`:
+
+```bash
+export PROJECT_DATA_DIR="/path/to/your/data/"
+export STATA="/path/to/your/stata-se"
+```
 
 ## Repository structure
 
@@ -129,6 +156,13 @@ If you do not use direnv, export this variable manually before running any code.
 ```
 
 ## How to run
+
+### Set up replication environment
+
+Follow the steps in the requirements section above to ensure your environment is ready to execute the replication code. Specifically, ensure:
+
+- The python virtual environment is created and required packages are installed.
+- `.envrc` has been updated with the local path containing the replication code and path to your Stata executable.
 
 ### Full replication
 

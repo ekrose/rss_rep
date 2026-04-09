@@ -6,12 +6,13 @@
 #   source .venv/bin/activate
 #   bash execute.sh
 #
-# Prerequisites:
+# See README for complete instructions. Important steps are:
 #   - Python virtual environment set up: python -m venv .venv && pip install -r requirements.txt
-#   - Stata SE installed (path configured in STATA variable below)
+#   - Stata SE installed (path configured via STATA in .envrc)
 #   - Environment variable PROJECT_DATA_DIR set (sourced from .envrc)
 #   - Directory $PROJECT_DATA_DIR exists
-#   - Note, if you have anaconda installed you might nedd to do "conda deactivate" before running the script but it can work also without depneding on how anaconda is setup.
+#   - Note, if you have anaconda installed you might nedd to do "conda deactivate" before
+#     running the script but it can work also without depneding on how anaconda is setup.
 #
 # This script runs all analysis code in the correct order. Each block is
 # annotated with the table(s) or figure(s) it produces. Many outputs require
@@ -24,7 +25,6 @@
 #   - In-text stats  -> tables/in_text_citations.txt
 # =============================================================================
 
-STATA="/Applications/StataNow/StataSE.app/Contents/MacOS/stata-se"
 source .envrc
 source .venv/bin/activate
 
