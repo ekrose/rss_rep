@@ -6,4 +6,6 @@ data/*
 !temp/.gitkeep
 !data/.gitkeep
 !data/analysis.dta
+!data/analysis.csv
 !data/teacher_covars.dta
+!data/teacher_covars.csv
