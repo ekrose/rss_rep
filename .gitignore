@@ -1,3 +1,11 @@
+# Stata and execution logs
+*.log
+log_*.txt
+
+# Generated outputs
+tables/table*.tex
+figures/figure*.pdf
+
 # Ignore contents of temp and data folders, but keep the folders
 temp/*
 data/*

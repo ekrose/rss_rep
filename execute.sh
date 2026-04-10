@@ -28,7 +28,10 @@ source .envrc
 source .venv/bin/activate
 
 # Run Stata in batch mode (-b) and wait for it to finish.
-# On macOS, -b returns immediately so we poll the log file for completion.
+# On macOS, -b may return immediately (Stata forks), so we poll the log.
+# We wait until the log file stops growing AND contains "end of do-file",
+# which avoids premature exit from sub-file markers (set_options.do, etc.)
+# that appear while the main do-file is still running.
 run_stata() {
     local dofile="$1"
     shift
@@ -36,8 +39,20 @@ run_stata() {
     logbase=$(basename "$dofile" .do)
     rm -f "${logbase}.log" 2>/dev/null
     "$STATA" -b do "$dofile" "$@"
-    while [ ! -f "${logbase}.log" ] || ! grep -q "end of do-file" "${logbase}.log" 2>/dev/null; do
+    # Wait for log file to appear
+    while [ ! -f "${logbase}.log" ]; do
         sleep 2
+    done
+    # Wait until the log file stops growing and contains "end of do-file"
+    local prev_size=0
+    while true; do
+        sleep 3
+        local curr_size
+        curr_size=$(wc -c < "${logbase}.log" 2>/dev/null || echo 0)
+        if [ "$curr_size" = "$prev_size" ] && grep -q "end of do-file" "${logbase}.log" 2>/dev/null; then
+            break
+        fi
+        prev_size=$curr_size
     done
 }
 

@@ -17,10 +17,8 @@ global covdesign = "i.year##i.grade##i.subj i.grade##i.subj##c.lag1_math* i.grad
 global covsadj = "pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal"
 
 * Load analysis data (path set via PROJECT_DATA_DIR environment variable)
-if c(username)=="shemtov"{
- 	global PROJECT_DATA_DIR "/Users/shemtov/Documents/Data_rss"
-}
-
+local PROJECT_DATA_DIR : environment PROJECT_DATA_DIR
+global PROJECT_DATA_DIR "`PROJECT_DATA_DIR'"
 use ${PROJECT_DATA_DIR}/analysis.dta, clear
 
 * Display options
@@ -28,12 +26,9 @@ di "Working with design covariates: ${covdesign}"
 di "Working with excluded covariates: ${covsadj}"
 
 * Install required packages if not already present
-capture which gtools
-if _rc {
-    ssc install gtools
-}
-
-capture which ivreg2
-if _rc {
-    ssc install ivreg2
+foreach pkg in gtools ivreg2 reghdfe ivreghdfe tuples {
+    capture which `pkg'
+    if _rc {
+        ssc install `pkg'
+    }
 }

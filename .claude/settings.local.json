@@ -14,7 +14,11 @@
       "Bash(/Applications/StataNow/StataSE.app/Contents/MacOS/stata-se:*)",
       "Bash(python:*)",
       "Bash(pkill:*)",
-      "Bash(kill:*)"
+      "Bash(kill:*)",
+      "Bash(ps:*)",
+      "Bash(grep:*)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(git rm:*)"
     ]
   }
 }

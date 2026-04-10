@@ -63,10 +63,20 @@ run_one() {
     # Run Stata from the isolated directory
     ( cd "$jobdir" && "$STATA" -b do "$PROJECT_ROOT/$DOFILE" ${iter} ${covdesign} ) 2>/dev/null
 
-    # Wait for Stata to finish (macOS -b may return immediately)
+    # Wait for log to appear and for Stata to finish writing it
     local logfile="$jobdir/estimate_variance_robustness.log"
-    while [ ! -f "$logfile" ] || ! grep -q "end of do-file" "$logfile" 2>/dev/null; do
+    while [ ! -f "$logfile" ]; do
         sleep 2
+    done
+    local prev_size=0
+    while true; do
+        sleep 3
+        local curr_size
+        curr_size=$(wc -c < "$logfile" 2>/dev/null || echo 0)
+        if [ "$curr_size" = "$prev_size" ] && grep -q "end of do-file" "$logfile" 2>/dev/null; then
+            break
+        fi
+        prev_size=$curr_size
     done
 
     # Check the log for errors
