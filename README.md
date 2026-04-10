@@ -240,11 +240,7 @@ North Carolina Administrative Office of the Courts (NCAOC). *North Carolina Cour
                1996--2013},
   year      = {2013},
   publisher = {North Carolina Education Research Data Center (NCERDC)},
-  note      = {Restricted-use data accessed via data use agreement. 
-               Includes test scores, teacher and classroom assignments, 
-               demographic characteristics of students, parents, and 
-               teachers, and disciplinary and attendance records for the 
-               universe of North Carolina public school students.
+  note      = {Restricted-use data accessed via data use agreement.
                \url{https://childandfamilypolicy.duke.edu/project/north-carolina-education-research-data-center/}},
 }
 
@@ -253,10 +249,7 @@ North Carolina Administrative Office of the Courts (NCAOC). *North Carolina Cour
   title     = {North Carolina Court Case Records, 2006--2020},
   year      = {2020},
   publisher = {North Carolina Administrative Office of the Courts},
-  note      = {Restricted-use administrative data accessed via data use 
-               agreement. Covers all cases disposed between 2006 and 
-               mid-2020, including information on defendants, offenses, 
-               initial charges, convictions, and sentences.},
+  note      = {Restricted-use data accessed by request.},
 }
 ```
 
