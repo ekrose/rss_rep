@@ -18,7 +18,10 @@
       "Bash(ps:*)",
       "Bash(grep:*)",
       "Bash(echo \"exit: $?\")",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(sysctl -n machdep.cpu.brand_string)",
+      "Bash(sysctl -n hw.memsize)",
+      "Bash(system_profiler SPHardwareDataType)"
     ]
   }
 }

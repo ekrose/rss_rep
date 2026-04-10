@@ -151,6 +151,10 @@ export STATA="/path/to/your/stata-se"
 
 ## How to run
 
+### Computational requirements
+
+The replication code was run on a MacBook Air with an Apple M4 chip (10 cores, 32 GB RAM). Total runtime was approximately 4 hours, including `execute.sh` and `run_robustness.sh`.
+
 ### Set up replication environment
 
 Follow the steps in the requirements section above to ensure your environment is ready to execute the replication code. Specifically, ensure:
@@ -219,11 +223,40 @@ The simulated data is included in the archive as `data/analysis.dta`. Teacher ch
 
 Note: `data/summary.pkl` and the raw NCERDC data used to generate the simulated data are not included in the replication archive due to privacy restrictions. The code used to create them (`code/fake_data_formats.py`, `code/simulate_from_summary.py`, `code/simulate_teacher_covars.py`, and the scripts in `build code/`) is included for reference.
 
+## References
+
 ### Data citations
 
-North Carolina Education Research Data Center (NCERDC). *North Carolina Public School Administrative Records*. Durham, NC: Duke University Center for Child and Family Policy. 
+North Carolina Education Research Data Center (NCERDC). *North Carolina Public School Administrative Records, 1996–2013*. North Carolina Education Research Data Center (NCERDC), 2013. Restricted-use data accessed via data use agreement. Includes test scores, teacher and classroom assignments, demographic characteristics of students, parents, and teachers, and disciplinary and attendance records for the universe of North Carolina public school students. [https://childandfamilypolicy.duke.edu/project/north-carolina-education-research-data-center/](https://childandfamilypolicy.duke.edu/project/north-carolina-education-research-data-center/)
 
-North Carolina Administrative Office of the Courts (NCAOC). *Administrative Records of Criminal Justice Contact*. Raleigh, NC: North Carolina Administrative Office of the Courts.
+North Carolina Administrative Office of the Courts (NCAOC). *North Carolina Court Case Records, 2006–2020*. North Carolina Administrative Office of the Courts, 2020. Restricted-use administrative data accessed via data use agreement. Covers all cases disposed between 2006 and mid-2020, including information on defendants, offenses, initial charges, convictions, and sentences.
 
+### BibTeX
 
+```bibtex
+@misc{NCERDC2013,
+  author    = {{North Carolina Education Research Data Center}},
+  title     = {North Carolina Public School Administrative Records, 
+               1996--2013},
+  year      = {2013},
+  publisher = {North Carolina Education Research Data Center (NCERDC)},
+  note      = {Restricted-use data accessed via data use agreement. 
+               Includes test scores, teacher and classroom assignments, 
+               demographic characteristics of students, parents, and 
+               teachers, and disciplinary and attendance records for the 
+               universe of North Carolina public school students.
+               \url{https://childandfamilypolicy.duke.edu/project/north-carolina-education-research-data-center/}},
+}
+
+@misc{NCAOC2020,
+  author    = {{North Carolina Administrative Office of the Courts}},
+  title     = {North Carolina Court Case Records, 2006--2020},
+  year      = {2020},
+  publisher = {North Carolina Administrative Office of the Courts},
+  note      = {Restricted-use administrative data accessed via data use 
+               agreement. Covers all cases disposed between 2006 and 
+               mid-2020, including information on defendants, offenses, 
+               initial charges, convictions, and sentences.},
+}
+```
 
