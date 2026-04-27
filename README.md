@@ -40,7 +40,7 @@ Administrative records of adult criminal justice contact for North Carolina resi
 
 ### Software
 
-- **Stata SE** version 19 or later (required Stata packages `gtools`, `ivreg2`, `reghdfe`, `ivreghdfe`, and `tuples` are installed automatically)
+- **Stata SE** version 19 or later (required Stata packages `gtools`, `ivreg2`, `reghdfe`, `ivreghdfe`, `egenmore`, and `tuples` are installed automatically)
 - **Python** 3.14+ (see `.python-version`)
 
 ### Python environment setup
