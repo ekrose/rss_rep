@@ -26,7 +26,7 @@ di "Working with design covariates: ${covdesign}"
 di "Working with excluded covariates: ${covsadj}"
 
 * Install required packages if not already present
-foreach pkg in gtools ftools ivreg2 reghdfe ivreghdfe tuples egenmore {
+foreach pkg in gtools require ftools ivreg2 reghdfe ivreghdfe tuples egenmore {
     capture which `pkg'
     if _rc {
         ssc install `pkg'
