@@ -18,6 +18,8 @@ global covsadj = "pared_nohs pared_hsorless pared_somecol pared_baormore lag2_ma
 
 * Load analysis data (path set via PROJECT_DATA_DIR environment variable)
 local PROJECT_DATA_DIR : environment PROJECT_DATA_DIR
+* Remove trailing slash if present (handles both "path/" and "path")
+local PROJECT_DATA_DIR = regexr("`PROJECT_DATA_DIR'", "/$", "")
 global PROJECT_DATA_DIR "`PROJECT_DATA_DIR'"
 use ${PROJECT_DATA_DIR}/analysis.dta, clear
 
