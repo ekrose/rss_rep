@@ -95,8 +95,7 @@ foreach yy of local _subgroups {
     local ++col_counter
 }
 
-
-esttab using tables/tableA13.tex, tex se label nostar replace mtitles("White" "Non-White" "Boys" "Girls" "Yes" "No" "High" "Low" ) mgroups("Race" "Sex" "Econ. disadvantaged" "Arrest risk", pattern(1 0 1 0 1 0 1 0 ) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) 
+esttab using tables/tableA13.tex, noobs tex se label nostar replace mtitles("White" "Non-White" "Boys" "Girls" "Yes" "No" "High" "Low" ) mgroups("Race" "Sex" "Econ. disadvantaged" "Arrest risk", pattern(1 0 1 0 1 0 1 0 ) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) 
 
 
 
