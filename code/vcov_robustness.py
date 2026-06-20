@@ -176,10 +176,10 @@ axes.plot(csent.index, csent[('max','Behaviors')], 'b--s', label='Max')
 axes.hlines(y=main_results.loc['Behaviors','Criminal arrest'], xmin=5, xmax=26, linestyle='--', alpha=0.8, color = 'green')
 axes.set_xlabel('# of controls included in model')
 axes.set_ylabel('Impact of 1 SD increase in\nbehavioral effects on arrests') 
-axes.set_ylim(-0.015,0.005)
+axes.set_ylim(-0.06,-0.04)
 axes.annotate("Preferred estimate",
             xy=(main_numVars, main_results.loc['Behaviors','Criminal arrest']), xycoords='data',
-            xytext=(11.5, 0.001), textcoords='data',
+            xytext=(11.5, -0.045), textcoords='data',
             size=11, va="center", ha="center", color = 'green',
             arrowprops=dict(arrowstyle="simple",
                             connectionstyle="arc3,rad=-0.2", color = 'green'),
