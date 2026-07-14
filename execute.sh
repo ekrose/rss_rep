@@ -72,7 +72,7 @@ rm -f temp/*.dta temp/*.csv temp/*.smcl temp/robust/*.dta temp/robust/*.log 2>/d
 
 # -----------------------------------------------------------------------------
 # Step 0a: Generate simulated analysis data
-# Reads summary statistics from data/summary.pkl and writes analysis.dta
+# Reads summary statistics from temp/summary.pkl and writes analysis.dta
 # Note, due to privacy restriction, the summary.pkl file is not part of the replication package. 
 #		however, the code to create it from the real analysis data is included in the replication archive and it is "fake_data_formats.py"
 # to $PROJECT_DATA_DIR.
