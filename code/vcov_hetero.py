@@ -224,7 +224,7 @@ for out in ['Test scores', 'Behaviors']:
 
         axes.set_ylabel('Effect of 1 sd increase in\nteacher effects on arrests')
         axes.set_xlabel('Demographic group') 
-        axes.set_ylim(-.012,0.004)
+        #axes.set_ylim(-.012,0.004)
         x = [[a-0.5*width,a+0.5*width] for a in range(4)]
         axes.set_xticks([inner for outer in x for inner in outer])
         x = [[a,b] for k, a, b in labels]
@@ -290,7 +290,7 @@ for out in ['Test scores', 'Study skills', 'Behaviors']:
         va='bottom')      
         axes.set_ylabel('Effect of 1 sd increase in\nteacher effects on incarceration')
         axes.set_xlabel('Demographic group') 
-        axes.set_ylim(-.012,0.004)
+       #axes.set_ylim(-.012,0.004)
         x = [[a-0.5*width,a+0.5*width] for a in range(4)]
         axes.set_xticks([inner for outer in x for inner in outer])
         x = [[a,b] for k, a, b in labels]
