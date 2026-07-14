@@ -66,7 +66,7 @@ foreach outcome of varlist testscores behavpca studypca {
     replace covadj_predict = covadj_predict - r(mean)
 
 	if inlist("`outcome'","testscores","behavpca") {
-		binscatter covadj_predict ${regvar}, controls(${covdesign}) xtitle("Estimated teacher effect") ytitle("Omitted variables fit") yscale(range(-0.03 0.03)) ylabel(-0.03(0.01)0.03) graphregion(color(white)) legend(off) note("Slope: `slopeCoef' (`slopeSE')")
+		binscatter covadj_predict ${regvar}, controls(${covdesign}) xtitle("Estimated teacher effect") ytitle("Omitted variables fit") graphregion(color(white)) legend(off) note("Slope: `slopeCoef' (`slopeSE')")
 		graph export figures/figure`figtitle'.pdf, replace
 	}
 }
@@ -117,7 +117,7 @@ foreach outcome of varlist college_bound gpa_weighted {
     qui su covadj_predict if e(sample) == 1
     replace covadj_predict = covadj_predict - r(mean)
 
-	binscatter covadj_predict ${regvar}, controls(${covdesign}) xtitle("Estimated teacher effect") ytitle("Omitted variables fit") yscale(range(-0.025 0.025)) ylabel(-0.025(0.005)0.025) graphregion(color(white)) legend(off) note("Slope: `slopeCoef' (`slopeSE')")
+	binscatter covadj_predict ${regvar}, controls(${covdesign}) xtitle("Estimated teacher effect") ytitle("Omitted variables fit") graphregion(color(white)) legend(off) note("Slope: `slopeCoef' (`slopeSE')")
 	graph export figures/figure`figtitle'.pdf, replace
 }
 
@@ -164,7 +164,7 @@ foreach outcome of varlist aoc_any aoc_crim aoc_index aoc_incar {
     qui su covadj_predict if e(sample) == 1
     replace covadj_predict = covadj_predict - r(mean)
 
-	binscatter covadj_predict ${regvar}, controls(${covdesign}) xtitle("Estimated teacher effect") ytitle("Omitted variables fit") yscale(range(-0.025 0.025)) ylabel(-0.025(0.005)0.025) graphregion(color(white)) legend(off) note("Slope: `slopeCoef' (`slopeSE')")
+	binscatter covadj_predict ${regvar}, controls(${covdesign}) xtitle("Estimated teacher effect") ytitle("Omitted variables fit") graphregion(color(white)) legend(off) note("Slope: `slopeCoef' (`slopeSE')")
 	graph export figures/figure`figtitle'.pdf, replace
 }
 
