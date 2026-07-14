@@ -25,18 +25,23 @@ set seed 617238
 * `0' contains the full argument string (e.g., "42 i.year##i.grade ...").
 * The covdesign global is set from `0' after stripping the leading iteration number.
 global outcome = "testscores"
-global covdesign = "`0'"
-global covdesign = regexr("$covdesign", "^[0-9]+","")
-di "Working with covdesign ${covdesign}"
+global covdesign_iter = "`0'"
+global covdesign_iter = regexr("$covdesign_iter", "^[0-9]+","")
+di "Working with covdesign ${covdesign_iter}"
 dis "-------------"
 
 global covsadj = "pared_nohs pared_hsorless pared_somecol pared_baormore lag2_mathscal lag2_readscal"
 local iter = `1'
 di "Working on iteration `iter'"
 
-* Load data and options (note: set_options.do will re-set $covdesign, but we
-* have already overridden it above; preamble.do uses the overridden value)
+* Load data and options. set_options.do unconditionally resets $covdesign to
+* the baseline spec as a side effect of loading the data — restore our
+* per-iteration override (saved above as covdesign_iter, which set_options.do
+* does not touch) immediately afterward, before preamble.do consumes
+* $covdesign (e.g. to build missing-value indicators for whichever
+* covariates are in this spec).
 do code/set_options.do
+global covdesign = "${covdesign_iter}"
 do code/preamble.do
 
 * Get the residuals
