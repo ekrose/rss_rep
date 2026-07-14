@@ -164,10 +164,8 @@ foreach outcome of varlist aoc_any aoc_crim aoc_index aoc_incar {
     qui su covadj_predict if e(sample) == 1
     replace covadj_predict = covadj_predict - r(mean)
 
-	if inlist("`outcome'","aoc_any","aoc_index") {
-		binscatter covadj_predict ${regvar}, controls(${covdesign}) xtitle("Estimated teacher effect") ytitle("Omitted variables fit") yscale(range(-0.025 0.025)) ylabel(-0.025(0.005)0.025) graphregion(color(white)) legend(off) note("Slope: `slopeCoef' (`slopeSE')")
-		graph export figures/figure`figtitle'.pdf, replace
-	}
+	binscatter covadj_predict ${regvar}, controls(${covdesign}) xtitle("Estimated teacher effect") ytitle("Omitted variables fit") yscale(range(-0.025 0.025)) ylabel(-0.025(0.005)0.025) graphregion(color(white)) legend(off) note("Slope: `slopeCoef' (`slopeSE')")
+	graph export figures/figure`figtitle'.pdf, replace
 }
 
 esttab, keep(pared* lag2_mathscal lag2_readscal ${regvar}) stats(N r2 orig_r2 design_controls twin_fe, labels("Observations" "R2" "Original R2" "Design controls" "Twin FE")) 
