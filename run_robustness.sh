@@ -106,36 +106,18 @@ wait_for_slot() {
 }
 
 # --------------------------------------------------------------------------
-# Pre-process the options file: join continuation lines (starting with ">")
-# into a single specification per line
+# Read the options file: one full specification per line.
 # --------------------------------------------------------------------------
 specs=()
 iters=()
 current_iter=0
-current_spec=""
 
 while IFS= read -r line || [ -n "$line" ]; do
     [ -z "$line" ] && continue
-
-    if [[ "$line" == ">"* ]]; then
-        # Continuation line: append (strip leading "> ")
-        current_spec="$current_spec ${line:2}"
-    else
-        # Save the previous spec (if any)
-        if [ -n "$current_spec" ]; then
-            current_iter=$((current_iter + 1))
-            specs+=("$current_spec")
-            iters+=("$current_iter")
-        fi
-        current_spec="$line"
-    fi
-done < "$OPTIONS_FILE"
-# Save the last spec
-if [ -n "$current_spec" ]; then
     current_iter=$((current_iter + 1))
-    specs+=("$current_spec")
+    specs+=("$line")
     iters+=("$current_iter")
-fi
+done < "$OPTIONS_FILE"
 
 total=${#specs[@]}
 echo "Total specifications: $total"

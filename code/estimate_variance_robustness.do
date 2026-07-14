@@ -13,7 +13,7 @@
 *   4. Saves residuals to temp/robust/resids_iter{N}.dta
 *
 * These files are later read by vcov_robustness.py, which computes 1-SD
-* effects across all 1,369 specifications and produces Figure A4.
+* effects across all 812 specifications and produces Figure A4.
 * =============================================================================
 clear all
 clear matrix

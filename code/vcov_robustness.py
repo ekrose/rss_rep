@@ -88,16 +88,11 @@ for idx, spec in enumerate(specs):
 
 results = pd.concat(allresults, ignore_index=True).rename(columns={'index':'short_run'})
 
-# Read lines
+# Read lines (one full specification per line)
 lines = []
-row = 1
 with open("code/robust_options.txt") as opts:
-    for line in opts:
-        if line[0] == ">":
-            lines[-1][1] = lines[-1][1] + line[2:].strip()
-        else:
-            lines += [[str(row), line.strip()]]
-            row += 1
+    for row, line in enumerate(opts, start=1):
+        lines += [[str(row), line.strip()]]
 specs = pd.DataFrame(lines, columns=['iter','sec'])
 
 # Add to results
