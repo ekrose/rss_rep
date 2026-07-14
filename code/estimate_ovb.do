@@ -121,7 +121,7 @@ foreach outcome of varlist college_bound gpa_weighted {
 	graph export figures/figure`figtitle'.pdf, replace
 }
 
-*** 3) OVB tests for CJC long-run outcomes (Table A5, Figures A3a-b)
+*** 3) OVB tests for CJC long-run outcomes (Table A5, Figures 2c-d A3a-b)
 eststo clear
 foreach outcome of varlist aoc_any aoc_crim aoc_index aoc_incar {
     capture drop xhat xhatd teach_fe
@@ -130,6 +130,13 @@ foreach outcome of varlist aoc_any aoc_crim aoc_index aoc_incar {
     predict xhat, xb
     predict xhatd, xbd
     gen teach_fe = xhatd - xhat
+
+    if "`outcome'" == "aoc_crim" {
+        local figtitle "2c"
+    }
+    if "`outcome'" == "aoc_incar" {
+        local figtitle "2d"
+    }
 
 	if "`outcome'" == "aoc_any" {
 		local figtitle "A3a"
