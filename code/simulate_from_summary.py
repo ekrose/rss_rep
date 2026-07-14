@@ -4,11 +4,164 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from scipy.stats import norm
 
-from pathlib import Path  
-import os  
+from pathlib import Path
+import os
 
 DATA_DIR = Path(os.environ["PROJECT_DATA_DIR"])
+
+
+# -----------------------------------------------------------------------
+# Hand-specified correlations for the fake-data exercise.
+#
+# We no longer have access to the restricted-use microdata, so there is
+# no empirical correlation matrix to draw on. simulate_from_summary()
+# previously drew every column independently from its marginal
+# distribution (mean/std/min/max, or category frequencies), which means
+# none of the $covdesign covariates carry any real relationship to the
+# outcomes (testscores, behavpca, aoc_crim, ...) in the simulated data.
+# That's fine for most tables, but it makes Figure A4 (sensitivity of
+# the 1-SD teacher-effect estimate to which covariates are controlled
+# for) degenerate: adding/removing covariates from the spec does
+# essentially nothing, since none of them explain any of the outcome's
+# variance.
+#
+# CORR_OVERRIDES hand-specifies a plausible correlation for a modest set
+# of covariate/outcome pairs (magnitudes chosen to be directionally
+# sensible, not fit to data). Everything not listed here is left
+# uncorrelated (0). This is fed into a Gaussian copula (see
+# _build_synthetic_corr / the copula block in simulate_from_summary)
+# so the simulated columns keep their original marginal distributions
+# but gain this correlation structure, giving Figure A4 non-degenerate
+# variation across specifications.
+#
+# Raw columns feeding the outcomes used in Figure A4 (see preamble.do):
+#   testscores (short-run) <- mathscal, readscal
+#   behavpca   (short-run) <- lead1_daysabs, lead1_any_discp, lead_grade_rep
+#   aoc_crim   (long-run, "Criminal arrest")
+# -----------------------------------------------------------------------
+CORR_OVERRIDES = {
+    # Own persistence: current test scores vs. lagged test scores
+    ('mathscal', 'lag1_mathscal'): 0.65,
+    ('readscal', 'lag1_readscal'): 0.65,
+    ('mathscal', 'lag2_mathscal'): 0.55,
+    ('readscal', 'lag2_readscal'): 0.55,
+    ('lag1_mathscal', 'lag2_mathscal'): 0.60,
+    ('lag1_readscal', 'lag2_readscal'): 0.60,
+    ('mathscal', 'readscal'): 0.60,
+
+    # Parental education -> test scores
+    ('pared_baormore', 'mathscal'): 0.20,
+    ('pared_baormore', 'readscal'): 0.20,
+    ('pared_somecol', 'mathscal'): 0.10,
+    ('pared_somecol', 'readscal'): 0.10,
+    ('pared_hsorless', 'mathscal'): -0.08,
+    ('pared_hsorless', 'readscal'): -0.08,
+    ('pared_nohs', 'mathscal'): -0.15,
+    ('pared_nohs', 'readscal'): -0.15,
+
+    # Disadvantage / limited English -> test scores, crime
+    ('disadv', 'mathscal'): -0.25,
+    ('disadv', 'readscal'): -0.25,
+    ('disadv', 'aoc_crim'): 0.15,
+    ('lim_eng', 'readscal'): -0.20,
+    ('lim_eng', 'mathscal'): -0.05,
+
+    # Race -> test scores, crime (directional only, not calibrated)
+    ('black', 'mathscal'): -0.15,
+    ('black', 'readscal'): -0.15,
+    ('black', 'aoc_crim'): 0.10,
+    ('white', 'mathscal'): 0.10,
+    ('white', 'readscal'): 0.10,
+    ('white', 'aoc_crim'): -0.08,
+
+    # Gender -> behavior, crime
+    ('female', 'aoc_crim'): -0.15,
+    ('female', 'lead1_any_discp'): -0.10,
+
+    # AIG (academically/intellectually gifted) -> test scores
+    ('aigmath', 'mathscal'): 0.35,
+    ('aigread', 'readscal'): 0.35,
+    ('aigmath', 'aoc_crim'): -0.05,
+    ('aigread', 'aoc_crim'): -0.05,
+
+    # Exceptionality categories -> behavior, test scores, crime
+    ('exc_aig', 'mathscal'): 0.20,
+    ('exc_aig', 'readscal'): 0.20,
+    ('exc_behav', 'lead1_any_discp'): 0.30,
+    ('exc_behav', 'lead1_daysabs'): 0.15,
+    ('exc_behav', 'aoc_crim'): 0.15,
+    ('exc_educ', 'lead1_daysabs'): 0.10,
+    ('exc_educ', 'mathscal'): -0.15,
+    ('exc_educ', 'readscal'): -0.15,
+    ('exc_not', 'aoc_crim'): 0.05,
+
+    # Grade retention -> test scores, own persistence
+    ('grade_rep', 'mathscal'): -0.20,
+    ('grade_rep', 'readscal'): -0.20,
+    ('grade_rep', 'lead_grade_rep'): 0.40,
+
+    # Discipline / attendance history -> behavior outcomes, crime
+    ('lag1_any_discp', 'lead1_any_discp'): 0.35,
+    ('lag1_any_discp', 'aoc_crim'): 0.20,
+    ('lag1_daysabs', 'lead1_daysabs'): 0.35,
+    ('lag1_daysabs', 'aoc_crim'): 0.10,
+
+    # Behavioral outcome components -> crime, each other
+    ('lead1_any_discp', 'aoc_crim'): 0.25,
+    ('lead1_daysabs', 'aoc_crim'): 0.12,
+    ('lead_grade_rep', 'aoc_crim'): 0.08,
+    ('lead1_any_discp', 'lead1_daysabs'): 0.20,
+    ('lead1_any_discp', 'lead_grade_rep'): 0.15,
+    ('lead1_daysabs', 'lead_grade_rep'): 0.10,
+
+    # Test scores -> crime
+    ('mathscal', 'aoc_crim'): -0.12,
+    ('readscal', 'aoc_crim'): -0.10,
+}
+
+
+def _build_synthetic_corr(available_cols):
+    """
+    Build a full correlation matrix over `available_cols` from
+    CORR_OVERRIDES: 1.0 on the diagonal, the specified value for pairs
+    named in CORR_OVERRIDES (order-insensitive), 0.0 elsewhere. Columns
+    named in CORR_OVERRIDES that aren't present in `available_cols` are
+    silently skipped (e.g. if a variable name doesn't match the summary).
+    Returns None if fewer than 2 of the named columns are available.
+    """
+    named_cols = {c for pair in CORR_OVERRIDES for c in pair}
+    cols = [c for c in available_cols if c in named_cols]
+    if len(cols) < 2:
+        return None
+
+    corr = pd.DataFrame(np.eye(len(cols)), index=cols, columns=cols)
+    for (a, b), val in CORR_OVERRIDES.items():
+        if a in corr.index and b in corr.columns:
+            corr.loc[a, b] = val
+            corr.loc[b, a] = val
+    return corr
+
+
+def _nearest_psd_corr(corr, epsilon=1e-8):
+    """
+    Project a correlation matrix onto the nearest valid (positive
+    semi-definite, unit-diagonal) correlation matrix.
+
+    The empirical correlation matrix in summary['corr'] can be slightly
+    non-PSD (pairwise-deletion of missing values, floating point noise),
+    which np.random.multivariate_normal rejects. Clipping negative
+    eigenvalues and rescaling to a unit diagonal fixes this while leaving
+    well-behaved matrices essentially unchanged.
+    """
+    sym = (corr + corr.T) / 2.0
+    eigvals, eigvecs = np.linalg.eigh(sym)
+    eigvals = np.clip(eigvals, epsilon, None)
+    reconstructed = (eigvecs * eigvals) @ eigvecs.T
+    d = np.sqrt(np.diag(reconstructed))
+    d[d == 0] = 1.0
+    return reconstructed / np.outer(d, d)
 
 
 def simulate_from_summary(summary, n_observations=None, random_state=926823):
@@ -18,7 +171,14 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
       - 'dtypes': {col: numpy.dtype}
       - 'numeric_stats': {col: {'mean','std','min','max', ...}}
       - 'categoricals': {col: {category: count, ...}}
-    
+
+    Each column's marginal distribution is drawn independently to match
+    its summary stats, EXCEPT for the columns named in CORR_OVERRIDES
+    (mostly $covdesign covariates and the short/long-run outcomes used
+    in Figure A4), which are drawn jointly via a Gaussian copula so they
+    carry the hand-specified correlation structure in CORR_OVERRIDES.
+    See the comment above CORR_OVERRIDES for why this is necessary.
+
     Parameters:
     -----------
     summary : dict
@@ -43,6 +203,24 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
     data = {}
 
     cols = list(dtypes.keys())
+
+    # ------------------------------------------------------------------
+    # Gaussian copula: draw jointly-correlated uniforms for the numeric
+    # columns named in CORR_OVERRIDES (see above), using a synthetic
+    # correlation matrix since we no longer have the real microdata.
+    # Each column's own marginal distribution (mean/std/min/max, handled
+    # below) is unaffected; only the dependence across columns changes.
+    # ------------------------------------------------------------------
+    copula_uniforms = {}
+    synth_corr = _build_synthetic_corr([c for c in cols if c in numeric_stats])
+    if synth_corr is not None:
+        corr_mat = _nearest_psd_corr(synth_corr.to_numpy(dtype=float))
+        draws = rng.multivariate_normal(
+            mean=np.zeros(len(synth_corr)), cov=corr_mat, size=n_rows, method="eigh"
+        )
+        uniforms = norm.cdf(draws)
+        for j, c in enumerate(synth_corr.columns):
+            copula_uniforms[c] = uniforms[:, j]
 
     for col in cols:
         col_dtype = dtypes[col]
@@ -194,7 +372,18 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
             if vmin == 0.0 and vmax == 1.0 and 0 < mean < 1:
                 # Ensure at least one success so SD > 0
                 p = max(mean, 2.0 / n_rows)
-                arr = rng.binomial(1, p, size=n_rows)
+                u = copula_uniforms.get(col)
+                if u is not None:
+                    # Threshold the UPPER tail (u > 1-p), not the lower
+                    # tail: this makes the indicator an increasing
+                    # function of the underlying copula normal, so a
+                    # positive entry in CORR_OVERRIDES between this
+                    # column and another produces a positive empirical
+                    # correlation (using u < p would flip the sign).
+                    # Marginal probability is unaffected: P(U > 1-p) = p.
+                    arr = (u > (1.0 - p)).astype(np.int64)
+                else:
+                    arr = rng.binomial(1, p, size=n_rows)
                 # Safety: if all same, flip one value
                 if arr.sum() == 0:
                     arr[0] = 1
@@ -220,7 +409,13 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
                     low -= 1
                     high = low + 2
 
-                arr = rng.integers(low, high + 1, size=n_rows, dtype=np.int64)
+                u = copula_uniforms.get(col)
+                if u is not None:
+                    idx = np.floor(u * (high - low + 1)).astype(np.int64)
+                    idx = np.clip(idx, 0, high - low)
+                    arr = low + idx
+                else:
+                    arr = rng.integers(low, high + 1, size=n_rows, dtype=np.int64)
                 data[col] = arr
             else:
                 # Float-like or other numeric: always use positive scale
@@ -235,7 +430,11 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
                 else:
                     scale = max(abs(std), 1e-6)
 
-                arr = rng.normal(loc=mean, scale=scale, size=n_rows)
+                u = copula_uniforms.get(col)
+                if u is not None:
+                    arr = norm.ppf(u, loc=mean, scale=scale)
+                else:
+                    arr = rng.normal(loc=mean, scale=scale, size=n_rows)
                 # clip to a finite range
                 arr = np.clip(arr, vmin, vmax)
 
@@ -501,8 +700,9 @@ def export_to_stata(df: pd.DataFrame, path: str, version: int = 118) -> None:
 
 
 if __name__ == "__main__":
-    # Adjust this path if needed
-    summary_path = Path("/Users/shemtov/Downloads/summary.pkl")
+    # Adjust this path if needed. Run from the project root so this
+    # resolves to <repo>/temp/summary.pkl (temp/ is gitignored).
+    summary_path = Path("temp/summary.pkl")
 
     with open(summary_path, "rb") as f:
         summary = pickle.load(f)
