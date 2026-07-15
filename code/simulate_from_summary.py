@@ -122,6 +122,57 @@ CORR_OVERRIDES = {
 }
 
 
+# -----------------------------------------------------------------------
+# Some string categoricals encode "no response" as an explicit blank
+# string ("") rather than NaN (e.g. bound_for_code, the survey item
+# college_bound is derived from in preamble.do). value_counts() keeps ""
+# as a normal category, so simulate_from_summary() reproduces its real
+# ~70% blank rate. At n_observations=10,000 that leaves too few rows
+# with a real college_bound status once preamble.do's sample
+# restrictions and the OVB regressions' fixed effects are applied
+# (reghdfe ends up with as many parameters as observations, R2=1.0000,
+# and binscatter has no residual variation left to plot -> Figure A3c
+# renders as a single point). This caps the blank share for named
+# columns and redistributes the rest proportionally across the other
+# categories, purely so the small simulated sample has enough
+# observations to produce a non-degenerate demonstration figure.
+# -----------------------------------------------------------------------
+CATEGORICAL_MAX_BLANK_RATE = {
+    "bound_for_code": 0.15,
+}
+
+
+def _cap_blank_probability(col, categories, probs):
+    """
+    If `col` has an override in CATEGORICAL_MAX_BLANK_RATE, cap the
+    probability mass on the blank ("") category at that rate and
+    redistribute the excess proportionally across the other categories.
+    No-op if the column has no override or no blank category.
+    """
+    max_blank = CATEGORICAL_MAX_BLANK_RATE.get(col)
+    if max_blank is None:
+        return probs
+
+    blank_idx = np.where(categories == "")[0]
+    if len(blank_idx) == 0:
+        return probs
+    blank_idx = blank_idx[0]
+
+    if probs[blank_idx] <= max_blank:
+        return probs
+
+    excess = probs[blank_idx] - max_blank
+    other_mask = np.arange(len(probs)) != blank_idx
+    other_total = probs[other_mask].sum()
+    probs = probs.copy()
+    probs[blank_idx] = max_blank
+    if other_total > 0:
+        probs[other_mask] += probs[other_mask] / other_total * excess
+    else:
+        probs[other_mask] = excess / other_mask.sum()
+    return probs
+
+
 def _build_synthetic_corr(available_cols):
     """
     Build a full correlation matrix over `available_cols` from
@@ -261,7 +312,9 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
                     probs = np.ones(len(categories)) / len(categories)  # uniform if all probs invalid
                 else:
                     probs = probs / probs.sum()  # renormalize
-                
+
+                probs = _cap_blank_probability(col, categories, probs)
+
                 # sample with same categorical support, approximate frequencies
                 sampled = rng.choice(categories, size=n_rows, p=probs)
                 data[col] = sampled
