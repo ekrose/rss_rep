@@ -151,7 +151,11 @@ axes.set_ylabel('Impact of 1 SD increase in\ntest score effects on arrests')
 # axes.set_ylim(-0.015,0.005)
 axes.annotate("Preferred estimate",
             xy=(main_numVars, main_results.loc['Test scores','Criminal arrest']), xycoords='data',
-            xytext=(11.5, -0.006), textcoords='data',
+            # y given as an axes fraction (not a fixed data value) so the label
+            # stays inside the plot regardless of the y-axis's auto-scaled
+            # range, which now shifts with the simulated data (see below,
+            # set_ylim is no longer fixed to a hardcoded range either)
+            xytext=(11.5, 0.45), textcoords=('data', 'axes fraction'),
             size=11, va="center", ha="center", color = 'green',
             arrowprops=dict(arrowstyle="simple",
                             connectionstyle="arc3,rad=-0.2", color = 'green'),
@@ -174,7 +178,10 @@ axes.set_ylabel('Impact of 1 SD increase in\nbehavioral effects on arrests')
 # axes.set_ylim(-0.06,-0.04)
 axes.annotate("Preferred estimate",
             xy=(main_numVars, main_results.loc['Behaviors','Criminal arrest']), xycoords='data',
-            xytext=(11.5, -0.045), textcoords='data',
+            # see comment on the test-scores panel above: y as an axes
+            # fraction keeps the label on-canvas regardless of the
+            # auto-scaled y-range
+            xytext=(11.5, 0.75), textcoords=('data', 'axes fraction'),
             size=11, va="center", ha="center", color = 'green',
             arrowprops=dict(arrowstyle="simple",
                             connectionstyle="arc3,rad=-0.2", color = 'green'),
