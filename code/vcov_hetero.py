@@ -233,9 +233,9 @@ for out in ['Test scores', 'Behaviors']:
         axes.grid(axis='y', color='grey')
         fig.tight_layout()
         if out == "Behaviors":
-            fig.savefig('figures/figure4a')
+            fig.savefig('figures/figure4a.pdf')
         else:
-            fig.savefig('figures/figureA5a')
+            fig.savefig('figures/figureA5a.pdf')
 
 # Any incarceration: Graph of 1 SD effects
 covs = [('white','Non-white','White'),('male','Female','Male'),('disadv','Not disadv','Disadv'),('atrisk','Low risk','High risk')]
@@ -299,9 +299,9 @@ for out in ['Test scores', 'Study skills', 'Behaviors']:
         axes.grid(axis='y', color='grey')
         fig.tight_layout()
         if out == "Behaviors":
-            fig.savefig('figures/figure4b')
+            fig.savefig('figures/figure4b.pdf')
         else:
-            fig.savefig('figures/figureA5b')
+            fig.savefig('figures/figureA5b.pdf')
 
 
 

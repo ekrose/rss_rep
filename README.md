@@ -115,6 +115,7 @@ export STATA="/path/to/your/stata-se"
 │   ├── estimate_variance.do        # Tables 2-3, Figure A1 (Stata residuals)
 │   ├── vcov_main_part1.py          # Tables 2-3, Figure A1 (U-stat estimation)
 │   ├── vcov_main_part2.py          # Tables 2-3 (standard errors)
+│   ├── Bias_in_cov_using_EB.py     # Figure B.1, Table B.1 (EB posterior bias)
 │   ├── vcov_implied_reg.py         # Tables 4, A8
 │   ├── entry_ivs_part1.do          # Table 5
 │   ├── vcov_main_part3.py          # Figure 1

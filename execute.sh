@@ -110,6 +110,16 @@ python code/vcov_main_part1.py
 python code/vcov_main_part2.py
 
 # -----------------------------------------------------------------------------
+# Step 2b: Bias of EB posterior covariances (Appendix B)
+# Figure B.1 and Table B.1
+#   - Uses teacher-year residuals from Step 2 (temp/teach_mean_resids.dta)
+#   - Estimates variance-covariance of teacher effects and classroom-level
+#     sampling error, then computes the closed-form bias of multivariate EB
+#     posterior covariances/correlations as a function of class size
+# -----------------------------------------------------------------------------
+python code/Bias_in_cov_using_EB.py
+
+# -----------------------------------------------------------------------------
 # Step 3: Implied regression decomposition
 # Tables 4 and A8
 #   - Uses residuals from Step 2 (temp/teach_mean_resids.dta and
