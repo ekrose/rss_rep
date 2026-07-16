@@ -111,7 +111,7 @@ for adj, lab, hatch in [(-1.5, 'Race (white vs. non-white)', hatch1), (-0.5, 'Ge
 axes.set_ylabel('Correlation in short-run effects across groups') 
 axes.set_xlabel('Short-run outcome') 
 axes.set_xticks(x)
-axes.set_ylim(0,1)
+# axes.set_ylim(0,1)
 axes.set_xticklabels(labels)
 axes.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),
           fancybox=True, ncol=2)
@@ -136,7 +136,7 @@ for adj, lab, hatch in [(-1.5, 'Race (white vs. non-white)', hatch1), (-0.5, 'Ge
 axes.set_ylabel('Correlation in long-run effects across groups') 
 axes.set_xlabel('Long-run outcome') 
 axes.set_xticks(x)
-axes.set_ylim(0,1)
+# axes.set_ylim(0,1)
 axes.set_xticklabels(labels)
 axes.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),
           fancybox=True, ncol=2)
@@ -160,7 +160,7 @@ for adj, lab, hatch in [(-1.5, 'Race (white vs. non-white)', hatch1), (-0.5, 'Ge
 axes.set_ylabel('Correlation in long-run effects across groups') 
 axes.set_xlabel('Long-run outcome') 
 axes.set_xticks(x)
-axes.set_ylim(0,1)
+# axes.set_ylim(0,1)
 axes.set_xticklabels(labels)
 axes.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),
           fancybox=True, ncol=2)
