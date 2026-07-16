@@ -47,26 +47,26 @@ capture drop touse
 gen touse = ebar_schgrade
 eststo iv`mcount': ivreg2 ${outcome} (${lomvar} = vam_entry_school_grade) any_entry_school_grade ${covdesign}, cluster(mastid) ffirst
 estadd local design_controls = "\checkmark" : iv`mcount'
-estadd local ffirst = round(el(e(first),4,1),-1) : iv`mcount'
+estadd local ffirst = round(e(widstat),-1) : iv`mcount'
 test ${lomvar} = 1
-estadd local pvalone = round(r(p),.001) : iv`mcount'
+estadd local pvalone = string(round(r(p),.001)) : iv`mcount'
 local mcount = `mcount' + 1
 
 eststo iv`mcount': ivreghdfe ${outcome} (${lomvar} = vam_entry_school_grade) any_entry_school_grade ${covdesign}, cluster(mastid) ffirst absorb(school_fe#grade)
 estadd local design_controls = "\checkmark" : iv`mcount'
 estadd local sgfe = "\checkmark" : iv`mcount'
-estadd local ffirst = round(el(e(first),4,1),-1) : iv`mcount'
+estadd local ffirst = round(e(widstat),-1) : iv`mcount'
 test ${lomvar} = 1
-estadd local pvalone = round(r(p),.001) : iv`mcount'
+estadd local pvalone = string(round(r(p),.001)) : iv`mcount'
 local mcount = `mcount' + 1
 
 eststo iv`mcount': ivreghdfe ${outcome} (${lomvar} = vam_entry_school_grade) any_entry_school_grade ${covdesign}, cluster(mastid) ffirst absorb(school_fe#grade district#grade#year)
 estadd local design_controls = "\checkmark" : iv`mcount'
 estadd local sgfe = "\checkmark" : iv`mcount'
 estadd local distyear = "\checkmark" : iv`mcount'
-estadd local ffirst = round(el(e(first),4,1),-1) : iv`mcount'
+estadd local ffirst = round(e(widstat),-1) : iv`mcount'
 test ${lomvar} = 1
-estadd local pvalone = round(r(p),.001) : iv`mcount'
+estadd local pvalone = string(round(r(p),.001)) : iv`mcount'
 local mcount = `mcount' + 1
 
 eststo iv`mcount': reg all_${outcome}_idx vam_entry_school_grade any_entry_school_grade ${covdesign}, cluster(mastid)
@@ -86,9 +86,9 @@ local mcount = `mcount' + 1
 
 esttab iv1 iv2 iv3 iv4 iv5 iv6 using tables/tableA7.tex, tex replace ///
         keep(${lomvar} vam_entry_school_grade) se nostar stats(N r2 design_controls sgfe distyear ffirst pvalone, labels("Observations" "R2" "Design controls" "School-grade FE" "Dist-grade-year FE" "First stage F" "\$Pr(\lambda = 1)$")) ///
-        coeflabel(${lomvar} "$\hat{\alpha}_j$" vam_entry_school_grade "$Z_{it}$") ///
+        coeflabel(${lomvar} "$\hat{\alpha}_j$" vam_entry_school_grade "\$Z_{it}\$") ///
         substitute(\_ _) nomtitles ///
-        mgroups("Outcome: $Y$" "Outcome: $\hat{Y}_{excluded}$", pattern(1 0 0 1 0 0)  ///
+        mgroups("Outcome: \$Y\$" "Outcome: $\hat{Y}_{excluded}$", pattern(1 0 0 1 0 0)  ///
             prefix(\multicolumn{@span}{c}{) suffix(})   ///
             span erepeat(\cmidrule(lr){@span}))   
 

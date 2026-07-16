@@ -85,7 +85,7 @@ replace aoc_traff = aoc_traff + aoc_infrac > 0 if aoc_traff != .
 **********************************************
 * First 2 columns (all sample)
 eststo clear
-eststo cols1: estpost tabstat male black disadv lim_eng pared_hsorless pared_somecol pared_baormore readscal mathscal daysabs any_discp oss lead_grade_rep behavpca homework freeread watchtv studypca gpa_weighted class_rank_w grad college_bound aoc_any aoc_traff aoc_crim aoc_index aoc_crim_conv aoc_incar aoc_cost_wtp aoc_total_cost_wtp aoc_cost_bottomup aoc_total_cost_bottomup, statistics(mean sd) columns(statistics)
+eststo cols1: estpost tabstat male black disadv lim_eng pared_hsorless pared_somecol pared_baormore readscal mathscal daysabs any_discp oss lead_grade_rep behavpca homework freeread watchtv studypca gpa_weighted class_rank_w grad college_bound aoc_any aoc_traff aoc_crim aoc_index aoc_crim_conv aoc_incar, statistics(mean sd) columns(statistics)
 distinct teachid
 estadd scalar nteach = r(ndistinct) :cols1
 distinct mastid
@@ -94,7 +94,7 @@ distinct twin_id
 estadd scalar ntwins = r(ndistinct) :cols1
 
 * Second 2 columns (sample for which we observe CJC)
-eststo cols2: estpost tabstat male black disadv lim_eng pared_hsorless pared_somecol pared_baormore readscal mathscal daysabs any_discp oss lead_grade_rep behavpca homework freeread watchtv studypca gpa_weighted class_rank_w grad college_bound aoc_any aoc_traff aoc_crim aoc_index aoc_crim_conv aoc_incar aoc_cost_wtp aoc_total_cost_wtp aoc_cost_bottomup aoc_total_cost_bottomup if aoc_crim != ., statistics(mean sd) columns(statistics)
+eststo cols2: estpost tabstat male black disadv lim_eng pared_hsorless pared_somecol pared_baormore readscal mathscal daysabs any_discp oss lead_grade_rep behavpca homework freeread watchtv studypca gpa_weighted class_rank_w grad college_bound aoc_any aoc_traff aoc_crim aoc_index aoc_crim_conv aoc_incar if aoc_crim != ., statistics(mean sd) columns(statistics)
 distinct teachid if aoc_crim != .
 estadd scalar nteach = r(ndistinct) :cols2
 distinct mastid if aoc_crim != .
@@ -103,7 +103,7 @@ distinct twin_id if aoc_crim != .
 estadd scalar ntwins = r(ndistinct) :cols2
 
 * Third 2 columns (youth with a CJC)
-eststo cols3: estpost tabstat male black disadv lim_eng pared_hsorless pared_somecol pared_baormore readscal mathscal daysabs any_discp oss lead_grade_rep behavpca homework freeread watchtv studypca gpa_weighted class_rank_w grad college_bound aoc_any aoc_traff aoc_crim aoc_index aoc_crim_conv aoc_incar aoc_cost_wtp aoc_total_cost_wtp aoc_cost_bottomup aoc_total_cost_bottomup if aoc_crim == 1, statistics(mean sd) columns(statistics)
+eststo cols3: estpost tabstat male black disadv lim_eng pared_hsorless pared_somecol pared_baormore readscal mathscal daysabs any_discp oss lead_grade_rep behavpca homework freeread watchtv studypca gpa_weighted class_rank_w grad college_bound aoc_any aoc_traff aoc_crim aoc_index aoc_crim_conv aoc_incar if aoc_crim == 1, statistics(mean sd) columns(statistics)
 distinct teachid if aoc_crim == 1
 estadd scalar nteach = r(ndistinct) :cols3
 distinct mastid if aoc_crim == 1

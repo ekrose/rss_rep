@@ -51,9 +51,9 @@ foreach outcome of varlist testscores behavpca studypca {
     eststo iv`mcount': ivreghdfe ${outcome} (${lomvar} = vam_entry_school_grade) any_entry_school_grade ${covdesign}, cluster(mastid) ffirst absorb(school_fe#grade)
     estadd local design_controls = "\checkmark" : iv`mcount'
     estadd local sgfe = "\checkmark" : iv`mcount'
-    estadd local ffirst = round(el(e(first),4,1),-1) : iv`mcount'
+    estadd local ffirst = round(e(widstat),-1) : iv`mcount'
     test ${lomvar} = 1
-    estadd local pvalone = round(r(p),.001) : iv`mcount'
+    estadd local pvalone = string(round(r(p),.001)) : iv`mcount'
     local mcount = `mcount' + 1
 
     * School-switchers
@@ -62,9 +62,9 @@ foreach outcome of varlist testscores behavpca studypca {
     eststo iv`mcount': ivreghdfe ${outcome} (${lomvar} = vam_entry_school) any_entry_school ${covdesign}, cluster(mastid) ffirst absorb(school_fe#grade)
     estadd local design_controls = "\checkmark" : iv`mcount'
     estadd local sgfe = "\checkmark" : iv`mcount'
-    estadd local ffirst = round(el(e(first),4,1),-1) : iv`mcount'
+    estadd local ffirst = round(e(widstat),-1) : iv`mcount'
     test ${lomvar} = 1
-    estadd local pvalone = round(r(p),.001) : iv`mcount'
+    estadd local pvalone = string(round(r(p),.001)) : iv`mcount'
     local mcount = `mcount' + 1
 
     restore

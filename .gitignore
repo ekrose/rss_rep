@@ -4,6 +4,7 @@ log_*.txt
 
 # Generated outputs
 tables/table*.tex
+tables/in_text_citations.txt
 figures/figure*.pdf
 
 # Ignore contents of temp and data folders, but keep the folders
