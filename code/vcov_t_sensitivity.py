@@ -136,6 +136,13 @@ for outset, name in [
               .apply(custom_format)
               .unstack('maxt')
         )
+        # Human-readable headers matching the manuscript table ("min m" /
+        # "max m", integer run lengths) instead of raw variable names and
+        # float-formatted column labels.
+        grouped.index = [str(int(v)) for v in grouped.index]
+        grouped.columns = [str(int(v)) if not isinstance(v, str) else v
+                           for v in grouped.columns]
+        grouped = grouped.rename_axis(index='min $m$', columns='max $m$')
         if (name == "shortrun") & (type == "sdev"):
             latex_str = grouped.to_latex(na_rep="", escape=False)  # escape=False allows commas, decimals
             with open(f"tables/tableA10a.tex", "w") as f:

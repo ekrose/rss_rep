@@ -119,6 +119,67 @@ CORR_OVERRIDES = {
     # Test scores -> crime
     ('mathscal', 'aoc_crim'): -0.12,
     ('readscal', 'aoc_crim'): -0.10,
+
+    # Study-skills components (homework/freeread/watchtv feed studypca in
+    # preamble.do) and additional long-run outcomes. These entries exist
+    # mainly to pull the columns into the Gaussian copula so that the
+    # teacher-effect factors below (TEACHER_EFFECT_LOADINGS) reach them.
+    ('homework', 'freeread'): 0.15,
+    ('homework', 'watchtv'): -0.10,
+    ('homework', 'mathscal'): 0.15,
+    ('freeread', 'readscal'): 0.20,
+    ('aoc_any', 'aoc_crim'): 0.60,
+    ('aoc_index', 'aoc_crim'): 0.50,
+    ('aoc_incar', 'aoc_crim'): 0.45,
+    ('grad', 'mathscal'): 0.20,
+    ('grad', 'aoc_crim'): -0.15,
+    ('gpa_weighted', 'mathscal'): 0.35,
+    ('gpa_weighted', 'readscal'): 0.30,
+}
+
+
+# -----------------------------------------------------------------------
+# Teacher-effect factors.
+#
+# The real data contain persistent teacher effects: a teacher's students
+# do systematically better or worse on short- and long-run outcomes, and
+# these effects are correlated across outcomes. Without them, the entry
+# instruments in Tables 5/A6/A7 have a truly zero first stage on the
+# simulated data and ivreg2/ivreghdfe cannot even compute the first-stage
+# F statistic (the moment covariance matrix is rank deficient, so the
+# Kleibergen-Paap statistic is reported as missing).
+#
+# We therefore add a two-factor teacher random effect to the latent
+# Gaussian draws of the copula, BEFORE the marginal transforms:
+#   factor 1 ("cognitive")  — loads on test scores and academic outcomes
+#   factor 2 ("behavioral") — loads on discipline/attendance and CJC
+# The two factors are correlated (TEACHER_FACTOR_CORR). Each column's
+# latent draw becomes
+#   z' = sqrt(1-s) * z + sqrt(s) * (normalized loading combination),
+# with s = TEACHER_EFFECT_SHARE, so every marginal distribution is
+# unchanged; only within-teacher dependence is added. Because binary
+# columns threshold the copula uniform and continuous columns invert it,
+# the teacher component flows through every outcome type.
+# -----------------------------------------------------------------------
+TEACHER_EFFECT_SHARE = 0.20   # share of latent variance from the teacher
+TEACHER_FACTOR_CORR = -0.25   # corr(cognitive, behavioral-problems) factors
+
+# col -> (loading on cognitive factor, loading on behavioral-problems factor)
+TEACHER_EFFECT_LOADINGS = {
+    'mathscal':        (1.0,  0.0),
+    'readscal':        (1.0,  0.0),
+    'homework':        (0.5, -0.3),
+    'freeread':        (0.5, -0.2),
+    'watchtv':         (-0.3, 0.3),
+    'lead1_daysabs':   (0.0,  1.0),
+    'lead1_any_discp': (0.0,  1.0),
+    'lead_grade_rep':  (-0.2, 0.8),
+    'aoc_any':         (-0.15, 0.7),
+    'aoc_crim':        (-0.15, 0.8),
+    'aoc_index':       (-0.15, 0.7),
+    'aoc_incar':       (-0.15, 0.7),
+    'grad':            (0.6, -0.4),
+    'gpa_weighted':    (0.8, -0.2),
 }
 
 
@@ -269,6 +330,28 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
         draws = rng.multivariate_normal(
             mean=np.zeros(len(synth_corr)), cov=corr_mat, size=n_rows, method="eigh"
         )
+
+        # Teacher-effect factors (see TEACHER_EFFECT_LOADINGS above).
+        # Teacher IDs are assigned below as consecutive blocks of 4 rows
+        # (row i belongs to teacher i//4), so the same block structure can
+        # be used here, before the marginal transforms.
+        n_teachers_eff = int(np.ceil(n_rows / 4))
+        factor_cov = np.array([[1.0, TEACHER_FACTOR_CORR],
+                               [TEACHER_FACTOR_CORR, 1.0]])
+        factors = rng.multivariate_normal(np.zeros(2), factor_cov, size=n_teachers_eff)
+        factors_row = np.repeat(factors, 4, axis=0)[:n_rows]
+        for j, c in enumerate(synth_corr.columns):
+            loadings = TEACHER_EFFECT_LOADINGS.get(c)
+            if loadings is None:
+                continue
+            lc, lb = loadings
+            denom = np.sqrt(lc ** 2 + lb ** 2 + 2 * lc * lb * TEACHER_FACTOR_CORR)
+            if denom == 0:
+                continue
+            tau = (lc * factors_row[:, 0] + lb * factors_row[:, 1]) / denom
+            draws[:, j] = (np.sqrt(1 - TEACHER_EFFECT_SHARE) * draws[:, j]
+                           + np.sqrt(TEACHER_EFFECT_SHARE) * tau)
+
         uniforms = norm.cdf(draws)
         for j, c in enumerate(synth_corr.columns):
             copula_uniforms[c] = uniforms[:, j]
@@ -582,20 +665,55 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
         new_teacher_values = np.repeat(teacher_ids, 4)
         df[t_col] = new_teacher_values
 
-        # If we also have a school column, enforce that half of the teachers
-        # are observed in two schools (2 obs in each), and the rest in a single school.
+        # ------------------------------------------------------------------
+        # School / grade / year panel structure.
+        #
+        # Each teacher contributes two teacher-years (rows 0-1 and rows 2-3
+        # of their block), and each teacher-year is placed in a
+        # school-grade-year CELL. Cells are packed with ~CELL_CAPACITY
+        # teacher-years each, so that:
+        #   - school-grade-year cells contain multiple teachers (needed for
+        #     the leave-out entry instruments of Tables 5/A6/A7 — with the
+        #     previous independent draws, cells averaged ~1.4 rows and the
+        #     first-stage F statistic of the entry IVs was not computable);
+        #   - grade is constant within a teacher-year (as in the real data);
+        #   - each teacher's two teacher-years are in different years and
+        #     different school-grades, so the leave-out means in preamble.do
+        #     (loo_ebar_schgrade / loo_ebar_school) are always defined;
+        #   - half of the teachers teach in two schools (2 obs in each),
+        #     the rest in one school (unchanged from before).
+        # ------------------------------------------------------------------
         if school_cols:
             s_col = school_cols[0]
-            schools = df[s_col].dropna().unique()
-            if len(schools) == 0:
-                schools = np.array(["S1", "S2"], dtype=object)
-            elif len(schools) == 1:
-                schools = np.array([schools[0], "S2"], dtype=object)
 
-            # Limit school pool so each school has enough teachers for
-            # within-school estimators (need ≥2 teachers per school).
-            max_schools = min(len(schools), max(n_teachers // 10, 20))
-            schools = rng.choice(schools, size=max_schools, replace=False)
+            GRADES = [4, 5, 6, 7, 8]
+            YEARS = [2000, 2001, 2002, 2003, 2004, 2005]
+            CELL_CAPACITY = 3
+
+            n_teacher_years = 2 * n_teachers
+            n_schools = max(
+                int(np.ceil(n_teacher_years / (len(GRADES) * len(YEARS) * CELL_CAPACITY))),
+                20,
+            )
+
+            # Per-school cycler over (grade, year) slots, each repeated
+            # CELL_CAPACITY times, in random order.
+            school_slots = {}
+            for s in range(n_schools):
+                slots = [(g, y) for g in GRADES for y in YEARS] * CELL_CAPACITY
+                rng.shuffle(slots)
+                school_slots[s] = slots
+
+            def _take_slot(school, exclude_year=None):
+                """Pop the next (grade, year) slot, preferring a different year."""
+                slots = school_slots[school]
+                for k, (g, y) in enumerate(slots):
+                    if exclude_year is None or y != exclude_year:
+                        return slots.pop(k)
+                # School exhausted of other years: borrow from the full grid
+                g = int(rng.choice(GRADES))
+                y = int(rng.choice([yy for yy in YEARS if yy != exclude_year] or YEARS))
+                return (g, y)
 
             # One row block per teacher (4 rows per teacher)
             indices = df.index.to_numpy()
@@ -605,16 +723,39 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
             n_multi = n_teachers // 2
             multi_teacher_idx = set(rng.choice(np.arange(n_teachers), size=n_multi, replace=False))
 
-            for i, (tid, block_idx) in enumerate(zip(teacher_ids, teacher_blocks)):
-                if i in multi_teacher_idx and len(schools) >= 2:
-                    # Two schools, two obs in each
-                    s1, s2 = rng.choice(schools, size=2, replace=False)
-                    df.loc[block_idx[:2], s_col] = s1
-                    df.loc[block_idx[2:], s_col] = s2
+            grade_cols = [c for c in df.columns if str(c).lower() == "grade"]
+            year_cols = [c for c in df.columns if str(c).lower() == "year"]
+            g_col = grade_cols[0] if grade_cols else None
+            y_col = year_cols[0] if year_cols else None
+
+            # Record each teacher-year's cell for the tenure variables below:
+            # cell_of_ty[(teacher_index, 0 or 1)] = (school, grade, year)
+            cell_of_ty = {}
+
+            for i, block_idx in enumerate(teacher_blocks):
+                s1 = i % n_schools
+                if i in multi_teacher_idx and n_schools >= 2:
+                    s2 = (s1 + 1 + (i // n_schools)) % n_schools
+                    if s2 == s1:
+                        s2 = (s1 + 1) % n_schools
                 else:
-                    # Single school (all 4 obs same school)
-                    s = rng.choice(schools)
-                    df.loc[block_idx, s_col] = s
+                    s2 = s1
+
+                g1, y1 = _take_slot(s1)
+                g2, y2 = _take_slot(s2, exclude_year=y1)
+
+                # schlcode is a string column in the real data
+                df.loc[block_idx[:2], s_col] = str(s1 + 1)
+                df.loc[block_idx[2:], s_col] = str(s2 + 1)
+                if g_col is not None:
+                    df.loc[block_idx[:2], g_col] = g1
+                    df.loc[block_idx[2:], g_col] = g2
+                if y_col is not None:
+                    df.loc[block_idx[:2], y_col] = y1
+                    df.loc[block_idx[2:], y_col] = y2
+
+                cell_of_ty[(i, 0)] = (s1, g1, y1)
+                cell_of_ty[(i, 1)] = (s2, g2, y2)
 
             # Synchronize school_fe (numeric FE used by Stata) with
             # the school structure just assigned via s_col.
@@ -624,32 +765,55 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
                 school_to_fe = {s: i + 1 for i, s in enumerate(unique_schools_assigned)}
                 df[fe_col_name] = df[s_col].map(school_to_fe)
 
-        # Enforce year and subject structure within each teacher so that
+            # --------------------------------------------------------------
+            # Coherent tenure variables for the entry IVs (Tables 5/A6/A7).
+            # These are ordinary columns in the real data; here they are
+            # rebuilt to be consistent with the cell structure above:
+            #   - nyears_schgrd: age of the school-grade cell (constant
+            #     within cell, >= 3 for ~85% of cells so the entry-IV
+            #     sample condition "nyears_schgrd >= 3" usually holds);
+            #   - nyears_teach_schgrd: teacher's tenure in the school-grade
+            #     (0 = new entrant, ~45% of teacher-years);
+            #   - nyears_teach_school: teacher's tenure in the school
+            #     (0 only when also new to the school-grade).
+            # --------------------------------------------------------------
+            cell_age = {}
+            for (i, half), (s, g, y) in cell_of_ty.items():
+                key = (s, g)
+                if key not in cell_age:
+                    cell_age[key] = int(rng.integers(3, 15)) if rng.random() < 0.85 else int(rng.integers(1, 3))
+
+            has_t_schgrd = "nyears_teach_schgrd" in df.columns
+            has_t_school = "nyears_teach_school" in df.columns
+            has_schgrd = "nyears_schgrd" in df.columns
+
+            if has_t_schgrd or has_t_school or has_schgrd:
+                for i, block_idx in enumerate(teacher_blocks):
+                    for half, rows in ((0, block_idx[:2]), (1, block_idx[2:])):
+                        s, g, y = cell_of_ty[(i, half)]
+                        age = cell_age[(s, g)]
+                        entrant = rng.random() < 0.45
+                        tenure_sg = 0 if entrant else int(rng.integers(1, max(age, 2)))
+                        tenure_s = tenure_sg + int(rng.integers(0, 4))
+                        if entrant and rng.random() < 0.7:
+                            tenure_s = 0
+                        if has_schgrd:
+                            df.loc[rows, "nyears_schgrd"] = age
+                        if has_t_schgrd:
+                            df.loc[rows, "nyears_teach_schgrd"] = tenure_sg
+                        if has_t_school:
+                            df.loc[rows, "nyears_teach_school"] = tenure_s
+
+        # Enforce subject structure within each teacher so that
         # preamble.do's "drop if nteachhr_years < 2" drops zero rows and
         # the Chetty VAM leave-one-out procedure always has a valid
-        # complement year.
-        #
-        # Structure per teacher (4 rows):
-        #   rows 0-1: year_A, same subject
-        #   rows 2-3: year_B, same subject  (year_B != year_A)
-        # This guarantees each teacher-subject pair has >= 2 distinct years.
-        year_cols = [c for c in df.columns if str(c).lower() == "year"]
+        # complement year. (Year structure — two distinct years per
+        # teacher, rows 0-1 vs rows 2-3 — is guaranteed by the cell
+        # assignment above.)
         subject_cols = [
             c for c in df.columns
             if any(tok in str(c).lower() for tok in ["subject", "subj"])
         ]
-
-        if year_cols:
-            y_col = year_cols[0]
-            all_years = df[y_col].dropna().unique()
-            if len(all_years) < 2:
-                all_years = np.array([1997, 1998])
-
-            for i, block_idx in enumerate(teacher_blocks):
-                # Pick two distinct years
-                yr_pair = rng.choice(all_years, size=2, replace=False)
-                df.loc[block_idx[:2], y_col] = yr_pair[0]
-                df.loc[block_idx[2:], y_col] = yr_pair[1]
 
         for subj_col in subject_cols:
             all_subjects = df[subj_col].dropna().unique()

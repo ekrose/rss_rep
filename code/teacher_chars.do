@@ -55,7 +55,7 @@ foreach out of varlist testscores_r studypca_r behave_r  aoc_crim_r aoc_index_r 
 	local ++ c
 }
 
-esttab using tables/tableA1.tex, replace se mtitles("Test scores" "Study skills" "Behaviors" "Criminal arrest" "Index crime" "Incarceration") stats(N nteach, labels("N teacher-years" "N teachers")) coeflabels(female "Female" non_white "Non-white" age "Age" higher_ba "Masters or higher" score_normed "Averge test score" relative_pay "Pay (standardized)" nprior "Prior experience" _cons "Constant")
+esttab using tables/tableA1.tex, replace se mtitles("Test scores" "Study skills" "Behaviors" "Criminal arrest" "Index crime" "Incarceration") stats(N nteach, labels("N teacher-years" "N teachers")) coeflabels(female "Female" non_white "Non-white" age "Age" higher_ba "Masters or higher" score_normed "Average test score" relative_pay "Pay (standardized)" nprior "Prior experience" _cons "Constant")
 
 
 *** 2) Match effects in race / gender (Tables A12a, A12b)
