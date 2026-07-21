@@ -256,11 +256,11 @@ for covariate, cov0name, cov1name in covs:
     for out, d0, d1 in [('Test scores',cog0,cog1),('Study skills',study0,study1),('Behaviors',behave0,behave1)]:
         print('Working on group: {} and outcome: {}'.format(covariate, out))
         effect0 = ustat.sd_effect_func(d0, incar0)
-        sd0 = ustat.sd_effect_samp_covar(d0, crime0)**0.5
+        sd0 = ustat.sd_effect_samp_covar(d0, incar0)**0.5
         results[cov0name][out] = (effect0, sd0)
 
         effect1 = ustat.sd_effect_func(d1, incar1)
-        sd1 = ustat.sd_effect_samp_covar(d1, crime1)**0.5
+        sd1 = ustat.sd_effect_samp_covar(d1, incar1)**0.5
         results[cov1name][out] = (effect1,sd1)
 
 # Make figure
