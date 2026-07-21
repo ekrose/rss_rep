@@ -635,9 +635,14 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
     # Teacher/school structure:
     # - each teacher appears exactly 4 times
     # - half the teachers appear in 2 schools (2 obs in each school)
+    # Match only true teacher-ID columns ("teachid", "cmb_teachid_*", ...).
+    # Broader substring tokens like "tch"/"teacher" wrongly matched survey
+    # variables (watchtv and its lags/leads, tchrdjdg, tchmtjdg) and the
+    # entry/exit indicators (teacher_enter, teacher_exit), overwriting
+    # them with teacher IDs.
     teacher_cols = [
         c for c in df.columns
-        if any(tok in str(c).lower() for tok in ["teacher", "tch", "teachid"])
+        if "teachid" in str(c).lower()
     ]
     school_cols = [
         c for c in df.columns
@@ -926,7 +931,7 @@ if __name__ == "__main__":
     
     # Example: simulate with custom number of observations
     df_sim_custom = simulate_from_summary(summary, n_observations=10000)
-    print("Simulated shape (custom 20k):", df_sim_custom.shape)
+    print("Simulated shape (10,000 observations):", df_sim_custom.shape)
     
     # Verify no missing values
     missing_counts = df_sim_custom.isna().sum()
@@ -969,8 +974,11 @@ if __name__ == "__main__":
                 # If mapping produced any NaN, fall back to 0 for those
                 df_sim_custom[col_name] = mapped.fillna(0).astype("uint8")
             else:
-                # If already numeric/bool, coerce to an unsigned byte
-                df_sim_custom[col_name] = df_sim_custom[col_name].astype("uint8")
+                # If already numeric/bool, round to the nearest integer and
+                # coerce to an unsigned byte (simulated marginals are floats)
+                df_sim_custom[col_name] = (
+                    df_sim_custom[col_name].round().clip(lower=0, upper=255).astype("uint8")
+                )
 
     # Export to Stata
     export_path = DATA_DIR / "analysis.dta"

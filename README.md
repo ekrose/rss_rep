@@ -40,7 +40,7 @@ Administrative records of adult criminal justice contact for North Carolina resi
 
 ### Software
 
-- **Stata SE** version 19 or later (required Stata packages `gtools`, `ftools`, `require`, `ivreg2`, `reghdfe`, `ivreghdfe`, `egenmore`, `estout`, `binscatter`, and `tuples` are installed automatically)
+- **Stata SE** version 19 or later (required Stata packages `gtools`, `ftools`, `require`, `ivreg2`, `reghdfe`, `ivreghdfe`, `egenmore`, `estout`, `binscatter`, `tuples`, `distinct`, and `ranktest` are installed automatically)
 - **Python** 3.14+ (see `.python-version`)
 
 ### Python environment setup
@@ -83,7 +83,7 @@ Common Stata executable paths:
 - **Linux**: `/usr/local/stata/stata-se`
 - **Windows**: this script requires a Unix shell (bash); run via [WSL](https://learn.microsoft.com/en-us/windows/wsl/) and use the Linux path above
 
-Alternatively, you can export the variables manually in your terminal before running `execute.sh`:
+Note that `execute.sh` always sources `.envrc`, so when using `execute.sh` you must edit `.envrc` (manual exports in your terminal are overwritten). Exporting the variables manually works only when running individual scripts directly:
 
 ```bash
 export PROJECT_DATA_DIR="/path/to/your/data/"
@@ -106,6 +106,7 @@ export STATA="/path/to/your/stata-se"
 │   ├── vam.ado                 # Stata ado: value-added model program
 │   ├── funcs_vcov_ustats.py    # Python library: U-statistic variance/covariance estimators
 │   ├── robust_options.txt      # 812 covariate specifications for robustness checks
+│   ├── script_robust_options.sh    # (Reference) SLURM version of the robustness runs used on the original server
 │   │
 │   ├── simulate_from_summary.py    # (Reference) Generates simulated data from summary statistics
 │   ├── simulate_teacher_covars.py  # (Reference) Generates simulated teacher characteristics
@@ -138,7 +139,7 @@ export STATA="/path/to/your/stata-se"
 │   └── covariate_correlation_part2.py  # In-text calculations (Python)
 │
 ├── build code/
-│   ├── build_final.py          # (Reference) Builds analysis.dta from raw NCERDC files
+│   ├── build_final.py          # (Reference) Builds the analysis dataset from raw NCERDC files
 │   └── build_teacher_chars.py  # (Reference) Builds teacher_covars.dta from raw NCERDC files
 │
 ├── data/
@@ -205,7 +206,7 @@ The analysis pipeline has a recurring two-step structure:
 2. **Python step**: Reads teacher-year residuals from `temp/`, computes variance and covariance of teacher effects using U-statistic estimators (implemented in `funcs_vcov_ustats.py`), estimates standard errors via analytical formulas or parametric bootstrap, and writes output tables/figures.
 
 Key shared components:
-- `code/set_options.do` — Defines the baseline covariate specification (`covdesign`) and loads the analysis dataset. Sourced by all `.do` files.
+- `code/set_options.do` — Defines the baseline covariate specification (`covdesign`) and loads the analysis dataset. Sourced by all estimation `.do` files (directly or via `preamble.do`); the table-formatting step `vcov_hetero_subgroups_table.do` does not need it.
 - `code/preamble.do` — Constructs derived variables (PCA indices, test score composites, behavioral composites), applies sample restrictions (drops teachers with fewer than 2 years per subject), and computes value-added models. Sourced by most `.do` files.
 - `code/funcs_vcov_ustats.py` — Implements all U-statistic estimators: `varcovar()` for variance/covariance, `sd_effect_func()` for 1-SD effects, and associated standard error functions. Imported by all analysis `.py` files.
 
