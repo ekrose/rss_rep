@@ -53,8 +53,11 @@ foreach outcome of varlist testscores behavpca studypca {
     estadd local twin_fe = "\checkmark"
     estadd local orig_r2 = string(round(`origr2',0.0001))
     capture drop covadj_predict
+    local nelem : word count ${covsadj}
     mat b=e(b)
-    mat b=b[1,1..2]
+    mat b=b[1,1..`nelem']
+    di "Listing adj covs used"
+    mat li b
     mat score covadj_predict=b if e(sample) == 1
     replace covadj_predict = covadj_predict + twin_fe
 
@@ -105,8 +108,11 @@ foreach outcome of varlist college_bound gpa_weighted {
     estadd local twin_fe = "\checkmark"
     estadd local orig_r2 = string(round(`origr2',0.0001))
     capture drop covadj_predict
+    local nelem : word count ${covsadj}
     mat b=e(b)
-    mat b=b[1,1..2]
+    mat b=b[1,1..`nelem']
+    di "Listing adj covs used"
+    mat li b
     mat score covadj_predict=b if e(sample) == 1
     replace covadj_predict = covadj_predict + twin_fe
 
@@ -152,8 +158,11 @@ foreach outcome of varlist aoc_any aoc_crim aoc_index aoc_incar {
     estadd local twin_fe = "\checkmark"
     estadd local orig_r2 = string(round(`origr2',0.0001))
     capture drop covadj_predict
+    local nelem : word count ${covsadj}
     mat b=e(b)
-    mat b=b[1,1..2]
+    mat b=b[1,1..`nelem']
+    di "Listing adj covs used"
+    mat li b
     mat score covadj_predict=b if e(sample) == 1
     replace covadj_predict = covadj_predict + twin_fe
 
