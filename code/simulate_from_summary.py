@@ -815,9 +815,12 @@ def simulate_from_summary(summary, n_observations=None, random_state=926823):
         # complement year. (Year structure — two distinct years per
         # teacher, rows 0-1 vs rows 2-3 — is guaranteed by the cell
         # assignment above.)
+        # Exact match only: substring matching ("subj") wrongly caught
+        # teachid_year_subject_fe and the nyears_*schgrdsubj tenure
+        # variables and overwrote them with per-teacher random draws.
         subject_cols = [
             c for c in df.columns
-            if any(tok in str(c).lower() for tok in ["subject", "subj"])
+            if str(c).lower() in ("subject", "subj")
         ]
 
         for subj_col in subject_cols:
