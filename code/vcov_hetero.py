@@ -265,7 +265,7 @@ for covariate, cov0name, cov1name in covs:
 
 # Make figure
 means = {'Non-white':0.11,'White':0.073, 'Female':0.048,'Male':0.13,'Not disadv':0.043,'Disadv':0.12,'Low risk':0.036,'High risk':0.15}
-for out in ['Test scores', 'Study skills', 'Behaviors']:
+for out in ['Test scores', 'Behaviors']:
     labels = [(0,'Non-white','White'),(1,'Female','Male'),(2,'Not disadv','Disadv'),(3,'Low risk','High risk')]
     fig, axes = plt.subplots(figsize=(8,5))
     width = 0.3
