@@ -111,9 +111,15 @@ for x,y,text in estimates:
         axes.annotate(text, (x-.075,y+.002), color=col, size=9)    
     else:
         axes.annotate(text, (x+.002,y+.002), color=col, size=9)
-axes.set_xlabel('SD of math effects') 
-axes.set_ylabel('SD of reading effects') 
-axes.set_xlim(0,0.35)
+axes.set_xlabel('SD of math effects')
+axes.set_ylabel('SD of reading effects')
+# Auto-scale the axes to include the computed "this paper" point, whose
+# location depends on the simulated data, along with the literature
+# estimates. (A fixed x-limit can push the simulated point off-canvas.)
+_xs = [a[0] for a in estimates]
+_ys = [a[1] for a in estimates]
+axes.set_xlim(0, max(_xs) * 1.15)
+axes.set_ylim(0, max(_ys) * 1.15)
 axes.set_facecolor('white')
 axes.grid(axis='y', color='grey')
 fig.tight_layout()
