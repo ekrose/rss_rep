@@ -28,6 +28,9 @@ from multiprocessing import Pool
 from functools import partial
 import funcs_vcov_ustats as ustat
 
+# Seed the parametric bootstrap so the reported SEs are reproducible
+np.random.seed(93293483)
+
 # Graphing
 import matplotlib
 matplotlib.use('Agg')
@@ -72,7 +75,10 @@ def withinOnly_school(sX, sY, sids, yearWeighted = False):
             if yearWeighted:
                 nteach =  np.sum((sids == id) * (~np.isnan(sX)) * (~np.isnan(sY)))
             else:
-                nteach =  np.sum(np.sum(~np.isnan(left),1) >= 2)
+                # Weight by teachers usable for THIS moment: at least two
+                # observed years on each of the two outcomes (for a variance,
+                # left == right, so this reduces to the original count)
+                nteach =  np.sum((np.sum(~np.isnan(left),1) >= 2) & (np.sum(~np.isnan(right),1) >= 2))
             try:
                 sdevs_ses += [ustat.vcv_samp_covar(left, right)*nteach**2]
                 sdevs += [ustat.varcovar(left, right, yearWeighted = yearWeighted)*nteach]
@@ -83,6 +89,47 @@ def withinOnly_school(sX, sY, sids, yearWeighted = False):
     within = np.nansum(sdevs) / np.nansum(totler)
     within_se = np.nansum(sdevs_ses) / np.nansum(totler)**2
     return within, within_se
+
+def withinOnly_school_crosscov(sA, sB, sC, sD, sids):
+    """
+    Sampling covariance between the within-school estimates of Cov(A,B)
+    and Cov(C,D). Schools are treated as independent, so
+        Cov = sum_s w_s^AB * w_s^CD * Cov(U_s^AB, U_s^CD) / (W^AB * W^CD),
+    with the same school eligibility rule and teacher weights w_s as
+    withinOnly_school, and the per-school moment sampling covariance from
+    ustat.ustat_samp_covar on the school-masked arrays.
+    """
+    unique_ids = np.unique(sids[~np.isnan(sids)])
+    num = 0.0
+    W_ab = 0.0
+    W_cd = 0.0
+    for id in unique_ids:
+        mats = []
+        for s in (sA, sB, sC, sD):
+            m = s.copy()
+            m[sids != id] = np.nan
+            mats += [m]
+        A, B, C, D = mats
+
+        elig_ab = (np.sum(np.sum(~np.isnan(A),1) >= 2) >= 2) & (np.sum(np.sum(~np.isnan(B),1) >= 2) >= 2)
+        elig_cd = (np.sum(np.sum(~np.isnan(C),1) >= 2) >= 2) & (np.sum(np.sum(~np.isnan(D),1) >= 2) >= 2)
+        w_ab = np.sum((np.sum(~np.isnan(A),1) >= 2) & (np.sum(~np.isnan(B),1) >= 2)) if elig_ab else 0
+        w_cd = np.sum((np.sum(~np.isnan(C),1) >= 2) & (np.sum(~np.isnan(D),1) >= 2)) if elig_cd else 0
+        W_ab += w_ab
+        W_cd += w_cd
+
+        if elig_ab and elig_cd:
+            # Restrict to this school's teachers (rows with any data) --
+            # numerically identical, since all-NaN teachers get zero
+            # weight in the U-statistic machinery, but much faster.
+            keep = ~(np.isnan(A).all(1) & np.isnan(B).all(1) & np.isnan(C).all(1) & np.isnan(D).all(1))
+            try:
+                num += w_ab * w_cd * ustat.ustat_samp_covar(A[keep], B[keep], C[keep], D[keep])
+            except:
+                pass
+    if W_ab == 0 or W_cd == 0:
+        return np.nan
+    return num / (W_ab * W_cd)
 
 def tabfunc(effects, outcome, sids):
     results = pd.DataFrame(columns=list(effects.keys()) + list(outcome.keys()), index=effects.keys())
@@ -102,10 +149,31 @@ def tabfunc(effects, outcome, sids):
     xY = results.iloc[:,len(effects):].values.astype(float)
     beta = np.linalg.inv(XX).dot(xY)
 
-    ### Parametric bootstrap for SES 
+    ### Parametric bootstrap for SES
+    # Draw the moment vector from a normal with the FULL estimated sampling
+    # variance-covariance structure (see the inference appendix: "with
+    # sampling variance-covariance structure given by estimated sampling
+    # variance-covariances"), not a diagonal approximation.
     mu = results.values.astype(float).ravel()
-    var = np.diag(results_vcv.values.astype(float).ravel())
-    combined = {**effects,**outcome} 
+    combined = {**effects,**outcome}
+    row_keys = list(effects.keys())
+    col_keys = list(effects.keys()) + list(outcome.keys())
+    moms = [(effects[r], combined[c]) for r in row_keys for c in col_keys]
+
+    nm = len(moms)
+    var = np.zeros((nm, nm))
+    np.fill_diagonal(var, results_vcv.values.astype(float).ravel())
+    for i in range(nm):
+        for j in range(i + 1, nm):
+            cc = withinOnly_school_crosscov(moms[i][0], moms[i][1], moms[j][0], moms[j][1], sids)
+            if np.isfinite(cc):
+                var[i, j] = cc
+                var[j, i] = cc
+
+    # Guard against small negative eigenvalues from plug-in estimation so
+    # the multivariate normal draw is well defined
+    eigval, eigvec = np.linalg.eigh(var)
+    var = (eigvec * np.clip(eigval, 0, None)).dot(eigvec.T)
 
     ns = 500
     bs_ests = np.zeros(shape=(beta.shape[0],beta.shape[1],ns))
@@ -122,9 +190,11 @@ def tabfunc(effects, outcome, sids):
         for c, col in enumerate(results.columns):
             results.loc[row, col] = "{:4.3f} ({:4.3f})".format(beta[r, c], sds[r, c])
     for c, col in enumerate(results.columns):
-        within, se = withinOnly_school(outcome[col], outcome[col], sids)        
+        within, se = withinOnly_school(outcome[col], outcome[col], sids)
+        # Delta method for the SD: Var(sqrt(V)) = Var(V) / (4V)
+        sd_se = (se / (4 * within)) ** 0.5 if within > 0 else np.nan
         results.loc['\hline $sd(\mu_j^y)$', col] = "{:4.3f} ({:4.3f})".format(
-                within**0.5, se**0.5)
+                within**0.5, sd_se)
         results.loc['$R^2$', col] = "{:4.3f}".format(
                     beta[:,c].dot(XX).dot(beta[:,c])/within)
     return results

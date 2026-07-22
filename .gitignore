@@ -21,3 +21,4 @@ data/*
 
 # Local reference copy of the pre-fix Figure 5 script (not part of the package)
 code/bottomXpercent_orig.py
+code/vcov_within_schl_orig.py
