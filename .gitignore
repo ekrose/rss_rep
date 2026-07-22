@@ -18,3 +18,6 @@ data/*
 !data/analysis.csv
 !data/teacher_covars.dta
 !data/teacher_covars.csv
+
+# Local reference copy of the pre-fix Figure 5 script (not part of the package)
+code/bottomXpercent_orig.py

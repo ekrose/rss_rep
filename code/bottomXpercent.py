@@ -297,10 +297,14 @@ def shortrunEB_fun(origX, origY, cog = cog, behave = behave, study = study, bott
     for w1, w2, w3 in tqdm(weights):
 
         # EB of index using cog, behave, and study (i.e., project TRUE index on cog, behave, and study)
+        # Cov(muhat, Index) for Index = w1*mu_cog + w2*mu_behave + w3*mu_study
+        # is Sigma_mumu(true) * w: each element mixes ALL three weights across
+        # that row of the true-effect covariance matrix (paper App. D.3, b_I =
+        # inv(Sigma_muhat_muhat) * Cov(muhat, Index)).
         Sigma_muIndex = np.array([
-            w1*(varCog + covar_cog_behave + covar_cog_study),
-            w2*(varBehave + covar_cog_behave + covar_study_behave),
-            w3*(varStudy + covar_cog_study + covar_study_behave)])
+            w1*varCog          + w2*covar_cog_behave   + w3*covar_cog_study,
+            w1*covar_cog_behave + w2*varBehave          + w3*covar_study_behave,
+            w1*covar_cog_study  + w2*covar_study_behave + w3*varStudy])
 
         # Projection coefficients of Index on cog, behave, and study
         bI = np.linalg.inv(Sigma_mumu).dot(Sigma_muIndex)
