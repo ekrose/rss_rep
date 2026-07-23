@@ -170,15 +170,21 @@ def tabfunc(effects, outcome, sids):
                 var[i, j] = cc
                 var[j, i] = cc
 
-    # Guard against small negative eigenvalues from plug-in estimation so
-    # the multivariate normal draw is well defined
+    # Draw from the eigendecomposition directly: newres = mu + E sqrt(D) z
+    # with z ~ N(0, I). This is the same multivariate normal but avoids
+    # np.random.multivariate_normal's internal SVD, which can fail to
+    # converge on this matrix -- it is EXACTLY singular by construction
+    # (the symmetric XX moments appear twice and are perfectly correlated)
+    # and its entries span many orders of magnitude. Negative eigenvalues
+    # from plug-in estimation noise are clipped to zero.
+    var = (var + var.T) / 2
     eigval, eigvec = np.linalg.eigh(var)
-    var = (eigvec * np.clip(eigval, 0, None)).dot(eigvec.T)
+    scale = eigvec * np.sqrt(np.clip(eigval, 0, None))
 
     ns = 500
     bs_ests = np.zeros(shape=(beta.shape[0],beta.shape[1],ns))
     for n in range(ns):
-        newres = np.random.multivariate_normal(mu,var).reshape(results.shape)
+        newres = (mu + scale.dot(np.random.normal(size=len(mu)))).reshape(results.shape)
         bXX = newres[:,:len(effects)]
         bxY = newres[:,len(effects):]
         bs_ests[:,:,n] += np.linalg.inv(bXX).dot(bxY)
