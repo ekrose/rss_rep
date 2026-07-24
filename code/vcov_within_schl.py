@@ -79,9 +79,15 @@ def withinOnly_school(sX, sY, sids, yearWeighted = False):
                 # observed years on each of the two outcomes (for a variance,
                 # left == right, so this reduces to the original count)
                 nteach =  np.sum((np.sum(~np.isnan(left),1) >= 2) & (np.sum(~np.isnan(right),1) >= 2))
+            # Restrict to this school's teachers before the U-statistic
+            # calls: all-NaN rows carry exactly zero weight in the C
+            # matrices, so this is numerically identical, but it avoids
+            # building J-by-J matrices over ALL teachers for every school
+            # (with ~40k teachers those are ~13GB allocations per school).
+            keep = ~(np.isnan(left).all(1) & np.isnan(right).all(1))
             try:
-                sdevs_ses += [ustat.vcv_samp_covar(left, right)*nteach**2]
-                sdevs += [ustat.varcovar(left, right, yearWeighted = yearWeighted)*nteach]
+                sdevs_ses += [ustat.vcv_samp_covar(left[keep], right[keep])*nteach**2]
+                sdevs += [ustat.varcovar(left[keep], right[keep], yearWeighted = yearWeighted)*nteach]
                 totler += [nteach]
             except:     # If not enough obs to compute SE, skip it
                 pass
