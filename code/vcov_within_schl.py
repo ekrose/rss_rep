@@ -72,6 +72,27 @@ def withinOnly_school(sX, sY, sids, yearWeighted = False):
 
         # Only use schools with at least two teachers
         if (np.sum(np.sum(~np.isnan(left),1) >= 2) >= 2) & (np.sum(np.sum(~np.isnan(right),1) >= 2) >= 2):
+            # Restrict to this school's teachers before the expensive
+            # U-statistic calls below: all-NaN rows carry exactly zero
+            # weight in the C matrices, so this is numerically identical,
+            # but it avoids building J-by-J matrices over ALL ~40k teachers
+            # for every school (~13GB allocations per school otherwise).
+            keep = ~(np.isnan(left).all(1) & np.isnan(right).all(1))
+            kleft, kright = left[keep], right[keep]
+
+            # vcv_samp_covar needs at least one teacher with >=2 overlapping
+            # years of BOTH X and Y to form its own-teacher bias-correction
+            # term. If no teacher qualifies, skip this school's SE *and*
+            # its point-estimate contribution, so both are computed over
+            # the same set of schools -- computed explicitly rather than
+            # relying on vcv_samp_covar to raise for this case.
+            countsX = np.count_nonzero(~np.isnan(kleft), 1)
+            countsY = np.count_nonzero(~np.isnan(kright), 1)
+            nsquares = np.count_nonzero(~np.isnan(kleft * kright), 1)
+            nproducts = countsX * countsY - nsquares
+            if not np.any((nproducts > 0) & (countsX >= 2) & (countsY >= 2)):
+                continue
+
             if yearWeighted:
                 nteach =  np.sum((sids == id) * (~np.isnan(sX)) * (~np.isnan(sY)))
             else:
@@ -79,12 +100,10 @@ def withinOnly_school(sX, sY, sids, yearWeighted = False):
                 # observed years on each of the two outcomes (for a variance,
                 # left == right, so this reduces to the original count)
                 nteach =  np.sum((np.sum(~np.isnan(left),1) >= 2) & (np.sum(~np.isnan(right),1) >= 2))
-            try:
-                sdevs_ses += [ustat.vcv_samp_covar(left, right)*nteach**2]
-                sdevs += [ustat.varcovar(left, right, yearWeighted = yearWeighted)*nteach]
-                totler += [nteach]
-            except:     # If not enough obs to compute SE, skip it
-                pass
+
+            sdevs_ses += [ustat.vcv_samp_covar(kleft, kright)*nteach**2]
+            sdevs += [ustat.varcovar(kleft, kright, yearWeighted = yearWeighted)*nteach]
+            totler += [nteach]
 
     within = np.nansum(sdevs) / np.nansum(totler)
     within_se = np.nansum(sdevs_ses) / np.nansum(totler)**2
@@ -113,6 +132,21 @@ def withinOnly_school_crosscov(sA, sB, sC, sD, sids):
 
         elig_ab = (np.sum(np.sum(~np.isnan(A),1) >= 2) >= 2) & (np.sum(np.sum(~np.isnan(B),1) >= 2) >= 2)
         elig_cd = (np.sum(np.sum(~np.isnan(C),1) >= 2) >= 2) & (np.sum(np.sum(~np.isnan(D),1) >= 2) >= 2)
+
+        # Same "has a valid own-teacher moment" requirement as withinOnly_school,
+        # so a school contributes here only if it would also contribute to the
+        # corresponding point estimate / SE.
+        if elig_ab:
+            countsA = np.count_nonzero(~np.isnan(A), 1)
+            countsB = np.count_nonzero(~np.isnan(B), 1)
+            nprodAB = countsA * countsB - np.count_nonzero(~np.isnan(A * B), 1)
+            elig_ab = np.any((nprodAB > 0) & (countsA >= 2) & (countsB >= 2))
+        if elig_cd:
+            countsC = np.count_nonzero(~np.isnan(C), 1)
+            countsD = np.count_nonzero(~np.isnan(D), 1)
+            nprodCD = countsC * countsD - np.count_nonzero(~np.isnan(C * D), 1)
+            elig_cd = np.any((nprodCD > 0) & (countsC >= 2) & (countsD >= 2))
+
         w_ab = np.sum((np.sum(~np.isnan(A),1) >= 2) & (np.sum(~np.isnan(B),1) >= 2)) if elig_ab else 0
         w_cd = np.sum((np.sum(~np.isnan(C),1) >= 2) & (np.sum(~np.isnan(D),1) >= 2)) if elig_cd else 0
         W_ab += w_ab
