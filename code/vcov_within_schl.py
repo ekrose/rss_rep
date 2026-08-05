@@ -99,7 +99,7 @@ def withinOnly_school(sX, sY, sids, yearWeighted = False):
                 # Weight by teachers usable for THIS moment: at least two
                 # observed years on each of the two outcomes (for a variance,
                 # left == right, so this reduces to the original count)
-                nteach =  np.sum((np.sum(~np.isnan(left),1) >= 2) & (np.sum(~np.isnan(right),1) >= 2))
+                nteach = np.sum(nproducts > 0)
 
             sdevs_ses += [ustat.vcv_samp_covar(kleft, kright)*nteach**2]
             sdevs += [ustat.varcovar(kleft, kright, yearWeighted = yearWeighted)*nteach]
