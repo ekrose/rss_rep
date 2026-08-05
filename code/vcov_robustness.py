@@ -116,7 +116,7 @@ cog = tresids.filter(regex='^testscores_', axis=1).values[:,:]
 math = tresids.filter(regex='^math_', axis=1).values[:,:]
 eng = tresids.filter(regex='^eng_', axis=1).values[:,:]
 study = tresids.filter(regex='^studypca_', axis=1).values[:,:]
-behave = tresids.filter(regex='^behavpca_', axis=1).values[:,:]
+behave = tresids.filter(regex='^behave_r', axis=1).values[:,:]
 
 gpa = tresids.filter(regex='gpa_weighted_', axis=1).values[:,:]
 college = tresids.filter(regex='college_bound_', axis=1).values[:,:]
