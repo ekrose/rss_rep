@@ -85,9 +85,8 @@ for covariate, covname in covs:
     grad1 = tresids.filter(regex='grad_r1', axis=1).values[:,:]
     college0 = tresids.filter(regex='college_bound_r0', axis=1).values[:,:]
     college1 = tresids.filter(regex='college_bound_r1', axis=1).values[:,:]
-    for out, d0, d1 in [('Test scores',cog0,cog1),('Study skills',study0,study1),('Behaviors',behave0,behave1),
-                    ('Any CJC',anycrime0,anycrime1), ('Criminal arrest',crime0,crime1),('Index crime',index0,index1),('Incarceration',incar0,incar1), 
-                    ('12th grade GPA',gpa0,gpa1), ('Graduation',grad0,grad1), ('College attendance',college0,college1)]:
+    for out, d0, d1 in [('Any CJC',anycrime0,anycrime1), ('Criminal arrest',crime0,crime1),
+                    ('Index crime',index0,index1),('Incarceration',incar0,incar1)]:
         print('\n Working on {} and {}: outcome = {} \n'.format(covariate, covname, out))
 
         # SD ests
@@ -101,7 +100,7 @@ for covariate, covname in covs:
 tab = pd.DataFrame({'statistic':np.nan, 'subgroup':' ', 'outcome':np.nan, 'value':np.nan}, index = [0])
 ls = []
 for covariate, covname in covs:
-    for var in ['Test scores','Study skills','Behaviors','Any CJC','Criminal arrest','Index crime','Incarceration','12th grade GPA','Graduation','College attendance']:
+    for var in ['Any CJC','Criminal arrest','Index crime','Incarceration']:
         for l in [0,1]:
             tab['subgroup'] = covariate + '{}'.format(l)
             tab['statistic'] = 'SD'
