@@ -59,6 +59,7 @@ run_one() {
     jobdir=$(mktemp -d)
     ln -s "$PROJECT_ROOT/code" "$jobdir/code"
     ln -s "$PROJECT_ROOT/temp" "$jobdir/temp"
+    ln -s "$PROJECT_ROOT/data" "$jobdir/data"
 
     # Run Stata from the isolated directory
     ( cd "$jobdir" && "$STATA" -b do "$PROJECT_ROOT/$DOFILE" ${iter} ${covdesign} ) 2>/dev/null
