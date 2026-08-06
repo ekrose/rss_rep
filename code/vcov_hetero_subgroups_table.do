@@ -21,7 +21,7 @@ set more off
 preserve
 use "temp/hetero_SDs.dta", clear
 
-levelsof subgroup, local(_subgroups)
+local _subgroups white1 white0 male1 male0 disadv1 disadv0 atrisk1 atrisk0
 local num_groups: list sizeof local(_subgroups)
 
 levelsof outcome, local(_outcomes)
