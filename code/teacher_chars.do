@@ -38,7 +38,7 @@ gen birth_year = year(bdate)
 gen age = year - birth_year
 su age, d
 replace age = r(p1) if age < r(p1)
-replace age = r(p99) if age < r(p1)
+replace age = r(p99) if age > r(p99)
 gen higher_ba = educ_lvl_cd >= 5
 
 * test experience cals
