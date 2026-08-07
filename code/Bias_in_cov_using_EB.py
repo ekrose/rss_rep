@@ -76,30 +76,30 @@ np.random.seed(93293483)
 # one column per within-teacher observation index (e.g. testscores_r1, ...).
 tresids = pd.read_stata("temp/teach_mean_resids.dta").drop('teachid', axis=1)
 cog = tresids.filter(regex='^testscores_', axis=1).values[:, :]
+obs_cog = tresids.filter(regex='^obs_cog', axis=1).values[:, :] 
 math = tresids.filter(regex='^math_', axis=1).values[:, :]
 eng = tresids.filter(regex='^eng_', axis=1).values[:, :]
 study = tresids.filter(regex='^studypca_', axis=1).values[:, :]
 behave = tresids.filter(regex='^behave_r', axis=1).values[:, :]
+obs_behave = tresids.filter(regex='^obs_cog', axis=1).values[:, :] 
 
 gpa = tresids.filter(regex='gpa_weighted_', axis=1).values[:, :]
 college = tresids.filter(regex='college_bound_', axis=1).values[:, :]
 grad = tresids.filter(regex='^grad_', axis=1).values[:, :]
 
 crime = tresids.filter(regex='aoc_crim_r', axis=1).values[:, :]
+obs_crime = tresids.filter(regex='^obs_crime', axis=1).values[:, :] 
 crimeany = tresids.filter(regex='aoc_any_r', axis=1).values[:, :]
 aoc_traff = tresids.filter(regex='aoc_traff_r', axis=1).values[:, :]
 aoc_index = tresids.filter(regex='aoc_index_r', axis=1).values[:, :]
 aoc_incar = tresids.filter(regex='aoc_incar_r', axis=1).values[:, :]
-
-obs = tresids.filter(regex='^obs_cog', axis=1).values[:, :]
-avg_n = np.nanmean(obs)
 
 #####################################
 ### 2) Estimation
 #####################################
 
 
-def estEB_fun(nlist, origX, origY, no_corr_errors=False):
+def estEB_fun(nlist, origX, origY, obsX, obsY, no_corr_errors=False):
 
 	### 1) Variance-covariance of teacher effects
 	varx = ustat.varcovar(origX, origX)
@@ -115,19 +115,30 @@ def estEB_fun(nlist, origX, origY, no_corr_errors=False):
 	muy = np.nanmean(np.nanmean(origY, axis=1))
 
 	origX_within = origX - np.nanmean(origX,1)[:,None]
-	origY_within = origY - np.nanmean(origY,1)[:,None]
+	mask = ~np.isnan(origX_within)	
+	N, J = mask.sum(), origX.shape[0]
+	origX_within_var = np.nansum(origX_within**2) / (N - J)
 
-	origX_within_var = pd.DataFrame({'a':origX_within.ravel(), 'b':origX_within.ravel()}).cov().values[0,1]
-	origY_within_var = pd.DataFrame({'a':origY_within.ravel(), 'b':origY_within.ravel()}).cov().values[0,1]
+	origY_within = origY - np.nanmean(origY,1)[:,None]
+	mask = ~np.isnan(origY_within)
+	N, J = mask.sum(), origY.shape[0]
+	origY_within_var = np.nansum(origY_within**2) / (N - J)
+
+	mask_xy = ~np.isnan(origX_within) & ~np.isnan(origY_within) 
 	if no_corr_errors :
 		origXY_within_covar = 0
 	else:
-		origXY_within_covar = pd.DataFrame({'a':origX_within.ravel(), 'b':origY_within.ravel()}).cov().values[0,1]
+		N_pair = mask_xy.sum()
+		J_pair = np.any(mask_xy, axis=1).sum()
+		origXY_within_covar = (
+		    np.sum(origX_within[mask_xy] * origY_within[mask_xy])
+		    / (N_pair - J_pair)
+		)
 
 	### 2b) Multiply within variance/covariance by the average number of students per teacher
-	origXY_within_covar = origXY_within_covar*avg_n
-	origX_within_var = origX_within_var*avg_n
-	origY_within_var = origY_within_var*avg_n
+	origXY_within_covar = origXY_within_covar*(np.nanmean(obsX[mask_xy]) + np.nanmean(obsY[mask_xy]))/2
+	origX_within_var = origX_within_var*np.nanmean(obsX)
+	origY_within_var = origY_within_var*np.nanmean(obsY)
 
 	### 3) EB shrinkage
 	CovEB = []
@@ -176,15 +187,14 @@ def estEB_fun(nlist, origX, origY, no_corr_errors=False):
 n_vec = np.arange(10, 1000, 5).tolist()
 
 # EB posterior bias, using the estimated (possibly correlated) sampling error
-rr_behave_crime = estEB_fun(n_vec, behave, crime)
-rr_cog_crime = estEB_fun(n_vec, cog, crime)
-rr_cog_behave = estEB_fun(n_vec, cog, behave)
-
+rr_behave_crime = estEB_fun(n_vec, behave, crime, obs_behave, obs_crime)
+rr_cog_crime = estEB_fun(n_vec, cog, crime, obs_cog, obs_crime)
+rr_cog_behave = estEB_fun(n_vec, cog, behave, obs_cog, obs_behave)
 
 # EB posterior bias, imposing no correlated measurement/sampling errors
-rr_behave_crime0 = estEB_fun(n_vec, behave, crime, True)
-rr_cog_crime0 = estEB_fun(n_vec, cog, crime, True)
-rr_cog_behave0 = estEB_fun(n_vec, cog, behave, True)
+rr_behave_crime0 = estEB_fun(n_vec, behave, crime, obs_behave, obs_crime, True)
+rr_cog_crime0 = estEB_fun(n_vec, cog, crime, obs_cog, obs_crime, True)
+rr_cog_behave0 = estEB_fun(n_vec, cog, behave, obs_cog, obs_behave, True)
 
 
 #####################################
@@ -290,11 +300,22 @@ def correl_func_errors(origX,origY):
 	muy = np.nanmean(np.nanmean(origY, axis=1))
 
 	origX_within = origX - np.nanmean(origX,1)[:,None]
-	origY_within = origY - np.nanmean(origY,1)[:,None]
+	mask = ~np.isnan(origX_within)	
+	N, J = mask.sum(), origX.shape[0]
+	origX_within_var = np.nansum(origX_within**2) / (N - J)
 
-	origX_within_var = pd.DataFrame({'a':origX_within.ravel(), 'b':origX_within.ravel()}).cov().values[0,1]
-	origY_within_var = pd.DataFrame({'a':origY_within.ravel(), 'b':origY_within.ravel()}).cov().values[0,1]
-	origXY_within_covar = pd.DataFrame({'a':origX_within.ravel(), 'b':origY_within.ravel()}).cov().values[0,1]
+	origY_within = origY - np.nanmean(origY,1)[:,None]
+	mask = ~np.isnan(origY_within)
+	N, J = mask.sum(), origY.shape[0]
+	origY_within_var = np.nansum(origY_within**2) / (N - J)
+
+	mask_xy = ~np.isnan(origX_within) & ~np.isnan(origY_within) 
+	N_pair = mask_xy.sum()
+	J_pair = np.any(mask_xy, axis=1).sum()
+	origXY_within_covar = (
+	    np.sum(origX_within[mask_xy] * origY_within[mask_xy])
+	    / (N_pair - J_pair)
+	)
 
 	return origXY_within_covar/np.power(origX_within_var*origY_within_var, 0.5)
 
