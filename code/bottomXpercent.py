@@ -48,8 +48,6 @@ ns = 300
 ncpus = 21
 
 np.random.seed(93293483)
-gamma_draw_mat = np.random.exponential(scale=1, size = (40000,17,ns))
-
 
 # Color options
 col_oracal = 'darkred'
@@ -248,13 +246,14 @@ def shortrunEB_fun(origX, origY, cog = cog, behave = behave, study = study, bott
     covar_study_behave = ustat.varcovar(study, behave)
 
     # Short-run OBSERVED teacher effects var-covar
-    varCog_hat = np.nanvar(cog.ravel())
-    varBehave_hat = np.nanvar(behave.ravel())
-    varStudy_hat = np.nanvar(study.ravel())
+    cogm, behm, stum = (np.nanmean(a, axis=1) for a in (cog, behave, study))
+    varCog_hat = np.nanvar(cogm)
+    varBehave_hat = np.nanvar(behm)
+    varStudy_hat = np.nanvar(stum)
 
-    covar_cog_behave_hat = pd.DataFrame({'a':behave.ravel(), 'b':cog.ravel()}).cov().values[0,1]  
-    covar_cog_study_hat = pd.DataFrame({'a':study.ravel(), 'b':cog.ravel()}).cov().values[0,1]
-    covar_study_behave_hat = pd.DataFrame({'a':behave.ravel(), 'b':study.ravel()}).cov().values[0,1]
+    covar_cog_behave_hat = pd.DataFrame({'a':behm, 'b':cogm}).cov().values[0,1]  
+    covar_cog_study_hat = pd.DataFrame({'a':stum, 'b':cogm}).cov().values[0,1]
+    covar_study_behave_hat = pd.DataFrame({'a':behm, 'b':stum}).cov().values[0,1]
 
     # Short-run means (over teachers)
     mu_cog = np.nanmean(np.nanmean(cog, axis=1))
